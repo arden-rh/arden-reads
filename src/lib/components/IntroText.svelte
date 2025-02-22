@@ -1,0 +1,18 @@
+<div class="intro-text mt-2 max-w-sm lg:max-w-max lg:text-base">
+	<p>
+		...books sometimes. And graphic novels. He reads them on paper, on Kindle, and sometimes
+		he listens to them on his phone. He is a big fan of libraries and often borrows books even though he
+		has several of them at home that're still on his TBR-list*.
+	</p>
+	<p class="mt-4 lg:mt-3">
+		Arden is also a fan of infographics and statistics. This site exists solely for the
+		purpose of giving him an excuse to look at pretty numbers.
+		<span class="block mt-2 italic text-xs">*To Be Read-list</span>
+	</p>
+</div>
+
+<style>
+	.intro-text {
+		font-size: 0.95rem;
+	}
+</style>

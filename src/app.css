@@ -1,0 +1,96 @@
+/*Tailwind */
+@import 'tailwindcss';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentColor);
+	}
+
+	:focus-visible {
+		@apply ring-2 ring-teal-400 outline-none rounded p-0.5;
+	}
+
+	body {
+		@apply bg-teal-950;
+	}
+
+	/* Custom Fonts */
+	.fugaz-one-regular {
+		font-family: 'Fugaz One', sans-serif;
+		font-weight: 400;
+		font-style: normal;
+	}
+
+	.rozha-one-regular {
+		font-family: 'Rozha One', serif;
+		font-weight: 400;
+		font-style: normal;
+	}
+
+	.fira-mono-regular {
+		font-family: 'Fira Mono', monospace;
+		font-weight: 400;
+		font-style: normal;
+	}
+
+	.fira-mono-medium {
+		font-family: 'Fira Mono', monospace;
+		font-weight: 500;
+		font-style: normal;
+	}
+
+	.fira-mono-bold {
+		font-family: 'Fira Mono', monospace;
+		font-weight: 700;
+		font-style: normal;
+	}
+
+	.ledger-regular {
+		font-family: 'Ledger', serif;
+		font-weight: 400;
+		font-style: normal;
+	}
+}
+
+@layer components {
+	input {
+		@apply bg-teal-950 text-white border-2 border-gray-200 rounded-lg px-4 py-2 focus:outline-none focus:border-gray-400;
+	}
+
+	input[type='date']::-webkit-calendar-picker-indicator {
+		background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23bbbbbb" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+	}
+	
+	select {
+		@apply focus:outline-none focus:border-gray-400;
+
+		option {
+			@apply bg-teal-950 text-white border-1 border-gray-200 rounded-lg p-2 mb-2;
+
+			&:hover {
+				@apply bg-teal-400 border-teal-400 text-black;
+			}
+
+			&:focus {
+				@apply bg-teal-400;
+			}
+
+			&:active {
+				@apply bg-teal-400 border-teal-400 text-black;
+			}
+		}
+	}
+}
