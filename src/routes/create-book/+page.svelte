@@ -33,7 +33,7 @@
 </script>
 
 <section
-	class="col-start-1 col-end-7 row-start-1 flex flex-col justify-center gap-4 items-center row-end-6"
+	class="col-start-1 col-end-7 row-start-1 row-end-6 flex flex-col gap-4 items-center"
 >
 	<div class="flex flex-col items-center justify-center">
 		<h1

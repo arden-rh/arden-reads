@@ -57,14 +57,14 @@
 		chosenFormatOptions = [];
 		chosenGenreOptions = [];
 	};
-	
+
 </script>
 
 <div
-	class="min-w-1/3 bg-teal-800 flex flex-col justify-center items-center rounded-lg p-4 shadow-md"
+	class="lg:min-w-1/3 w-auto max-w-full bg-teal-800 flex flex-col justify-center items-center rounded-lg p-4 shadow-md"
 >
 	<form
-		class="flex flex-col gap-3"
+		class="flex flex-col gap-3 max-w-full"
 		method="POST"
 		action="?/create"
 		onsubmit={handleSubmit}
@@ -79,11 +79,11 @@
 			<label for="author">Author</label>
 			<input name="author" type="text" id="author" required />
 		</span>
-		<span class="flex gap-3 items-center mt-1">
+		<span class="flex flex-col lg:flex-row gap-3 items-center mt-1">
 			<label for="pages">Pages</label>
-			<input name="pages" type="number" id="pages" />
+			<input name="pages" type="number" id="pages" class="w-full lg:w-auto" />
 			<label for="minutes">Minutes</label>
-			<input name="minutes" type="number" id="minutes" />
+			<input name="minutes" type="number" id="minutes" class="w-full lg:w-auto" />
 		</span>
 		<span class="flex flex-col gap-0.5">
 			<label for="formats-select">Formats</label>
