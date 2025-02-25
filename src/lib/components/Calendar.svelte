@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { months } from '$lib/data/months';
+	import { closeMenuAndEnableScroll, enableScroll } from '$lib/functions/scrollFunctions';
 	import { activeState, currentParams, menu } from '../../states.svelte';
 	
 	interface Props {
@@ -22,12 +23,14 @@
 		activeState.month = month;
 		linkToMonthPage = `/${menu.activeYear}/${month}`;
 		menu.open = false;
+		enableScroll();
 	}
 
 	function resetParams() {
 		currentParams.month = undefined;
 		currentParams.year = undefined;
 		menu.open = false;
+		enableScroll();
 	}
 </script>
 
@@ -50,7 +53,7 @@
 				? 'bg-teal-700'
 				: 'bg-teal-950'}"
 			href="/{menu.activeYear}"
-			onclick={() => menu.open = false}>SUMMARY</a
+			onclick={closeMenuAndEnableScroll}>SUMMARY</a
 		>
 		<div class="grid grid-cols-3 gap-2">
 			{#each months as month}
