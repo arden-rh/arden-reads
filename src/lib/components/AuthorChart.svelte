@@ -36,6 +36,9 @@
 		barMinWidth={0}
 		linked="chart-link-3"
 		uid="books-by-author"
+		tabindex={0}
+		title="Chart with number of books per author"
+		description="A bar chart showing the number of books read by each author this year."
 	/>
 	<div class="w-full flex flex-col text-sm lg:min-h-[80px] xl:min-h-[60px]">
 		<span>Author: <LinkedLabel linked="chart-link-3" /></span>

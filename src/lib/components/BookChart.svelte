@@ -47,6 +47,9 @@
 		barMinWidth={0}
 		linked="chart-link-1"
 		uid="books-read-by-month"
+		tabindex={0}
+		title="Chart with number of books read per month"
+		description="A bar chart showing the number of books read each month."
 	/>
 	<div class="w-full flex flex-col text-sm lg:min-h-[80px] xl:min-h-[60px]">
 		<span>Month: <LinkedLabel linked="chart-link-1" /></span>

@@ -35,6 +35,9 @@
 		barMinWidth={0}
 		linked="chart-link-2"
 		uid="pages-per-book"
+		tabindex={0}
+		title="Chart with number of pages per book"
+		description="A bar chart showing the number of pages in each book."
 	/>
 	<div class="w-full flex flex-col text-sm grow lg:min-h-[80px] xl:min-h-[60px]">
 		<span>Title: <LinkedLabel linked="chart-link-2" /></span>
