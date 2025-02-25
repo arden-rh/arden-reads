@@ -7,7 +7,7 @@
 
 	import { applyAction, deserialize } from '$app/forms';
 
-	let { data, form } = $props();
+	let { form } = $props();
 
 	let hideDialogue: boolean = $state(true);
 
@@ -29,7 +29,7 @@
 
 		hideDialogue = false;
 	};
-	
+
 </script>
 
 <section
@@ -46,7 +46,6 @@
 		<p class="text-red-500">{form.error}</p>
 	{/if}
 	{#if form?.success && !hideDialogue}
-		<!-- <p class="text-green-500">Book added successfully!</p> -->
 		<div
 			class="min-w-1/3 bg-teal-800 flex flex-col gap-4 justify-center items-center rounded-lg p-4 shadow-md"
 		>
@@ -71,28 +70,4 @@
 		</div>
 	{/if}
 	<BookForm {handleSubmit} />
-	<!-- {#if hideForm}
-		<div
-			class="min-w-1/3 bg-teal-800 flex flex-col gap-4 justify-center items-center rounded-lg p-4 shadow-md"
-		>
-			<p>Book created successfully!</p>
-			<div class="flex flex-col gap-2 items-center">
-				<span>Create another?</span>
-				<span class="flex gap-4 items-center justify-center">
-					<button
-						class="bg-teal-950 fira-mono-regular rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md w-20"
-						onclick={() => (hideForm = false)}
-					>
-						Yes
-					</button>
-					<a
-						class="bg-teal-950 fira-mono-regular rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md w-20"
-						href="/"
-					>
-						No
-					</a>
-				</span>
-			</div>
-		</div>
-	{/if} -->
 </section>

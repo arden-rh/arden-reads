@@ -6,7 +6,7 @@
 	interface Props {
 		monthNumber: number;
 		year: number;
-	}
+	};
 
 	let { monthNumber, year }: Props = $props();
 
@@ -16,7 +16,7 @@
 
 	function handleYearClick(year: number) {
 		menu.activeYear = year;
-	}
+	};
 
 	function createCorrectLink(month: string) {
 		currentParams.month = month;
@@ -24,14 +24,15 @@
 		linkToMonthPage = `/${menu.activeYear}/${month}`;
 		menu.open = false;
 		enableScroll();
-	}
+	};
 
 	function resetParams() {
 		currentParams.month = undefined;
 		currentParams.year = undefined;
 		menu.open = false;
 		enableScroll();
-	}
+	};
+	
 </script>
 
 <div class="fira-mono-regular w-full">

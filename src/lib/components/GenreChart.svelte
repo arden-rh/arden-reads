@@ -3,7 +3,7 @@
 
 	interface Props {
 		listOfBooks: Book[];
-	}
+	};
 
 	let { listOfBooks }: Props = $props();
 
@@ -49,7 +49,7 @@
 		});
 
 		return genreCounts;
-	}
+	};
 
 	function transformGenreCounts(genreCounts: Record<string, number>) {
 		const total = Object.values(genreCounts).reduce((sum, count) => sum + count, 0);
@@ -62,10 +62,11 @@
 				color: `${chartColors[index % chartColors.length]}`
 			};
 		});
-	}
+	};
 
 	const genres = countGenres(listOfBooks);
 	genreData = transformGenreCounts(genres);
+	
 </script>
 
 <div
@@ -78,7 +79,7 @@
 			viewBox="0 0 36 36"
 			class="w-[200px] lg:w-[150px] xl:w-[300px] max-w-[200px] lg:max-w-[150px] xl:max-w-[300px] h-full"
 		>
-			{#each genreData as { genre, percentage, color }, index}
+			{#each genreData as { color, percentage }, index}
 				<circle
 					r="15"
 					cx="18"
@@ -90,13 +91,13 @@
 					stroke-dashoffset={genreData.slice(0, index).reduce((sum, d) => sum - d.percentage, 0)}
 					transform="rotate(-90 18 18)"
 				>
-					<!-- <title>{genre}: {percentage.toFixed(1)}%</title> -->
+					<title>Hover over the genres in the legend to see exact percentage.</title>
 				</circle>
 			{/each}
 		</svg>
 	</figure>
 	<!-- Legend -->
-	<div class="flex flex-col gap-2 justify-center mr-4 xl:mr-6 xl:min-w-[120px]">
+	<div class="flex flex-col gap-2 justify-center mr-4 xl:mr-6 xl:min-w-[125px]">
 		{#each genreData as { genre, legendColor, percentage }}
 			<button
 				class="flex items-center gap-2 group focus-visible:p-1"

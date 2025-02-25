@@ -37,18 +37,18 @@
 		} else {
 			menu.open = true;
 		}
-	}
+	};
 
 	function handleLogoClick() {
 		currentParams.month = undefined;
 		currentParams.year = undefined;
 		menu.open = false;
 		enableScroll();
-	}
+	};
 
 </script>
 
-<div class="flex flex-col justify-between min-h-svh">
+<div class="flex flex-col justify-between h-dvh">
 	<nav class="text-white p-4 mx-2 mt-2 flex flex-col gap-4 relative">
 		<div class="flex justify-between items-center">
 			<a

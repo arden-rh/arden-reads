@@ -4,12 +4,13 @@
 		month: string;
 		monthNumber: number;
 		numberOfBooksMonth: number;
-	}
+	};
 
 	let { day, numberOfBooksMonth, month, monthNumber }: Props = $props();
 
 	const todaysDate = new Date();
 	const todaysMonth = todaysDate.getMonth() + 1;
+
 </script>
 
 <div

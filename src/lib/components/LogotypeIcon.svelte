@@ -2,9 +2,10 @@
 	interface Props {
 		pathCssClass: string;
 		svgCssClass: string;
-	}
+	};
 
 	let { pathCssClass, svgCssClass }: Props = $props();
+
 </script>
 
 <svg

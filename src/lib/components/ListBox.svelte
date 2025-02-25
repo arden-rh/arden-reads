@@ -3,9 +3,10 @@
 		arrayOfItems: string[];
 		header: string;
 		shortTitles?: boolean;
-	}
+	};
 
 	let { arrayOfItems, header, shortTitles }: Props = $props();
+	
 </script>
 
 <div

@@ -2,7 +2,7 @@
 	interface Props {
 		iconName: string;
 		hover?: boolean;
-	}
+	};
 
 	let { iconName, hover }: Props = $props();
 
@@ -46,7 +46,7 @@
 			return '';
 		}
 		return icon.path;
-	}
+	};
 
 </script>
 

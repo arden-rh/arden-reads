@@ -4,7 +4,7 @@
 	interface Props {
 		amountOfBooks: number;
 		amountOfUniqueAuthors: number;
-	}
+	};
 
 	let {
 		amountOfBooks,

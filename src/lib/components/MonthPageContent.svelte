@@ -15,7 +15,7 @@
 		amountOfUniqueAuthors: number;
 		authors: string[];
 		currentYear: number;
-	}
+	};
 
 	let { tryingToAccessTheFuture, monthBooks, favouriteBookTitle, authors, amountOfUniqueAuthors, currentYear }: Props = $props();
 
@@ -52,7 +52,6 @@
 			shortListTitles = false;
 		}
 	};
-
 
 </script>
 

@@ -1,4 +1,4 @@
-<div class="intro-text mt-2 max-w-sm lg:max-w-max lg:text-base">
+<div class="text-[0.95rem] mt-2 max-w-sm lg:max-w-max lg:text-base">
 	<p>
 		...books sometimes. And graphic novels. He reads them on paper, on Kindle, and sometimes
 		he listens to them on his phone. He is a big fan of libraries and often borrows books even though he
@@ -10,9 +10,3 @@
 		<span class="block mt-2 italic text-xs">*To Be Read-list</span>
 	</p>
 </div>
-
-<style>
-	.intro-text {
-		font-size: 0.95rem;
-	}
-</style>

@@ -2,7 +2,7 @@
 	interface Props {
 		month?: string;
 		tryingToAccessTheFuture: boolean;
-	}
+	};
 
 	let { month, tryingToAccessTheFuture }: Props = $props();
 
@@ -12,7 +12,7 @@
 		formattedMonth = 'No month found';
 	} else {
 		formattedMonth = month.charAt(0).toUpperCase() + month.slice(1);
-	}
+	};
 
 </script>
 

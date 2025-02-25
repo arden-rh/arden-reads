@@ -1,6 +1,3 @@
-<script lang="ts">
-</script>
-
 <div class="wrapper flex items-baseline justify-center lg:justify-normal px-2 lg:px-0">
 	<div class="bg-teal-900 w-1/6 lg:w-1/5 h-16 lg:h-24 left-stand"></div>
 	<div class="w-1/5 h-40 lg:h-72 animated-background bg-linear-to-r from-teal-600 to-teal-700"></div>

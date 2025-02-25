@@ -3,7 +3,7 @@
 		year?: number;
 		numberOfBooksYear: number;
 		numberOfBooksMonth: number;
-	}
+	};
 
 	let { year, numberOfBooksYear, numberOfBooksMonth }: Props = $props();
 
@@ -17,6 +17,7 @@
 	const restOfYearBooksToStack = restOfYearBooks - restOfYearBooksInOddStack;
 	const restOfYearSplitStacks = Math.floor(restOfYearBooksToStack / 5);
 	const restOfYearOddBooks = restOfYearBooksToStack % 5;
+	
 </script>
 
 <div class="year-statistic lg:p-8 flex flex-col items-center text-white">
