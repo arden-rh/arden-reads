@@ -2,6 +2,9 @@
 	// Types
 	import type { LayoutData } from './$types';
 
+	import { createBookFromRecord } from '$lib/functions/createBook';
+
+
 	// Components
 	import BookIllustration from '$lib/components/BookIllustration.svelte';
 	import IntroText from '$lib/components/IntroText.svelte';
@@ -12,9 +15,17 @@
 
 	let { data }: { data: LayoutData } = $props();
 
-	const { amountOfFormats: allTimeAmountOfFormats, amountOfGenres: allTimeAmountOfGenres, allBooks, amountOfUniqueAuthors: allTimeAuthors, minutesListened: allTimeMinutes, totalPagesRead: allTimePages, genres: allTimeGenres, formats: allTimeFormats } = data.allTimeStats;
+	const {
+		amountOfFormats: allTimeAmountOfFormats,
+		amountOfGenres: allTimeAmountOfGenres,
+		allBooks,
+		amountOfUniqueAuthors: allTimeAuthors,
+		minutesListened: allTimeMinutes,
+		totalPagesRead: allTimePages,
+		genres: allTimeGenres,
+		formats: allTimeFormats
+	} = data.allTimeStats;
 	const { yearBooks } = data.yearStats;
-
 
 	let amountOfFormats = $state(allTimeAmountOfFormats | 0);
 	let amountOfGenres = $state(allTimeAmountOfGenres | 0);
@@ -26,12 +37,13 @@
 	let totalPagesRead = $state(allTimePages);
 	let formats = $state(allTimeFormats);
 	let genres = $state(allTimeGenres);
+	
+	const latestBook = data.latestBook;
 
 	let day = data.day;
 	let month = data.monthString;
 	let year = data.year;
 	let monthNumber = data.monthNumber;
-
 </script>
 
 <section
@@ -51,12 +63,20 @@
 	<YearlyBooks {year} {numberOfBooksYear} {numberOfBooksMonth} />
 </section>
 <div
-	class="flex justify-center items-center xl:self-end col-start-4 col-end-7 row-start-1 row-end-3 my-4 lg:my-0"
+	class="flex flex-col-reverse lg:flex-row gap-6 lg:gap-0 justify-center items-center xl:self-end col-start-4 col-end-7 row-start-1 row-end-3 mb-4 lg:mb-0"
 >
 	<BookIllustration />
+	<div class="flex flex-col items-center justify-center lg:ml-[-2rem] mb-4 lg:mb-0">
+		<h2 class="flex flex-col items-center justify-center text-center">
+			<span class="rozha-one-regular text-[2.4rem] lg:text-2xl lg:leading-7 xl:text-4xl xl:leading-11 tracking-wide text-teal-200">
+				Latest book read
+			</span>
+			<span class="fira-mono-regular text-[1.15rem] lg:text-[0.85rem] xl:text-[1.15rem]">{latestBook.title}</span>
+		</h2>
+	</div>
 </div>
 <section
-	class="col-start-4 col-end-7 row-start-3 row-end-5 flex flex-col justify-center items-center text-white"
+	class="col-start-4 col-end-7 row-start-3 row-end-5 flex flex-col justify-center items-center gap-6 xl:gap-4"
 >
 	<StatNumberBlock
 		{year}
@@ -70,7 +90,6 @@
 		subTitle="in numbers"
 		page="start"
 	/>
-
 </section>
 <section class="col-start-1 col-end-4 row-span-1 flex flex-col items-center justify-start">
 	<PillBox arrayOfPills={genres} header="Genres Explored" />

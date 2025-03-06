@@ -2,6 +2,7 @@ import { error } from '@sveltejs/kit';
 
 // Functions
 import { createBookList, createYearBookList } from '$lib/functions/createBookList';
+import { createBookFromRecord } from '$lib/functions/createBook';
 import { getSumOfNumericProperty } from '$lib/functions/getSumOfNumericProperty';
 import { getAllAuthors, getAllFormats, getAllGenres } from '$lib/functions/getBookInfo';
 
@@ -17,10 +18,11 @@ export const load: LayoutLoad = async ({ data }) => {
 
 	if (!bookInfo || !dateInfo) error(404, { message: 'Book and/or date not found' });
 
-	const { listOfAllBooks, listOfYearBooks, monthBooks } = bookInfo;
+	const { listOfAllBooks, listOfYearBooks, monthBooks, latestBookRead } = bookInfo;
 
 	const allBooks = createBookList(listOfAllBooks);
 	const yearBooks = createYearBookList(listOfYearBooks);
+	const latestBook = createBookFromRecord(latestBookRead);
 
 	const { authors, amountOfUniqueAuthors } = getAllAuthors(allBooks);
 	const { genres, amountOfGenres } = getAllGenres(allBooks);
@@ -65,6 +67,7 @@ export const load: LayoutLoad = async ({ data }) => {
 			monthBooks,
 			totalPagesRead
 		},
-		monthBooks
+		monthBooks,
+		latestBook
 	};
 };

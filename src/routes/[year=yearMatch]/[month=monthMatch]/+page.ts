@@ -4,7 +4,7 @@ import type { Book } from '$lib/types/book.types';
 
 // Functions
 import { createBookList } from '$lib/functions/createBookList';
-import { createBook } from '$lib/functions/createBook';
+import { createBookFromList } from '$lib/functions/createBook';
 import { getAllAuthors, getAllFormats, getAllGenres } from "$lib/functions/getBookInfo";
 import { activeState } from '../../../states.svelte';
 
@@ -18,7 +18,7 @@ export const load: PageLoad = async ({ params, data }) => {
 	if (!favouriteBook) {
 		favouriteBookInfo = undefined;
 	} else {
-		favouriteBookInfo = createBook(favouriteBook);
+		favouriteBookInfo = createBookFromList(favouriteBook);
 	}
 
 	const books = createBookList(monthBookList.items);
