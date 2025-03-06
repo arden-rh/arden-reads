@@ -48,9 +48,9 @@
 
 </script>
 
-<div class="flex flex-col justify-between h-dvh">
-	<nav class="text-white p-4 mx-2 mt-2 flex flex-col gap-4 relative">
-		<div class="flex justify-between items-center">
+<div class="flex flex-col justify-between items-center h-dvh">
+	<nav class="text-white p-4 mx-2 mt-2 flex flex-col gap-4 relative w-full">
+		<div class="flex justify-between items-center xl:mx-4">
 			<a
 				href="/"
 				onclick={() => handleLogoClick()}
@@ -118,7 +118,7 @@
 		<main
 			class="{gridSize.small
 				? 'alt-grid'
-				: 'main-grid'} flex flex-col lg:grid grid-cols-6 lg:gap-4 gap-10 m-4 mx-6 lg:mx-12 text-white fira-mono-regular relative"
+				: 'main-grid'} flex flex-col lg:grid grid-cols-6 lg:gap-4 gap-10 m-4 mx-6 text-white fira-mono-regular relative xl:max-w-[1500px]"
 		>
 			{#if navigating.to}
 				<div class="flex flex-col items-center justify-center col-start-1 col-end-7 row-span-3">
