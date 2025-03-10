@@ -25,6 +25,7 @@
 		genres: allTimeGenres,
 		formats: allTimeFormats
 	} = data.allTimeStats;
+
 	const { yearBooks } = data.yearStats;
 
 	let amountOfFormats = $state(allTimeAmountOfFormats | 0);
@@ -32,7 +33,8 @@
 	let amountOfBooks = $state(allBooks.length | 0);
 	let amountOfUniqueAuthors: number | undefined = $state(allTimeAuthors | 0);
 	let numberOfBooksYear: number = $state(yearBooks.length);
-	let numberOfBooksMonth: number | undefined = $state(data.monthBooks.items.length);
+	let numberOfBooksCurrentMonth: number | undefined = $state(data.currentMonthBooks.items.length);
+	let numberOfBooksPreviousMonth: number | undefined = $state(data.previousMonthBooks.items.length);
 	let minutesListened = $state(allTimeMinutes);
 	let totalPagesRead = $state(allTimePages);
 	let formats = $state(allTimeFormats);
@@ -41,9 +43,12 @@
 	const latestBook = data.latestBook;
 
 	let day = data.day;
-	let month = data.monthString;
+	let previousMonth = data.previousMonthString;
+	let previousMonthNumber = data.previousMonthNum;
+	let currentMonth = data.currentMonthString;
+	let currentMonthNumber = data.currentMonthNum;
 	let year = data.year;
-	let monthNumber = data.monthNumber;
+
 </script>
 
 <section
@@ -59,8 +64,8 @@
 <section
 	class="col-start-1 col-end-4 row-start-3 row-end-5 flex flex-col justify-center items-center gap-6 xl:gap-0"
 >
-	<MonthlyBooks {month} {numberOfBooksMonth} {day} {monthNumber} />
-	<YearlyBooks {year} {numberOfBooksYear} {numberOfBooksMonth} />
+	<MonthlyBooks {currentMonth} {currentMonthNumber} {numberOfBooksCurrentMonth} {previousMonth} {previousMonthNumber} {numberOfBooksPreviousMonth} {day} />
+	<YearlyBooks {year} {numberOfBooksYear} />
 </section>
 <div
 	class="flex flex-col-reverse lg:flex-row gap-6 lg:gap-0 justify-center items-center xl:self-end col-start-4 col-end-7 row-start-1 row-end-3 mb-4 lg:mb-0"

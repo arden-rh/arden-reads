@@ -87,7 +87,7 @@
 				}
 			}}
 		>
-			<Calendar monthNumber={data.monthNumber} year={data.currentYear} />
+			<Calendar monthNumber={data.currentMonthNum} year={data.currentYear} />
 			{#if isLoggedIn}
 				<a
 					href="/create-book"

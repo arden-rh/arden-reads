@@ -13,7 +13,7 @@ export const load: LayoutServerLoad = async (data) => {
 	const paramMonth = data.params.month;
 	let isLoggedIn = false;
 
-	const { filterString, currentYear, year, monthString, monthNumber, day } =
+	const { filterString, filterStringForPreviousMonth, currentYear, year, day, currentMonthNum, currentMonthString, previousMonthNum, previousMonthString } =
 		getCurrentDate(paramYear);
 
 	const listOfAllBooks = await pb.collection('books').getFullList();
@@ -22,9 +22,10 @@ export const load: LayoutServerLoad = async (data) => {
 		.getList(1, 100, {
 			filter: `date_read >= "${year}-01-01 00:00:00" && date_read <= "${year}-12-31 23:59:59"`
 		});
-	const monthBooks = await pb.collection('books').getList(1, 50, {
-		filter: filterString
-	});
+
+	const currentMonthBooks = await pb.collection('books').getList(1, 50, { filter: filterString });
+	const previousMonthBooks = await pb.collection('books').getList(1, 50, { filter: filterStringForPreviousMonth });
+
 	const latestBookRead = await pb.collection('books').getFirstListItem('',{sort: '-date_read'});
 
 	if (auth) {
@@ -38,16 +39,19 @@ export const load: LayoutServerLoad = async (data) => {
 		bookInfo: {
 			listOfAllBooks,
 			listOfYearBooks,
-			monthBooks,
+			currentMonthBooks,
+			previousMonthBooks,
 			latestBookRead
 		},
 		dateInfo: {
 			currentYear,
+			currentMonthNum,
+			currentMonthString,
 			day,
-			monthNumber,
-			monthString,
 			paramMonth,
 			paramYear,
+			previousMonthNum,
+			previousMonthString,
 			year
 		}
 	};

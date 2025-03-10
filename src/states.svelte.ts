@@ -14,6 +14,7 @@ export const currentParams = $state({
 });
 
 export const activeState = $state({
+	startPageMonthBooks: 0,
 	month: '',
 	year: 0
 });

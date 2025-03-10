@@ -14,11 +14,11 @@ export const load: LayoutLoad = async ({ data }) => {
 
 	const { bookInfo, dateInfo, isLoggedIn } = data;
 
-	if (!isLoggedIn) error(401, { message: 'Not logged in' });
+	// if (!isLoggedIn) error(401, { message: 'Not logged in' });
 
 	if (!bookInfo || !dateInfo) error(404, { message: 'Book and/or date not found' });
 
-	const { listOfAllBooks, listOfYearBooks, monthBooks, latestBookRead } = bookInfo;
+	const { listOfAllBooks, listOfYearBooks, currentMonthBooks, previousMonthBooks, latestBookRead } = bookInfo;
 
 	const allBooks = createBookList(listOfAllBooks);
 	const yearBooks = createYearBookList(listOfYearBooks);
@@ -64,10 +64,10 @@ export const load: LayoutLoad = async ({ data }) => {
 			formats,
 			genres,
 			minutesListened,
-			monthBooks,
 			totalPagesRead
 		},
-		monthBooks,
+		currentMonthBooks,
+		previousMonthBooks,
 		latestBook
 	};
 };
