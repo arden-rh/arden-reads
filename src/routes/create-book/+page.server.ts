@@ -13,9 +13,7 @@ export const actions: Actions = {
 
 			const record = await pb.collection('books').create(newBook);
 
-			console.log('record', record);
-
-			return { success: true, newBook };
+			return { success: true, record };
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {
 			return fail(422, {
