@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { navigating } from '$app/state';
-	import '../app.css';
+ 	import '../app.css';
 
 	// Components
 	import Icon from '$lib/components/Icon.svelte';
@@ -8,17 +8,19 @@
 	import Calendar from '$lib/components/Calendar.svelte';
 	import { Diamonds } from 'svelte-loading-spinners';
 
-	import { currentParams, gridSize, menu } from '../states.svelte';
-	import { closeMenuAndEnableScroll, enableScroll, disableScrollFunction } from '$lib/functions/scrollFunctions';
+	import { currentParams, gridSize, menu, activeState } from '../states.svelte';
+	
+	import {
+		closeMenuAndEnableScroll,
+		enableScroll,
+		disableScrollFunction
+	} from '$lib/functions/scrollFunctions';
 
 	import type { LayoutProps } from './$types';
 
 	let { children, data }: LayoutProps = $props();
 
-	let isLoggedIn = $state(data.isLoggedIn);
-
 	function openMenu() {
-
 		disableScrollFunction();
 
 		if (data.paramMonth) {
@@ -37,15 +39,14 @@
 		} else {
 			menu.open = true;
 		}
-	};
+	}
 
 	function handleLogoClick() {
 		currentParams.month = undefined;
 		currentParams.year = undefined;
 		menu.open = false;
 		enableScroll();
-	};
-
+	}
 </script>
 
 <div class="flex flex-col justify-between items-center h-dvh">
@@ -88,7 +89,7 @@
 			}}
 		>
 			<Calendar monthNumber={data.currentMonthNum} year={data.currentYear} />
-			{#if isLoggedIn}
+			{#if activeState.loggedIn}
 				<a
 					href="/create-book"
 					onclick={() => closeMenuAndEnableScroll()}
@@ -114,32 +115,24 @@
 			}}
 		></div>
 	{/if}
-	{#if isLoggedIn}
-		<main
-			class="{gridSize.small
-				? 'alt-grid'
-				: 'main-grid'} flex flex-col lg:grid grid-cols-6 lg:gap-4 gap-10 m-4 mx-6 text-white fira-mono-regular relative xl:max-w-[1500px]"
-		>
-			{#if navigating.to}
-				<div class="flex flex-col items-center justify-center col-start-1 col-end-7 row-span-3">
-					<Diamonds color="white" unit="px" size="150" />
-				</div>
-			{:else}
-				{@render children?.()}
-			{/if}
-		</main>
-	{:else}
-		<div
-			class="min-w-1/3 bg-teal-800 flex flex-col gap-4 justify-center items-center rounded-lg p-4 shadow-md"
-		>
-			<p class="text-center">Not logged in.</p>
-		</div>
-	{/if}
+	<main
+		class="{gridSize.small
+			? 'alt-grid'
+			: 'main-grid'} flex flex-col lg:grid grid-cols-6 lg:gap-4 gap-10 m-4 mx-6 text-white fira-mono-regular relative lg:min-w-[500px] xl:max-w-[1500px]"
+	>
+		{#if navigating.to}
+			<div class="flex flex-col items-center justify-center col-start-1 col-end-7 row-span-3">
+				<Diamonds color="white" unit="px" size="150" />
+			</div>
+		{:else}
+			{@render children?.()}
+		{/if}
+	</main>
 	<footer
 		class="w-full flex flex-col lg:flex-row justify-center items-center gap-1 lg:gap-4 pt-4 pb-6 lg:py-6 text-white fira-mono-regular mt-4 lg:mt-8 self-end"
 	>
 		<p>Copyrights Arden R.H. 2025</p>
-		<button class="opacity-40" tabindex="-1">Admin Login</button>
+		<a href="/login" class="opacity-40" tabindex="-1">Admin Login</a>
 	</footer>
 </div>
 

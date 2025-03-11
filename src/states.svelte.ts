@@ -1,4 +1,3 @@
-// export let isLoggedIn = $state(false);
 export const gridSize = $state({
 	small: false,
 });
@@ -14,6 +13,7 @@ export const currentParams = $state({
 });
 
 export const activeState = $state({
+	loggedIn: false,
 	startPageMonthBooks: 0,
 	month: '',
 	year: 0
