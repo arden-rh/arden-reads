@@ -4,7 +4,7 @@ export const gridSize = $state({
 
 export const menu = $state({
 	open: false,
-	activeYear: 0,
+	activeYear: 0
 });
 
 export const currentParams = $state({
