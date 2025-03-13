@@ -6,9 +6,9 @@ ARG PB_VERSION=0.25.9
 #    unzip \
 #    ca-certificates
 
-RUN apt-get update && apt-get install -y curl unzip \
-    && rm -rf /var/lib/apt/lists/*
-# RUN apk add --no-cache curl unzip
+# RUN apt-get update && apt-get install -y curl unzip \
+#    && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache curl unzip
 
 # download and unzip PocketBase
 # ADD https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip /tmp/pb.zip
