@@ -1,10 +1,20 @@
 FROM alpine:latest
-ENV NODE_ENV=production
-WORKDIR /app
-RUN apk add --no-cache curl
-RUN curl -fsSL https://github.com/pocketbase/pocketbase/releases/latest/download/pocketbase-linux-amd64.zip -o pocketbase.zip \
-    && unzip pocketbase.zip \
-    && rm pocketbase.zip
-COPY . /app
-CMD ["./pocketbase", "serve", "--http=0.0.0.0:3000"]
 
+ARG PB_VERSION=0.25.9
+
+RUN apk add --no-cache \
+	ca-certificates \
+	unzip \
+	wget \
+	zip \
+	zlib-dev 
+
+# download and unzip PocketBase
+RUN wget https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip \
+	&& unzip pocketbase_${PB_VERSION}_linux_amd64.zip \
+	&& chmod +x /pocketbase
+
+EXPOSE 8080
+
+# start PocketBase
+CMD ["./pocketbase", "serve", "--http=0.0.0.0:8080"]
