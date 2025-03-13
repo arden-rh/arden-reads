@@ -1,0 +1,8 @@
+{
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"deploy": {
+		"startCommand": "./pocketbase serve --http=0.0.0.0:3000"
+	}
+}
