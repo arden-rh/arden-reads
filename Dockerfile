@@ -6,5 +6,5 @@ RUN curl -fsSL -o pocketbase.zip https://github.com/pocketbase/pocketbase/releas
     && unzip pocketbase.zip \
     && rm pocketbase.zip \
 	&& chmod +x pocketbase
-COPY .pocketbase/* /app/
+COPY pocketbase/* /app/
 CMD ["./pocketbase", "serve", "--http=0.0.0.0:3000"]
