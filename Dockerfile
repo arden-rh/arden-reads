@@ -16,10 +16,11 @@ RUN apk add --no-cache curl unzip
 
 RUN curl -fsSL -o pocketbase.zip https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase-linux-amd64.zip \
     && unzip pocketbase-linux-amd64.zip \
-    && rm pocketbase-linux-amd64.zip
+    && rm pocketbase-linux-amd64.zip \
+	&& chmod +x pocketbase
 
 # uncomment to copy the local pb_migrations dir into the image
-COPY ./pb_migrations /pb/pb_migrations
+# COPY ./pb_migrations /pb/pb_migrations
 
 EXPOSE 8080
 
