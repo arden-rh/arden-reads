@@ -24,6 +24,8 @@
 	let arrayOfItems: Book[] | string[] = $state([]);
 	let header = $state('');
 
+	console.log('monthBooks', monthBooks);
+
 	const handleButtonClick = (i: number, title: string) => {
 		if (activeButton === i) {
 			activeButton = null;
