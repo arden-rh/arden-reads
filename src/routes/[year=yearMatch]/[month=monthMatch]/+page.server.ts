@@ -61,7 +61,11 @@ export const load: PageServerLoad = async ({ params }) => {
 		return await pb.collection('books').getList(1, 50, { filter: filterString, requestKey: null });
 	};
 
-	monthBookList = await getMonthBooks(filterString);
+	try {
+		monthBookList = await getMonthBooks(filterString);
+	} catch (error) {
+		console.error('Month book list not found', error);
+	}
 
 	if (!monthBookList) error(404, 'Month book list not found');
 
