@@ -14,8 +14,6 @@ RUN wget https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSIO
 	&& unzip pocketbase_${PB_VERSION}_linux_amd64.zip \
 	&& chmod +x /pocketbase
 
-FROM scratch
-
 EXPOSE 8080
 
 # start PocketBase
