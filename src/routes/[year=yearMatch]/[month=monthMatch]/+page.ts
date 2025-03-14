@@ -6,6 +6,7 @@ import type { Book } from '$lib/types/book.types';
 import { createBookList } from '$lib/functions/createBookList';
 import { createBookFromList } from '$lib/functions/createBook';
 import { getAllAuthors, getAllFormats, getAllGenres } from "$lib/functions/getBookInfo";
+
 import { activeState } from '../../../states.svelte';
 
 export const load: PageLoad = async ({ params, data }) => {
