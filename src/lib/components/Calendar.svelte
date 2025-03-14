@@ -33,6 +33,16 @@
 		enableScroll();
 	};
 	
+
+	if (!currentParams.year) {
+		menu.activeYear = year;
+	} else {
+		menu.activeYear = currentParams.year;
+	}
+
+	console.log('currentParams', currentParams);
+	console.log('menu', menu);
+	
 </script>
 
 <div class="fira-mono-regular w-full">

@@ -4,12 +4,12 @@ export const gridSize = $state({
 
 export const menu = $state({
 	open: false,
-	activeYear: 0
+	activeYear: undefined as number | undefined,
 });
 
 export const currentParams = $state({
 	year: undefined as number | undefined,
-	month: undefined as string | undefined
+	month: undefined as string | undefined,
 });
 
 export const activeState = $state({
