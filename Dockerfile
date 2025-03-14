@@ -38,7 +38,7 @@ RUN wget https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSIO
 # uncomment to copy the local pb_migrations dir into the image
 # COPY ./pb_migrations /pb/pb_migrations
 
-FROM scratch
+# FROM scratch
 
 EXPOSE 8080
 
