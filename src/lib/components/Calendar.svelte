@@ -40,8 +40,8 @@
 		menu.activeYear = currentParams.year;
 	}
 
-	console.log('currentParams', currentParams);
-	console.log('menu', menu);
+	$inspect(console.log('currentParams', currentParams));
+	$inspect(console.log('menu', menu));
 	
 </script>
 
@@ -51,7 +51,7 @@
 		<div class="flex gap-2 justify-end">
 			{#each years as year}
 				<button
-					class="{year === menu.activeYear ? 'bg-teal-700' : 'bg-teal-900'} rounded-lg p-1 px-2"
+					class="{year === menu.activeYear ? 'bg-teal-700' : 'bg-teal-900'} rounded-lg p-1 px-2 cursor-pointer"
 					onclick={() => handleYearClick(year)}>{year}</button
 				>
 			{/each}
@@ -59,20 +59,21 @@
 	</div>
 	<div class="flex flex-col gap-2">
 		<a
-			class="rounded-lg p-2 text-center tracking-widest shadow-md
+			class="rounded-lg p-2 text-center tracking-widest shadow-md hover:bg-teal-600
 			{currentParams.year === menu.activeYear && currentParams.month === undefined
 				? 'bg-teal-700'
 				: 'bg-teal-950'}"
 			href="/{menu.activeYear}"
-			onclick={closeMenuAndEnableScroll}>SUMMARY</a
-		>
+			onclick={closeMenuAndEnableScroll}>
+			SUMMARY
+			</a>
 		<div class="grid grid-cols-3 gap-2">
 			{#each months as month}
 				{#if menu.activeYear < year}
 					<a
 						href={linkToMonthPage}
 						onclick={() => createCorrectLink(month.name)}
-						class="rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md
+						class="rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md hover:bg-teal-600
 						{currentParams.month === month.name && currentParams.year === menu.activeYear
 							? 'bg-teal-700'
 							: 'bg-teal-950'}"
