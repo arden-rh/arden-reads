@@ -44,8 +44,9 @@ EXPOSE 8080
 
 # start PocketBase
 # CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]
-COPY --from=downloader /pocketbase /usr/local/bin/pocketbase
-CMD ["/usr/local/bin/pocketbase", "serve", "--http=0.0.0.0:8080", "--dir=/pb_data", "--publicDir=/pb_public"]
+# CMD ["./pocketbase", "serve", "--http=0.0.0.0:8080", "--dir=/pb_data", "--publicDir=/pb_public"]
+CMD ["./pocketbase", "serve", "--http=0.0.0.0:8080"]
+
 
 # WORKDIR /app
 # RUN apk add --no-cache curl unzip
