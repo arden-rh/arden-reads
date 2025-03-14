@@ -25,6 +25,8 @@
 	let header = $state('');
 	let shortListTitles = $state(false);
 
+	console.log('monthBooks', monthBooks);
+
 	const handleButtonClick = (i: number, title: string) => {
 		if (activeButton === i) {
 			activeButton = null;
