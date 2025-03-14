@@ -3,6 +3,6 @@
 		"dockerfile": "Dockerfile"
 	},
 	"deploy": {
-		"startCommand": "./pocketbase serve --http=0.0.0.0:8080"
+		"startCommand": "/pocketbase serve --http=0.0.0.0:8080"
 	}
 }
