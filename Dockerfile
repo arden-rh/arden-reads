@@ -45,7 +45,7 @@ EXPOSE 8080
 # start PocketBase
 # CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]
 # CMD ["./pocketbase", "serve", "--http=0.0.0.0:8080", "--dir=/pb_data", "--publicDir=/pb_public"]
-CMD ["/pocketbase", "serve", "--http=0.0.0.0:8080"]
+CMD ["./pocketbase", "serve", "--http=0.0.0.0:8080"]
 
 
 # WORKDIR /app
