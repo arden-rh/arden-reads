@@ -30,6 +30,7 @@ export const load: LayoutServerLoad = async (data) => {
 	if (!auth) fail(401, { error });
 
 	const listOfAllBooks = await pb.collection('books').getFullList();
+
 	const listOfYearBooks = await pb.collection('books').getList(1, 100, {
 		filter: `date_read >= "${year}-01-01 00:00:00" && date_read <= "${year}-12-31 23:59:59"`
 	});
