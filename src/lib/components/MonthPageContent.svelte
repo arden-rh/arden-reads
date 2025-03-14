@@ -27,8 +27,6 @@
 	let header = $state('');
 	let shortListTitles = $state(false);
 
-	console.log('monthBooks', monthBooks);
-
 	const handleButtonClick = (i: number, title: string) => {
 		if (activeButton === i) {
 			activeButton = null;
@@ -109,7 +107,7 @@
 		<GenreChart listOfBooks={monthBooks} />
 
 		<div
-			class="w-full lg:max-w-[275px] xl:max-w-full xl:min-w-[350px] bg-teal-900 rounded-lg pt-6 px-4 lg:px-2 xl:px-0 pb-0 lg:pb-2 xl:pb-4 grow"
+			class="w-full lg:max-w-[275px] xl:max-w-[400px] xl:min-w-[350px] bg-teal-900 rounded-lg pt-6 px-4 lg:px-2 xl:px-0 pb-0 lg:pb-2 xl:pb-4 grow"
 		>
 			<PagesChart listOfBooks={monthBooks} />
 		</div>
