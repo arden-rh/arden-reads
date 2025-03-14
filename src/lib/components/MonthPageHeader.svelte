@@ -23,12 +23,12 @@
 >
 	<div class="flex items-center justify-center">
 		{#if !month}
-			<h1 class="text-4xl lg:text-8xl flex items-center justify-center rozha-one-regular italic text-center w-full mt-5 lg:mt-0">
+			<h1 class="text-[4rem] md:text-[8rem] xl:text-[10rem] flex items-center justify-center rozha-one-regular italic text-center w-full mt-5 lg:mt-0">
 				{formattedMonth}
 			</h1>
 		{:else}
 			<h1
-				class="text-[4rem] md:text-[8rem] xl:text-[12rem] flex items-center justify-center rozha-one-regular italic text-center w-full mt-5 lg:mt-0"
+				class="text-[4rem] md:text-[8rem] xl:text-[10rem] flex items-center justify-center rozha-one-regular italic text-center w-full mt-5 lg:mt-0"
 			>
 				{formattedMonth}
 			</h1>
