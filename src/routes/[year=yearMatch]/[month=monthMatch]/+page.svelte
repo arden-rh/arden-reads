@@ -17,7 +17,6 @@
 
 	if (data.monthBookInfo.favouriteBook) {
 		favouriteBookTitle = data.monthBookInfo.favouriteBook.title;
-		console.log('favouriteBookTitle', favouriteBookTitle);
 	} else {
 		favouriteBookTitle = undefined;
 	}
