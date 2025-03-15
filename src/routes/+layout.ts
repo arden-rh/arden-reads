@@ -14,7 +14,7 @@ export const load: LayoutLoad = async ({ data }) => {
 
 	const { bookInfo, dateInfo } = data;
 
-	if (!bookInfo || !dateInfo) error(404, { message: 'Book and/or date not found' });
+	if (!bookInfo || !dateInfo) error(404, { message: 'Book and/or date data not found' });
 
 	const { listOfAllBooks, listOfYearBooks, currentMonthBooks, previousMonthBooks, latestBookRead } = bookInfo;
 

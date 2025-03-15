@@ -7,7 +7,7 @@ import type { LayoutServerLoad } from './$types';
 import pb from '$lib/pocketbase';
 
 
-export const load: LayoutServerLoad = async (data) => {
+export const load: LayoutServerLoad = async ( data ) => {
 	const adminEmail = import.meta.env.VITE_POCKETBASE_ADMIN_EMAIL;
 	const adminPW = import.meta.env.VITE_POCKETBASE_ADMIN_PW;
 	const auth = await adminLogin(adminEmail, adminPW);
