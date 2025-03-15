@@ -122,8 +122,8 @@
 			{#each buttonTitles as title, i}
 				<button
 					id="button-{i}"
-					class="h-fit p-6 rounded-lg w-full lg:w-1/5 text-center text-xl fira-mono-medium text-teal-950 shadow-xl focus-visible:ring-teal-50 focus-visible:ring-3 hover:bg-teal-500 focus-visible:bg-teal-500 cursor-pointer
-							{activeButton === i ? 'bg-teal-500' : 'bg-teal-300'}"
+					class="h-fit p-6 rounded-lg w-full lg:w-1/5 text-center text-xl fira-mono-medium text-teal-950 shadow-xl focus-visible:ring-teal-50 focus-visible:ring-3 hover:bg-teal-500 focus-visible:bg-teal-500 cursor-pointer 
+					{activeButton === i ? 'bg-teal-500' : 'bg-teal-300'}"
 					onclick={() => handleButtonClick(i, title)}
 				>
 					{title}
