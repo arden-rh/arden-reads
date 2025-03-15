@@ -18,7 +18,3 @@ export const activeState = $state({
 	month: '',
 	year: 0
 });
-
-export const tryingToAccessTheFuture = $state({
-	futureDate: false
-});

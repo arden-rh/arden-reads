@@ -7,11 +7,9 @@ import { createBookList } from '$lib/functions/createBookList';
 import { createBookFromList } from '$lib/functions/createBook';
 import { getAllAuthors, getAllFormats, getAllGenres } from "$lib/functions/getBookInfo";
 
-import { activeState } from '../../../states.svelte';
-
-export const load: PageLoad = async ({ params, data }) => {
+export const load: PageLoad = async ({ data }) => {
 	
-	const { monthBookList, favouriteBook } = data;
+	const { monthBookList, favouriteBook, futureDate } = data;
 	let favouriteBookInfo: Book | undefined;
 
 	if (!monthBookList) throw error(404, { message: 'Books not found' });
@@ -28,10 +26,7 @@ export const load: PageLoad = async ({ params, data }) => {
 	const { genres } = getAllGenres(books);
 	const { formats } = getAllFormats(books);
 
-	activeState.month = params.month;
-
 	return {
-		month: params.month,
 		monthBookInfo: {
 			books,
 			amountOfUniqueAuthors,
@@ -40,5 +35,6 @@ export const load: PageLoad = async ({ params, data }) => {
 			genres,
 			favouriteBook: favouriteBookInfo
 		},
+		futureDate
 	};
 };
