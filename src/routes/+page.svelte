@@ -2,9 +2,6 @@
 	// Types
 	import type { LayoutData } from './$types';
 
-	import { createBookFromRecord } from '$lib/functions/createBook';
-
-
 	// Components
 	import BookIllustration from '$lib/components/BookIllustration.svelte';
 	import IntroText from '$lib/components/IntroText.svelte';
