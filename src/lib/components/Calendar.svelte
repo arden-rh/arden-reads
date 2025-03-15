@@ -1,29 +1,23 @@
 <script lang="ts">
 	import { months } from '$lib/data/months';
 	import { closeMenuAndEnableScroll, enableScroll } from '$lib/functions/scrollFunctions';
-	import { activeState, currentParams, menu } from '../../states.svelte';
-	
+	import { currentParams, menu } from '../../states.svelte';
+
 	interface Props {
 		monthNumber: number;
 		year: number;
-	};
+	}
 
 	let { monthNumber, year }: Props = $props();
 
 	const years = [2024, 2025];
 
-	let linkToMonthPage: string = $state('');
+	if (!currentParams.month) {
+		currentParams.month = months[monthNumber - 1].name;
+	};
 
 	function handleYearClick(year: number) {
 		menu.activeYear = year;
-	};
-
-	function createCorrectLink(month: string) {
-		currentParams.month = month;
-		activeState.month = month;
-		linkToMonthPage = `/${menu.activeYear}/${month}`;
-		menu.open = false;
-		enableScroll();
 	};
 
 	function resetParams() {
@@ -32,26 +26,18 @@
 		menu.open = false;
 		enableScroll();
 	};
-	
 
-	if (!currentParams.year) {
-		menu.activeYear = year;
-	} else {
-		menu.activeYear = currentParams.year;
-	}
-
-	$inspect(console.log('currentParams', currentParams));
-	$inspect(console.log('menu', menu));
-	
 </script>
 
 <div class="fira-mono-regular w-full">
 	<div class="flex pb-1 mb-2 fira-mono-medium justify-between text-lg">
-		<a href="/" onclick={() => resetParams()} class="rounded-lg p-1 px-2 bg-teal-900">HOME</a>
+		<a href="/" onclick={() => resetParams()} class="rounded-lg p-1 px-2 bg-teal-900 hover:bg-teal-600">HOME</a>
 		<div class="flex gap-2 justify-end">
 			{#each years as year}
 				<button
-					class="{year === menu.activeYear ? 'bg-teal-700' : 'bg-teal-900'} rounded-lg p-1 px-2 cursor-pointer"
+					class="{year === menu.activeYear
+						? 'bg-teal-700'
+						: 'bg-teal-900 hover:bg-teal-600 cursor-pointer'} rounded-lg p-1 px-2"
 					onclick={() => handleYearClick(year)}>{year}</button
 				>
 			{/each}
@@ -59,35 +45,39 @@
 	</div>
 	<div class="flex flex-col gap-2">
 		<a
-			class="rounded-lg p-2 text-center tracking-widest shadow-md hover:bg-teal-600
+			class="rounded-lg p-2 text-center tracking-widest shadow-md 
 			{currentParams.year === menu.activeYear && currentParams.month === undefined
-				? 'bg-teal-700'
-				: 'bg-teal-950'}"
+				? 'bg-teal-700 cursor-default'
+				: 'bg-teal-950 hover:bg-teal-600'}"
 			href="/{menu.activeYear}"
-			onclick={closeMenuAndEnableScroll}>
+			onclick={closeMenuAndEnableScroll}
+			data-sveltekit-preload-data="tap"
+		>
 			SUMMARY
-			</a>
+		</a>
 		<div class="grid grid-cols-3 gap-2">
 			{#each months as month}
-				{#if menu.activeYear < year}
+				{#if menu.activeYear && menu.activeYear < year}
 					<a
-						href={linkToMonthPage}
-						onclick={() => createCorrectLink(month.name)}
-						class="rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md hover:bg-teal-600
+						href="/{menu.activeYear}/{month.name}"
+						onclick={closeMenuAndEnableScroll}
+						class="rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md
 						{currentParams.month === month.name && currentParams.year === menu.activeYear
-							? 'bg-teal-700'
-							: 'bg-teal-950'}"
+							? 'bg-teal-700 cursor-default'
+							: 'bg-teal-950 hover:bg-teal-600'}"
+						data-sveltekit-preload-data="tap"
 					>
 						{month.abr}
 					</a>
 				{:else if month.number <= monthNumber && menu.activeYear === year}
 					<a
-						href={linkToMonthPage}
-						onclick={() => createCorrectLink(month.name)}
-						class="rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md
+						href="/{menu.activeYear}/{month.name}"
+						onclick={closeMenuAndEnableScroll}
+						class="rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md hover:bg-teal-600
 						{currentParams.month === month.name && currentParams.year === menu.activeYear
-							? 'bg-teal-700'
-							: 'bg-teal-950'}"
+							? 'bg-teal-700 cursor-default'
+							: 'bg-teal-950 hover:bg-teal-600'}"
+						data-sveltekit-preload-data="tap"
 					>
 						{month.abr}
 					</a>
