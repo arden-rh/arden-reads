@@ -2,7 +2,6 @@ import pb from '$lib/pocketbase';
 import { months } from '$lib/data/months';
 import { compareMonth } from '$lib/functions/compareMonth';
 import { error } from '@sveltejs/kit';
-import { tryingToAccessTheFuture } from '../../../states.svelte';
 
 import type { PageServerLoad } from './$types';
 import type { ListResult, RecordModel } from 'pocketbase';
@@ -48,10 +47,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	}
 
 	if (!monthMatch) {
-		return {
-			status: 404,
-			error: new Error('Invalid month')
-		};
+		error(404, 'Invalid month');
 	}
 
 	const filterString = createFilterString(monthMatch.number, Number(params.year));
@@ -60,41 +56,21 @@ export const load: PageServerLoad = async ({ params }) => {
 	let favouriteBook: ListResult<RecordModel> | undefined = undefined;
 
 	const getMonthBooks = async (filterString: string) => {
-		console.log('filterString', filterString);
 		return await pb.collection('books').getList(1, 50, { filter: filterString, requestKey: null });
 	};
 
 	try {
 		monthBookList = await getMonthBooks(filterString);
-	} catch (error) {
-		console.error('Month book list not found', error);
+	} catch (e) {
+		console.error('Month book list not found', e);
+		error(404, 'Data not found');
 	}
 
-	if (!monthBookList) {
-		throw error(404, 'Data not found');
-	}
-
-	try {
-		// const favouriteBook = await pb.collection('books').getList(1, 1, {filter: `${filterString} && favourite_book_per_month = true`, skipTotal: true});
-		favouriteBook = await pb
-			.collection('books')
-			// .getList(1, 1, { filter: `${filterString}`});
-			.getList(1, 1, { filter: `${filterString} && favourite_book_per_month = true`, skipTotal: true, requestKey: null });
-
-
-		// favouriteBook = await pb
-		// 	.collection('books')
-		// 	.getFirstListItem('favourite_book_per_month=true', {
-		// 		filter: filterString
-		// 	});
-
-		console.log('favouriteBook', favouriteBook);
-	} catch (error) {
-		console.error('Favourite book not found', error);
-	}
-
-	// const favouriteBook = await pb.collection('books').getList(1, 1, {filter: `${filterString} && favourite_book_per_month = true`, skipTotal: true});
-	// console.log('favouriteBook', favouriteBook);
+	favouriteBook = await pb.collection('books').getList(1, 1, {
+		filter: `${filterString} && favourite_book_per_month = true`,
+		skipTotal: true,
+		requestKey: null
+	});
 
 	const todaysDate = new Date();
 	const currentYear = todaysDate.getFullYear();
@@ -105,36 +81,11 @@ export const load: PageServerLoad = async ({ params }) => {
 		throw error(404, 'No month index found');
 	}
 
-	tryingToAccessTheFuture.futureDate =
-		monthIndex > currentMonthIndex && Number(params.year) === currentYear;
-
-	// const favouriteBook = {
-	// 	items: [
-	// 		{
-	// 			author: 'Jason Aaron',
-	// 			collectionId: 'aimd4fys7caqp9n',
-	// 			collectionName: 'books',
-	// 			date_read: '2025-02-21 00:00:00.000Z',
-	// 			favourite_book_per_month: false,
-	// 			formats: ['hej'],
-	// 			genres: ['hej'],
-	// 			id: 'vtq31972y7hgfxq',
-	// 			minutes: 0,
-	// 			owned: false,
-	// 			pages: 136,
-	// 			title: 'Star Wars: Darth Vader - Black, White & Red',
-	// 			created: '2021-02-21 00:00:00.000Z',
-	// 			updated: '2021-02-21 00:00:00.000Z'
-	// 		}
-	// 	],
-	// 	page: 1,
-	// 	perPage: 50,
-	// 	totalItems: 14,
-	// 	totalPages: 1
-	// };
+	const futureDate = monthIndex > currentMonthIndex && Number(params.year) === currentYear;
 
 	return {
 		monthBookList,
-		favouriteBook
+		favouriteBook,
+		futureDate
 	};
 };

@@ -1,10 +1,10 @@
 <script lang="ts">
+
 	interface Props {
 		month?: string;
-		tryingToAccessTheFuture: boolean;
 	};
 
-	let { month, tryingToAccessTheFuture }: Props = $props();
+	let { month }: Props = $props();
 
 	let formattedMonth: string = $state('');
 
@@ -17,9 +17,7 @@
 </script>
 
 <section
-	class="col-start-1 col-end-7 row-start-1 row-end-2 flex justify-center items-center {tryingToAccessTheFuture
-		? 'xl:mt-8'
-		: ''}"
+	class="col-start-1 col-end-7 row-start-1 row-end-2 flex justify-center items-center"
 >
 	<div class="flex items-center justify-center">
 		{#if !month}
