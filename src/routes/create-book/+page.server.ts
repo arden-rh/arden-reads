@@ -3,6 +3,8 @@ import pb from '$lib/pocketbase';
 import { createBookRecord } from '$lib/functions/createBookRecord';
 import type { Actions } from './$types';
 
+export const prerender = false;
+
 export const actions: Actions = {
 	create: async ({ request }) => {
 		
