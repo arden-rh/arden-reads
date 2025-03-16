@@ -3,7 +3,7 @@
 
 	interface Props {
 		listOfBooks: Book[];
-	};
+	}
 
 	let { listOfBooks }: Props = $props();
 
@@ -33,6 +33,8 @@
 		'bg-teal-300'
 	];
 
+	let showPecentage = $state(false);
+
 	function countFormats(books: Book[]): Record<string, number> {
 		const formatCounts: Record<string, number> = {};
 
@@ -43,11 +45,11 @@
 		});
 
 		return formatCounts;
-	};
+	}
 
 	function transformTitle(title: string): string {
 		return title.split('_').join(' ');
-	};
+	}
 
 	function transformFormatCounts(formatCounts: Record<string, number>) {
 		const total = Object.values(formatCounts).reduce((sum, count) => sum + count, 0);
@@ -60,11 +62,10 @@
 				color: `${chartColors[index % chartColors.length]}`
 			};
 		});
-	};
+	}
 
 	const formats = countFormats(listOfBooks);
 	formatData = transformFormatCounts(formats);
-
 </script>
 
 <div
@@ -89,7 +90,6 @@
 					stroke-dashoffset={formatData.slice(0, index).reduce((sum, d) => sum - d.percentage, 0)}
 					transform="rotate(-90 18 18)"
 				>
-					<title>Hover over the formats in the legend to see exact percentage.</title>
 				</circle>
 			{/each}
 		</svg>
@@ -97,15 +97,25 @@
 	<!-- Legend -->
 	<div class="flex flex-col gap-2 justify-center mr-4 mt-4 lg:mt-8 xl:mr-6 xl:min-w-[120px]">
 		{#each formatData as { format, legendColor, percentage }}
-			<button class="flex items-center gap-2 group focus-visible:p-1">
+			<div class="flex items-center gap-2 focus-visible:p-1">
 				<span
-					class="w-4 h-4 rounded-full {legendColor} min-w-[1rem] group-hover:hidden group-focus:hidden"
+					class="w-4 h-4 rounded-full {legendColor} min-w-[1rem] {legendColor} {showPecentage
+						? 'hidden'
+						: 'inline'}"
 				></span>
-				<span class="text-[0.7rem] lg:text-sm hidden group-hover:inline group-focus:inline">
+				<span class="text-[0.7rem] lg:text-sm {showPecentage ? 'inline' : 'hidden'}">
 					{percentage.toFixed()}%
 				</span>
 				<span class="text-[0.7rem] lg:text-sm text-left">{format}</span>
-			</button>
+			</div>
 		{/each}
+		<button
+			class="h-fit p-1 px-2 mt-2 rounded-lg w-fit text-center text-sm fira-mono-medium text-teal-950 shadow-xl cursor-pointer
+			focus-visible:ring-teal-50 focus-visible:ring-3 hover:bg-teal-500 focus-visible:bg-teal-500
+			{showPecentage ? 'bg-teal-600' : 'bg-teal-700'}"
+			onclick={() => (showPecentage = !showPecentage)}
+		>
+			{showPecentage ? 'Hide %' : 'Show %'}
+		</button>
 	</div>
 </div>
