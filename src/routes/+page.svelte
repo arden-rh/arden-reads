@@ -49,7 +49,7 @@
 </script>
 
 <section
-	class="col-start-1 col-end-4 row-start-1 row-end-3 flex flex-col justify-center items-center lg:items-end px-4 lg:p-4 xl:pl-6"
+	class="col-start-1 col-end-4 row-start-1 row-end-3 flex flex-col justify-center items-center lg:items-end px-2 lg:p-4 xl:pl-6"
 >
 	<h1
 		class="text-[6.25rem] leading-[5.5rem] lg:text-[4rem] lg:leading-[3.5rem] xl:text-[7rem] xl:leading-[6rem] rozha-one-regular text-center w-full lg:text-left mb-3 lg:mb-0"
