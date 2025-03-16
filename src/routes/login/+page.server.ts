@@ -4,6 +4,8 @@ import type { Actions } from './$types';
 
 import pb from '$lib/pocketbase';
 
+export const prerender = false;
+
 export const actions: Actions = {
 	login: async ({ cookies, request }) => {
 		const data = await request.formData();
