@@ -53,15 +53,15 @@
 </script>
 
 <section
-	class="col-start-1 col-end-7 {favouriteBookTitle
+	class="col-start-1 col-end-7 flex flex-col justify-center lg:justify-between xl:justify-evenly items-center xl:items-end gap-8 xl:gap-6 {favouriteBookTitle
 		? 'row-span-2'
-		: 'row-span-1 pt-6'} flex flex-col justify-center lg:justify-between xl:justify-evenly items-center xl:items-end gap-8 xl:gap-6"
+		: 'row-span-1 pt-6'}"
 >
 	{#if favouriteBookTitle}
 		<div class="flex flex-col-reverse lg:flex-row items-end justify-center w-full gap-8 lg:gap-6">
 			<MonthStatistics amountOfBooks={monthBooks.length} {amountOfUniqueAuthors} />
 			<div
-				class="flex items-end justify-start gap-2 lg:gap-4 w-full xl:w-fit xl:pt-6
+				class="flex items-end justify-start gap-2 lg:gap-4 w-full px-2 xl:w-fit xl:pt-6
 					{monthBooks.length > 10 ? 'lg:w-4/6' : 'lg:w-fit'}"
 			>
 				{#each books as book}
@@ -84,7 +84,7 @@
 		<div class="flex flex-col-reverse lg:flex-row items-end justify-center w-full gap-8">
 			<MonthStatistics amountOfBooks={monthBooks.length} {amountOfUniqueAuthors} />
 			<div
-				class="flex items-end justify-start gap-2 lg:gap-4 w-full xl:w-fit xl:pt-6
+				class="flex items-end justify-start gap-2 lg:gap-4 w-full px-2 xl:w-fit xl:pt-6
 					{monthBooks.length > 10 ? 'lg:w-4/6' : 'lg:w-fit'}"
 			>
 				{#each books as book}
@@ -110,9 +110,9 @@
 	<FormatChart listOfBooks={monthBooks} />
 </section>
 <section
-	class="col-start-1 col-end-7 {favouriteBookTitle
+	class="col-start-1 col-end-7 flex flex-col lg:flex-row items-center lg:items-start justify-center xl:mt-4 gap-4 lg:gap-2 xl:gap-4 bg-teal-900 rounded-lg py-6 px-4 lg:px-2 xl:px-0 lg:py-4 lg:h-fit {favouriteBookTitle
 		? 'row-start-7 row-end-9'
-		: 'row-start-5 row-end-6'} flex flex-col lg:flex-row items-center lg:items-start justify-center xl:mt-4 gap-4 lg:gap-2 xl:gap-4 bg-teal-900 rounded-lg py-6 px-4 lg:px-2 xl:px-0 lg:py-4 lg:h-fit"
+		: 'row-start-5 row-end-6'} "
 >
 	<h2 class="flex fira-mono-medium text-2xl lg:w-1/5 xl:w-fit items-start lg:ml-2 lg:mt-5">
 		List of all:

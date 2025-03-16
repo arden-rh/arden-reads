@@ -64,7 +64,7 @@
 
 {#key currentParams.year}
 	<section
-		class="col-start-1 col-end-7 row-start-1 row-end-3 flex flex-col lg:flex-row-reverse justify-center lg:justify-between gap-2 lg:gap-6 xl:gap-4 items-center xl:px-4"
+		class="col-start-1 col-end-7 row-start-1 row-end-3 flex flex-col lg:flex-row-reverse justify-center lg:justify-between gap-2 lg:gap-6 xl:gap-4 items-center"
 	>
 		<div class="flex flex-col items-center justify-center xl:w-full">
 			<h1
@@ -87,7 +87,7 @@
 		</div>
 	</section>
 	<section
-		class="col-start-1 col-end-7 row-span-2 flex justify-center items-center xl:px-4 h-full xl:h-fit"
+		class="col-start-1 col-end-7 row-span-2 flex justify-center items-center h-full xl:h-fit"
 	>
 		<div
 			class="w-full flex flex-col lg:flex-row gap-4 lg:gap-0 h-fit bg-teal-900 rounded-lg pt-6 px-4 pb-0 lg:pb-6"
