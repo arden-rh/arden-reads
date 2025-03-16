@@ -9,6 +9,8 @@ import { getAllAuthors, getAllFormats, getAllGenres } from '$lib/functions/getBo
 import type { LayoutLoad } from './$types';
 import { currentParams } from '../states.svelte';
 
+export const prerender = true;
+
 export const load: LayoutLoad = async ({ data }) => {
 	if (!data) error(404, { message: 'No data found' });
 
@@ -40,6 +42,12 @@ export const load: LayoutLoad = async ({ data }) => {
 	currentParams.year = dateInfo.paramYear;
 
 	return {
+		metaData: {
+			title: 'Arden Reads',
+			description: 'A place to keep track of all the books that Arden reads and listens to, showing stats for separate months and years.',
+			url: 'https://www.arden-reads.com',
+
+		},
 		...dateInfo,
 		yearStats: {
 			yearBooks,
