@@ -6,7 +6,7 @@
 	</p>
 	<p class="mt-4 lg:mt-3 xl:max-w-[95%]">
 		Arden is also a fan of infographics and statistics. This site exists solely for the
-		purpose of giving him an excuse to look at pretty numbers.
+		purpose of giving him an excuse to watch numbers, set in pretty typefaces, go up.
 		<span class="block mt-2 italic text-xs">*To Be Read-list</span>
 	</p>
 </div>

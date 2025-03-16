@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { navigating } from '$app/state';
+	import { navigating, page } from '$app/state';
  	import '../app.css';
 
 	// Components
@@ -47,7 +47,22 @@
 		menu.open = false;
 		enableScroll();
 	}
+
 </script>
+
+<svelte:head>
+	<title>{page.data.metaData.title}</title>
+	<meta property="og:type" content="website" />
+
+	<meta name="description" content={page.data.metaData.description} />
+	<meta name="author" content='Arden Haldorson' />
+
+	<!-- Open Graph -->
+	<meta property="og:title" content={page.data.metaData.title} />
+	<meta property="og:description" content={page.data.metaData.description} />
+	<meta property="og:image" content="%sveltekit.assets%/og-image.png" />
+	<meta property="og:url" content={page.data.metaData.url} />
+</svelte:head>
 
 <div class="flex flex-col justify-between items-center h-dvh">
 	<nav class="text-white p-4 mx-2 mt-2 flex flex-col gap-4 relative w-full">
@@ -118,7 +133,7 @@
 	<main
 		class="{gridSize.small
 			? 'alt-grid'
-			: 'main-grid'} flex flex-col lg:grid grid-cols-6 lg:gap-4 gap-10 m-4 mx-6 text-white fira-mono-regular relative lg:min-w-[500px] xl:max-w-[1500px]"
+			: 'main-grid'} flex flex-col lg:grid grid-cols-6 lg:gap-4 gap-10 px-4 pt-6 lg:px-6 lg:pt-2 text-white fira-mono-regular relative w-full lg:min-w-[500px] xl:max-w-[1500px]"
 	>
 		{#if navigating.to}
 			<div class="flex flex-col items-center justify-center col-start-1 col-end-7 row-span-3">
