@@ -3,7 +3,7 @@
 
 	interface Props {
 		listOfBooks: Book[];
-	};
+	}
 
 	let { listOfBooks }: Props = $props();
 
@@ -24,7 +24,7 @@
 		'#0d9488', // teal-600
 		'#5eead4', // teal-300
 		'#14b8a6', // teal-500
-		'#0f766e', // teal-700
+		'#0f766e' // teal-700
 	];
 
 	const legendColors = [
@@ -39,6 +39,8 @@
 		'bg-teal-700'
 	];
 
+	let showPecentage = $state(false);
+
 	function countGenres(books: Book[]): Record<string, number> {
 		const genreCounts: Record<string, number> = {};
 
@@ -49,7 +51,7 @@
 		});
 
 		return genreCounts;
-	};
+	}
 
 	function transformGenreCounts(genreCounts: Record<string, number>) {
 		const total = Object.values(genreCounts).reduce((sum, count) => sum + count, 0);
@@ -62,11 +64,10 @@
 				color: `${chartColors[index % chartColors.length]}`
 			};
 		});
-	};
+	}
 
 	const genres = countGenres(listOfBooks);
 	genreData = transformGenreCounts(genres);
-	
 </script>
 
 <div
@@ -91,7 +92,6 @@
 					stroke-dashoffset={genreData.slice(0, index).reduce((sum, d) => sum - d.percentage, 0)}
 					transform="rotate(-90 18 18)"
 				>
-					<title>Hover over the genres in the legend to see exact percentage.</title>
 				</circle>
 			{/each}
 		</svg>
@@ -99,17 +99,23 @@
 	<!-- Legend -->
 	<div class="flex flex-col gap-2 justify-center mr-4 xl:mr-6 xl:min-w-[125px]">
 		{#each genreData as { genre, legendColor, percentage }}
-			<button
-				class="flex items-center gap-2 group focus-visible:p-1"
-			>
+			<div class="flex items-center gap-2">
 				<span
-					class="w-4 min-w-4 h-4 rounded-full {legendColor} group-hover:hidden group-focus:hidden"
+					class="w-4 min-w-4 h-4 rounded-full {legendColor} min-w-[1rem] {showPecentage ? 'hidden' : 'inline'}"
 				></span>
-				<span class="text-[0.7rem] lg:text-sm hidden group-hover:inline group-focus:inline">
-					{percentage.toFixed()}%
+				<span class="text-[0.7rem] lg:text-sm {showPecentage ? 'inline' : 'hidden'}">
+					{percentage.toFixed() + '%'}
 				</span>
 				<span class="text-[0.7rem] lg:text-sm text-left">{genre}</span>
-			</button>
+			</div>
 		{/each}
+		<button
+			class="h-fit p-1 px-2 mt-2 rounded-lg w-fit text-center text-sm fira-mono-medium text-teal-950 shadow-xl cursor-pointer 
+			focus-visible:ring-teal-50 focus-visible:ring-3 hover:bg-teal-500 focus-visible:bg-teal-500
+			{showPecentage ? 'bg-teal-600' : 'bg-teal-700'}"
+			onclick={() => (showPecentage = !showPecentage)}
+		>
+			{showPecentage ? 'Hide %' : 'Show %'}
+		</button>
 	</div>
 </div>
