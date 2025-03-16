@@ -6,6 +6,8 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import type { ListResult, RecordModel } from 'pocketbase';
 
+export const prerender = false;
+
 export const load: PageServerLoad = async ({ params }) => {
 	const monthMatch = months.find((month) => month.name === params.month);
 
