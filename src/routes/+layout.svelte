@@ -60,7 +60,7 @@
 	<!-- Open Graph -->
 	<meta property="og:title" content={page.data.metaData.title} />
 	<meta property="og:description" content={page.data.metaData.description} />
-	<meta property="og:image" content="%sveltekit.assets%/og-image.png" />
+	<meta property="og:image" content="/og-image.png" />
 	<meta property="og:url" content={page.data.metaData.url} />
 </svelte:head>
 
