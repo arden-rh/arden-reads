@@ -63,9 +63,9 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	try {
 		monthBookList = await getMonthBooks(filterString);
+	// eslint-disable-next-line
 	} catch (e) {
-		console.error('Month book list not found', e);
-		error(404, 'Data not found');
+		error(404, 'Month book list not found');
 	}
 
 	favouriteBook = await pb.collection('books').getList(1, 1, {

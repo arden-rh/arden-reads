@@ -52,12 +52,6 @@
 		font-style: normal;
 	}
 
-	.fira-mono-bold {
-		font-family: 'Fira Mono', monospace;
-		font-weight: 700;
-		font-style: normal;
-	}
-
 	.ledger-regular {
 		font-family: 'Ledger', serif;
 		font-weight: 400;
@@ -92,5 +86,9 @@
 				@apply bg-teal-400 border-teal-400 text-black;
 			}
 		}
+	}
+
+	.btn-basic {
+		@apply text-white shadow-md rounded-lg p-2 flex justify-center items-center tracking-wide;
 	}
 }

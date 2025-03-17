@@ -61,7 +61,7 @@
 					<a
 						href="/{menu.activeYear}/{month.name}"
 						onclick={closeMenuAndEnableScroll}
-						class="rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md
+						class="btn-basic
 						{currentParams.month === month.name && currentParams.year === menu.activeYear
 							? 'bg-teal-700 cursor-default'
 							: 'bg-teal-950 hover:bg-teal-600'}"
@@ -73,7 +73,7 @@
 					<a
 						href="/{menu.activeYear}/{month.name}"
 						onclick={closeMenuAndEnableScroll}
-						class="rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md hover:bg-teal-600
+						class="btn-basic
 						{currentParams.month === month.name && currentParams.year === menu.activeYear
 							? 'bg-teal-700 cursor-default'
 							: 'bg-teal-950 hover:bg-teal-600'}"
@@ -83,7 +83,7 @@
 					</a>
 				{:else}
 					<div
-						class="rounded-lg p-2 bg-teal-900 flex justify-center items-center tracking-wide text-gray-300"
+						class="btn-basic bg-teal-900 text-gray-300 shadow-none"
 					>
 						{month.abr}
 					</div>
