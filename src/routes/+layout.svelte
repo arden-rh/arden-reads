@@ -47,7 +47,6 @@
 		menu.open = false;
 		enableScroll();
 	}
-
 </script>
 
 <svelte:head>
