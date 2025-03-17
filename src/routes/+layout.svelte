@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { navigating, page } from '$app/state';
- 	import '../app.css';
+	import '../app.css';
 
 	// Components
 	import Icon from '$lib/components/Icon.svelte';
@@ -8,8 +8,8 @@
 	import Calendar from '$lib/components/Calendar.svelte';
 	import { Diamonds } from 'svelte-loading-spinners';
 
-	import { currentParams, gridSize, menu, activeState } from '../states.svelte';
-	
+	import { currentParams, menu, activeState } from '../states.svelte';
+
 	import {
 		closeMenuAndEnableScroll,
 		enableScroll,
@@ -47,7 +47,6 @@
 		menu.open = false;
 		enableScroll();
 	}
-
 </script>
 
 <svelte:head>
@@ -55,7 +54,7 @@
 	<meta property="og:type" content="website" />
 
 	<meta name="description" content={page.data.metaData.description} />
-	<meta name="author" content='Arden Haldorson' />
+	<meta name="author" content="Arden Haldorson" />
 
 	<!-- Open Graph -->
 	<meta property="og:title" content={page.data.metaData.title} />
@@ -131,7 +130,7 @@
 		></div>
 	{/if}
 	<main
-		class="{gridSize.small
+		class="{page.status === 404
 			? 'alt-grid'
 			: 'main-grid'} flex flex-col lg:grid grid-cols-6 lg:gap-4 gap-10 px-4 pt-6 lg:px-6 lg:pt-2 text-white fira-mono-regular relative w-full lg:min-w-[500px] xl:max-w-[1500px]"
 	>
@@ -157,26 +156,19 @@
 	}
 
 	.alt-grid {
-		grid-template-rows: repeat(1, minmax(0, 250px));
+		grid-template-rows: auto;
+		height: 100%;
 	}
 
 	@media (min-width: 1024px) {
 		.main-grid {
 			grid-template-rows: repeat(5, minmax(0, 200px));
 		}
-
-		.alt-grid {
-			grid-template-rows: repeat(1, minmax(0, 200px));
-		}
 	}
 
 	@media (min-width: 1280px) {
 		.main-grid {
 			grid-template-rows: repeat(5, minmax(0, 225px));
-		}
-
-		.alt-grid {
-			grid-template-rows: repeat(1, minmax(0, 225px));
 		}
 	}
 </style>

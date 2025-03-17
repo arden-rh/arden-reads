@@ -1,7 +1,3 @@
-export const gridSize = $state({
-	small: false,
-});
-
 export const menu = $state({
 	open: false,
 	activeYear: undefined as number | undefined,
