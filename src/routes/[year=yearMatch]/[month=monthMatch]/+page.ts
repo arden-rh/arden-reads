@@ -12,7 +12,7 @@ export const load: PageLoad = async ({ data, params }) => {
 	const { monthBookList, favouriteBook, futureDate } = data;
 	let favouriteBookInfo: Book | undefined;
 
-	if (!monthBookList) throw error(404, { message: 'Books not found' });
+	if (!monthBookList) throw error(404, { message: 'No books found' });
 
 	if (!favouriteBook) {
 		favouriteBookInfo = undefined;
