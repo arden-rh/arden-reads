@@ -26,14 +26,12 @@
 
 	const year = data.year;
 	const amountOfBooks = yearBooks.length;
-	const books = yearBooks.map((book: Book) => book.title);
-
 	const buttonTitles = ['Books', 'Authors'];
+
 	let activeButton: number | null = $state(null);
 	let desktopInfoBox = $state('hidden');
-	let arrayOfItems: string[] = $state([]);
+	let arrayOfItems: Book[] | string[] = $state([]);
 	let header = $state('');
-	let shortListTitles = $state(false);
 
 	const handleButtonClick = (i: number, title: string) => {
 		if (activeButton === i) {
@@ -45,20 +43,14 @@
 		activeButton = i;
 		desktopInfoBox = 'hidden lg:flex';
 
-		const mappings: Record<string, { array: string[]; header: string }> = {
-			books: { array: books, header: 'Books' },
+		const mappings: Record<string, { array: Book[] | string[]; header: string }> = {
+			books: { array: yearBooks, header: 'Books' },
 			authors: { array: authors, header: 'Authors' }
 		};
 
 		const { array, header: newHeader } = mappings[title.toLowerCase()];
 		arrayOfItems = array;
 		header = newHeader;
-
-		if (header !== 'Books') {
-			shortListTitles = true;
-		} else {
-			shortListTitles = false;
-		}
 	};
 </script>
 
@@ -115,22 +107,24 @@
 					<button
 						id="button-{i}"
 						class="h-fit p-6 rounded-lg w-full lg:w-1/5 text-center text-xl fira-mono-medium text-teal-950 shadow-xl focus-visible:ring-teal-50 focus-visible:ring-3 hover:bg-teal-500 focus-visible:bg-teal-500 cursor-pointer
-							{activeButton === i
-							? 'bg-teal-500'
-							: 'bg-teal-300'}"
+							{activeButton === i ? 'bg-teal-500' : 'bg-teal-300'}"
 						onclick={() => handleButtonClick(i, title)}
 					>
 						{title}
 					</button>
 					{#if activeButton === i}
 						<div class="w-full xl:w-4/5 flex justify-center lg:hidden">
-							<ListBox {arrayOfItems} {header} />
+							{#key activeButton}
+								<ListBox {arrayOfItems} {header} />
+							{/key}
 						</div>
 					{/if}
 				{/each}
 			</div>
 			<div class="w-full flex justify-center {desktopInfoBox}">
-				<ListBox {arrayOfItems} {header} shortTitles={shortListTitles} />
+				{#key activeButton}
+					<ListBox {arrayOfItems} {header} />
+				{/key}
 			</div>
 		</div>
 	</section>
