@@ -80,9 +80,12 @@
 					>A. Reads</span
 				>
 			</a>
-			<div class="flex gap-3 items-center">
-				<a href="https://github.com/arden-rh" target="_blank">
+			<div class="flex gap-1 lg:gap-1.5 items-center">
+				<a href="https://github.com/arden-rh/arden-reads" target="_blank" class="pr-1">
 					<Icon iconName="github" hover />
+				</a>
+				<a href="/about">
+					<Icon iconName="raven" />
 				</a>
 				<button onclick={() => openMenu()} class="cursor-pointer focus-visible:p-0">
 					<Icon iconName="calendar" hover />
@@ -149,7 +152,7 @@
 	<footer
 		class="w-full flex flex-col lg:flex-row justify-center items-center gap-1 lg:gap-4 pt-4 pb-6 lg:py-6 text-white fira-mono-regular mt-4 lg:mt-8 self-end"
 	>
-		<p>Copyrights Arden R.H. 2025</p>
+		<p>Copyrights Arden R.H. 2025 All rights reserved.</p>
 		<a href="/login" class="opacity-40" tabindex="-1">Admin Login</a>
 	</footer>
 </div>
