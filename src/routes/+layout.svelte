@@ -47,6 +47,7 @@
 		menu.open = false;
 		enableScroll();
 	}
+
 </script>
 
 <svelte:head>
@@ -83,9 +84,6 @@
 			<div class="flex gap-1 lg:gap-1.5 items-center">
 				<a href="https://github.com/arden-rh/arden-reads" target="_blank" class="pr-1">
 					<Icon iconName="github" hover />
-				</a>
-				<a href="/about">
-					<Icon iconName="raven" />
 				</a>
 				<button onclick={() => openMenu()} class="cursor-pointer focus-visible:p-0">
 					<Icon iconName="calendar" hover />
