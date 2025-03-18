@@ -30,7 +30,7 @@
 
 <div
 	class="{page === 'year'
-		? 'year-page-wrapper'
+		? 'lg:h-fit lg:w-fit lg:bg-teal-900 lg:rounded-lg lg:p-6 lg:pt-3'
 		: ''} max-w-[600px] xl:max-w-full flex flex-col gap-4 text-center"
 >
 	<h2
@@ -99,15 +99,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	@media (min-width: 1024px) {
-		.year-page-wrapper {
-			@apply h-fit w-fit;
-			background-color: var(--color-teal-900);
-			border-radius: var(--radius-lg);
-			padding: calc(var(--spacing) * 6);
-			padding-top: calc(var(--spacing) * 3)
-		}
-	}
-</style>

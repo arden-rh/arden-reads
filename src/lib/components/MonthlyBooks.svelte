@@ -59,9 +59,9 @@
 </script>
 
 <div
-	class="month-statistic px-2 xl:p-6 flex flex-col xl:flex-row justify-center items-center text-white"
+	class="text-[1.2rem] px-2 xl:p-6 flex flex-col xl:flex-row justify-center items-center text-white"
 >
-	<span class="numOfBooks text-9xl xl:mr-4 text-teal-200 fugaz-one-regular">
+	<span class="text-9xl xl:text-[12rem] xl:leading-[9rem] xl:mr-4 text-teal-200 fugaz-one-regular">
 		{numberOfBooksMonth}
 	</span>
 	<span class="italic flex flex-col xl:flex-row items-start xl:items-baseline">
@@ -71,15 +71,3 @@
 		</span>
 	</span>
 </div>
-
-<style>
-	.month-statistic {
-		font-size: 1.2rem;
-	}
-	@media (min-width: 1280px) {
-		.numOfBooks {
-			font-size: 12rem;
-			line-height: 9rem;
-		}
-	}
-</style>
