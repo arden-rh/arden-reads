@@ -55,7 +55,7 @@
 	</div>
 	<div class="flex flex-col gap-2">
 		<a
-			class="rounded-lg p-2 text-center tracking-widest shadow-md 
+			class="rounded-lg p-2 text-center tracking-widest shadow-md
 			{currentParams.year === menu.activeYear && currentParams.month === undefined
 				? 'bg-teal-700 cursor-default'
 				: 'bg-teal-950 hover:bg-teal-600'}"
