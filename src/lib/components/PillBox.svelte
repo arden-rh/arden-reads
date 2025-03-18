@@ -9,7 +9,7 @@
 </script>
 
 <div
-	class="wrapper flex flex-col grow items-center text-white bg-teal-900 rounded-lg p-4 py-6"
+	class="max-w-[600px] lg:max-w-full flex flex-col grow items-center text-white bg-teal-900 rounded-lg p-4 py-6"
 >
 	<h3 class="fira-mono-medium text-2xl mb-4">{header}</h3>
 	<div class="flex gap-2 flex-wrap justify-center">
@@ -18,15 +18,3 @@
 		{/each}
 	</div>
 </div>
-
-<style>
-	.wrapper {
-		max-width: 600px;
-	}
-
-	@media (min-width: 1024px) {
-		.wrapper {
-			max-width: 100%;
-		}
-	}
-</style>
