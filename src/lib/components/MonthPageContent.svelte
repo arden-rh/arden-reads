@@ -17,11 +17,19 @@
 
 	let { monthBooks, favouriteBookTitle, authors, amountOfUniqueAuthors }: Props = $props();
 
+	export type ArrayOfItemType = { title: string; author: string };
+
 	const buttonTitles = ['Books', 'Authors'];
-	const books = monthBooks.map((book) => book.title);
+	// const books = monthBooks.map((book) => book.title);
+	const books: ArrayOfItemType[] = monthBooks.map((book) => {
+		return { title: book.title, author: book.author };
+	});
 	let activeButton: number | null = $state(null);
 	let desktopInfoBox = $state('hidden');
-	let arrayOfItems: string[] = $state([]);
+	// let arrayOfItems: string[] = $state([]);
+
+	// let arrayOfItems: {title: string, author: string}[] | string[] = $state([]);
+	let arrayOfItems: ArrayOfItemType[] | string[] = $state([]);
 	let header = $state('');
 	let shortListTitles = $state(false);
 
@@ -35,8 +43,9 @@
 		activeButton = i;
 		desktopInfoBox = 'hidden lg:flex';
 
-		const mappings: Record<string, { array: string[]; header: string }> = {
+		const mappings: Record<string, { array: ArrayOfItemType[] | string[]; header: string }> = {
 			books: { array: books, header: 'Books' },
+			// authors: { array: books, header: 'Authors' }
 			authors: { array: authors, header: 'Authors' }
 		};
 
@@ -67,7 +76,7 @@
 				{#each books as book}
 					<div
 						class="bg-teal-800 rounded-xs text-sm w-[30px] lg:w-[45px] min-w-[10px]"
-						style="height: calc({book.length}ch / 2);"
+						style="height: calc({book.title.length}ch / 2);"
 					></div>
 				{/each}
 			</div>
@@ -90,7 +99,7 @@
 				{#each books as book}
 					<div
 						class="bg-teal-800 rounded-xs text-sm w-[30px] lg:w-[45px] min-w-[10px]"
-						style="height: calc({book.length}ch / 2);"
+						style="height: calc({book.title.length}ch / 2);"
 					></div>
 				{/each}
 			</div>
@@ -130,13 +139,17 @@
 				</button>
 				{#if activeButton === i}
 					<div class="w-full xl:w-4/5 flex justify-center lg:hidden">
-						<ListBox {arrayOfItems} {header} />
+						{#key activeButton}
+							<ListBox {arrayOfItems} {header} />
+						{/key}
 					</div>
 				{/if}
 			{/each}
 		</div>
 		<div class="w-full flex justify-center {desktopInfoBox}">
-			<ListBox {arrayOfItems} {header} shortTitles={shortListTitles} />
+			{#key activeButton}
+				<ListBox {arrayOfItems} {header} shortTitles={shortListTitles} />
+			{/key}
 		</div>
 	</div>
 </section>
