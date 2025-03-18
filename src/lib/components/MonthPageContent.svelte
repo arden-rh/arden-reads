@@ -17,21 +17,12 @@
 
 	let { monthBooks, favouriteBookTitle, authors, amountOfUniqueAuthors }: Props = $props();
 
-	export type ArrayOfItemType = { title: string; author: string };
-
 	const buttonTitles = ['Books', 'Authors'];
-	// const books = monthBooks.map((book) => book.title);
-	const books: ArrayOfItemType[] = monthBooks.map((book) => {
-		return { title: book.title, author: book.author };
-	});
+
 	let activeButton: number | null = $state(null);
 	let desktopInfoBox = $state('hidden');
-	// let arrayOfItems: string[] = $state([]);
-
-	// let arrayOfItems: {title: string, author: string}[] | string[] = $state([]);
-	let arrayOfItems: ArrayOfItemType[] | string[] = $state([]);
+	let arrayOfItems: Book[] | string[] = $state([]);
 	let header = $state('');
-	let shortListTitles = $state(false);
 
 	const handleButtonClick = (i: number, title: string) => {
 		if (activeButton === i) {
@@ -43,21 +34,14 @@
 		activeButton = i;
 		desktopInfoBox = 'hidden lg:flex';
 
-		const mappings: Record<string, { array: ArrayOfItemType[] | string[]; header: string }> = {
-			books: { array: books, header: 'Books' },
-			// authors: { array: books, header: 'Authors' }
+		const mappings: Record<string, { array: Book[] | string[]; header: string }> = {
+			books: { array: monthBooks, header: 'Books' },
 			authors: { array: authors, header: 'Authors' }
 		};
 
 		const { array, header: newHeader } = mappings[title.toLowerCase()];
 		arrayOfItems = array;
 		header = newHeader;
-
-		if (header !== 'Books') {
-			shortListTitles = true;
-		} else {
-			shortListTitles = false;
-		}
 	};
 </script>
 
@@ -73,7 +57,7 @@
 				class="flex items-end justify-start gap-2 lg:gap-4 w-full px-2 xl:w-fit xl:pt-6
 					{monthBooks.length > 10 ? 'lg:w-4/6' : 'lg:w-fit'}"
 			>
-				{#each books as book}
+				{#each monthBooks as book}
 					<div
 						class="bg-teal-800 rounded-xs text-sm w-[30px] lg:w-[45px] min-w-[10px]"
 						style="height: calc({book.title.length}ch / 2);"
@@ -96,7 +80,7 @@
 				class="flex items-end justify-start gap-2 lg:gap-4 w-full px-2 xl:w-fit xl:pt-6
 					{monthBooks.length > 10 ? 'lg:w-4/6' : 'lg:w-fit'}"
 			>
-				{#each books as book}
+				{#each monthBooks as book}
 					<div
 						class="bg-teal-800 rounded-xs text-sm w-[30px] lg:w-[45px] min-w-[10px]"
 						style="height: calc({book.title.length}ch / 2);"
@@ -148,7 +132,7 @@
 		</div>
 		<div class="w-full flex justify-center {desktopInfoBox}">
 			{#key activeButton}
-				<ListBox {arrayOfItems} {header} shortTitles={shortListTitles} />
+				<ListBox {arrayOfItems} {header} />
 			{/key}
 		</div>
 	</div>

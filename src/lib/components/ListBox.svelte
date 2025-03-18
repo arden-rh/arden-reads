@@ -1,26 +1,22 @@
 <script lang="ts">
-	import type { ArrayOfItemType } from "./MonthPageContent.svelte";
-
+	import type { Book } from "$lib/types/book.types";
 	interface Props {
-		arrayOfItems: string[] | ArrayOfItemType[];
-		// arrayOfBooks?: { title: string; author: string }[];
-		// arrayOfTitles?: string[];
+		arrayOfItems: string[] | Book[];
 		header: string;
-		shortTitles?: boolean;
 	}
 
 	let { arrayOfItems, header }: Props = $props();
 
 	let shortTitles: boolean = $state(false);
-	let books: ArrayOfItemType[] = $state([]);
+	let books: Book[] = $state([]);
 	let authors: string[] = $state([]);
 
-	if (header !== 'Books') {
+	if (header == 'Authors') {
 		shortTitles = true;
 		authors = arrayOfItems as string[];
 	} else if (header === 'Books') {
 		shortTitles = false;
-		books = arrayOfItems as ArrayOfItemType[];
+		books = arrayOfItems as Book[];
 	}
 
 </script>
@@ -36,9 +32,7 @@
 		{#if header === 'Authors'}
 			{#each authors as author, i}
 				<li
-					class="text-sm flex items-center gap-2 mb-3 {shortTitles
-						? 'lg:mr-2 xl:mr-4'
-						: 'lg:mr-2'} "
+					class="text-sm flex items-center gap-2 mb-3 lg:mr-2 xl:mr-4"
 				>
 					<span class="bg-teal-950 p-2 rounded-md shrink-0 min-w-[2rem] text-center">{i + 1}</span>
 					<span class="break-words">{author}</span>
@@ -48,7 +42,7 @@
 			{#each books as book, i}
 				<li class="text-sm/tight flex items-center gap-2 mb-3 lg:mr-2">
 					<span class="bg-teal-950 p-2 rounded-md shrink-0 min-w-[2rem] text-center">{i + 1}</span>
-					<span class="break-words">{book.title}<span class="fira-mono-medium px-1 text-teal-300">—</span>{book.author}</span>
+					<span class="break-words">{book.title}<span class="fira-mono-medium px-1.5 text-teal-300">—</span>{book.author}</span>
 				</li>
 			{/each}
 		{/if}
