@@ -1,4 +1,3 @@
-import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import type { Book } from '$lib/types/book.types';
 
@@ -11,8 +10,6 @@ export const load: PageLoad = async ({ data, params }) => {
 	
 	const { monthBookList, favouriteBook, futureDate } = data;
 	let favouriteBookInfo: Book | undefined;
-
-	if (!monthBookList) throw error(404, { message: 'No books found' });
 
 	if (!favouriteBook) {
 		favouriteBookInfo = undefined;
