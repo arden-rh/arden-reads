@@ -58,12 +58,12 @@
 	</h1>
 	<IntroText />
 </section>
-<section
+<div
 	class="col-start-1 col-end-4 row-start-3 row-end-5 flex flex-col justify-center items-center gap-6 xl:gap-0"
 >
 	<MonthlyBooks {currentMonth} {currentMonthNumber} {numberOfBooksCurrentMonth} {previousMonth} {previousMonthNumber} {numberOfBooksPreviousMonth} {day} />
 	<YearlyBooks {year} {numberOfBooksYear} />
-</section>
+</div>
 <div
 	class="flex flex-col-reverse lg:flex-row gap-6 lg:gap-0 justify-center items-center xl:self-end col-start-4 col-end-7 row-start-1 row-end-3 mb-4 lg:mb-0"
 >

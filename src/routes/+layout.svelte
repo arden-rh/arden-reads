@@ -93,8 +93,11 @@
 			class="{menu.open
 				? 'flex'
 				: 'hidden'} flex-col bg-teal-900 p-4 rounded-lg w-[92%] lg:max-w-[300px] lg:self-end absolute top-[80px] m-auto shadow-xl z-10"
-			role="button"
-			tabindex="0"
+			role="dialog"
+			aria-roledescription="menu"
+			aria-modal="true"
+			aria-labelledby="menu-heading"
+			tabindex="-1"
 			onkeydown={(e) => {
 				if (e.key === 'Escape') {
 					menu.open = false;
@@ -102,6 +105,7 @@
 				}
 			}}
 		>
+			<h2 id="menu-heading" class="sr-only">Main Manu: Calendar</h2>
 			<Calendar monthNumber={data.currentMonthNum} year={data.currentYear} />
 			{#if activeState.loggedIn}
 				<a
