@@ -47,6 +47,7 @@
 		menu.open = false;
 		enableScroll();
 	}
+
 </script>
 
 <svelte:head>
@@ -84,9 +85,6 @@
 				<a href="https://github.com/arden-rh/arden-reads" target="_blank" class="pr-1">
 					<Icon iconName="github" hover />
 				</a>
-				<a href="/about">
-					<Icon iconName="raven" />
-				</a>
 				<button onclick={() => openMenu()} class="cursor-pointer focus-visible:p-0">
 					<Icon iconName="calendar" hover />
 				</button>
@@ -95,7 +93,7 @@
 		<div
 			class="{menu.open
 				? 'flex'
-				: 'hidden'} flex-col bg-teal-900 p-4 rounded-lg w-[92%] lg:max-w-[300px] lg:self-end absolute top-[80px] m-auto shadow-xl z-10"
+				: 'hidden'} flex-col bg-teal-900 p-4 rounded-lg w-[92%] lg:max-w-[325px] lg:self-end absolute top-[80px] m-auto shadow-xl z-10"
 			role="dialog"
 			aria-roledescription="menu"
 			aria-modal="true"
@@ -137,7 +135,7 @@
 		></div>
 	{/if}
 	<main
-		class="{page.status === 404
+		class="{page.status === 404 || page.route.id === '/about'
 			? 'alt-grid'
 			: 'main-grid'} flex flex-col lg:grid grid-cols-6 lg:gap-4 gap-10 px-4 pt-6 lg:px-6 lg:pt-2 text-white fira-mono-regular relative w-full lg:min-w-[500px] xl:max-w-[1500px]"
 	>
@@ -150,7 +148,7 @@
 		{/if}
 	</main>
 	<footer
-		class="w-full flex flex-col lg:flex-row justify-center items-center gap-1 lg:gap-4 pt-4 pb-6 lg:py-6 text-white fira-mono-regular mt-4 lg:mt-8 self-end"
+		class="w-full flex flex-col lg:flex-row justify-center items-center text-center gap-1 lg:gap-4 pt-4 pb-6 px-4 lg:py-6 text-white fira-mono-regular mt-4 lg:mt-8 self-end"
 	>
 		<p>Copyrights Arden R.H. 2025 All rights reserved.</p>
 		<a href="/login" class="opacity-40" tabindex="-1">Admin Login</a>
