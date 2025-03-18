@@ -84,6 +84,9 @@
 				<a href="https://github.com/arden-rh/arden-reads" target="_blank" class="pr-1">
 					<Icon iconName="github" hover />
 				</a>
+				<a href="/about">
+					<Icon iconName="raven" />
+				</a>
 				<button onclick={() => openMenu()} class="cursor-pointer focus-visible:p-0">
 					<Icon iconName="calendar" hover />
 				</button>
