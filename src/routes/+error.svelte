@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
+
+	console.log(page.error?.message);
 </script>
 
 <section class="col-start-1 col-end-7 flex flex-col items-center">
