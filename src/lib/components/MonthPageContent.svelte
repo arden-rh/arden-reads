@@ -17,8 +17,6 @@
 
 	let { monthBooks, favouriteBookTitle, authors, amountOfUniqueAuthors }: Props = $props();
 
-	export type ArrayOfItemType = { title: string; author: string };
-
 	const buttonTitles = ['Books', 'Authors'];
 
 	let activeButton: number | null = $state(null);
