@@ -64,7 +64,7 @@
 </svelte:head>
 
 <div class="flex flex-col justify-between items-center h-dvh min-h-dvh">
-	<nav class="text-white p-4 mx-2 mt-2 flex flex-col gap-4 relative w-full">
+	<nav class="text-white p-4 mt-2 flex flex-col gap-4 relative w-full">
 		<div class="flex justify-between items-center xl:mx-4">
 			<a
 				href="/"
@@ -129,7 +129,7 @@
 	</nav>
 	{#if menu.open}
 		<div
-			class="flex flex-col items-center justify-center col-start-1 col-end-7 row-span-6 bg-teal-950 opacity-55 lg:opacity-25 w-full h-dvh min-w-screen absolute top-0 left-0 z-5"
+			class="flex flex-col items-center justify-center col-start-1 col-end-7 row-span-6 bg-teal-950 opacity-55 lg:opacity-25 w-full h-dvh max-w-dvw absolute top-0 left-0 z-5"
 			onclick={() => closeMenuAndEnableScroll()}
 			aria-roledescription="overlay"
 			role="button"
@@ -148,7 +148,7 @@
 			: 'main-grid'} flex flex-col lg:grid flex-grow grid-cols-6 lg:gap-4 gap-10 px-4 pt-6 lg:px-6 lg:pt-2 text-white fira-mono-regular relative w-full lg:min-w-[500px] xl:max-w-[1500px]"
 	>
 		{#if navigating.to}
-			<div class="flex flex-col items-center justify-center col-start-1 col-end-7 row-span-3">
+			<div class="flex flex-col items-center justify-center col-start-1 col-end-7 row-span-3 h-full">
 				<Diamonds color="white" unit="px" size="150" />
 			</div>
 		{:else}
