@@ -22,8 +22,6 @@
 		menu.open = false;
 		enableScroll();
 	}
-
-	$inspect({ currentParams, menu });
 </script>
 
 <div class="fira-mono-regular w-full">

@@ -47,7 +47,6 @@
 		menu.open = false;
 		enableScroll();
 	}
-
 </script>
 
 <svelte:head>
@@ -64,7 +63,7 @@
 	<meta property="og:url" content={page.data.metaData.url} />
 </svelte:head>
 
-<div class="flex flex-col justify-between items-center h-dvh">
+<div class="flex flex-col justify-between items-center h-dvh min-h-dvh">
 	<nav class="text-white p-4 mx-2 mt-2 flex flex-col gap-4 relative w-full">
 		<div class="flex justify-between items-center xl:mx-4">
 			<a
@@ -82,10 +81,19 @@
 				>
 			</a>
 			<div class="flex gap-1 lg:gap-1.5 items-center">
-				<a href="https://github.com/arden-rh/arden-reads" target="_blank" class="pr-1" aria-label="Link to Github">
+				<a
+					href="https://github.com/arden-rh/arden-reads"
+					target="_blank"
+					class="pr-1"
+					aria-label="Link to Github"
+				>
 					<Icon iconName="github" hover />
 				</a>
-				<button onclick={() => openMenu()} class="cursor-pointer focus-visible:p-0" aria-label="Open Calendar Menu">
+				<button
+					onclick={() => openMenu()}
+					class="cursor-pointer focus-visible:p-0"
+					aria-label="Open Calendar Menu"
+				>
 					<Icon iconName="calendar" hover />
 				</button>
 			</div>
@@ -135,9 +143,9 @@
 		></div>
 	{/if}
 	<main
-		class="{page.status === 404 || page.route.id === '/about'
+		class="{page.status === 404
 			? 'alt-grid'
-			: 'main-grid'} flex flex-col lg:grid grid-cols-6 lg:gap-4 gap-10 px-4 pt-6 lg:px-6 lg:pt-2 text-white fira-mono-regular relative w-full lg:min-w-[500px] xl:max-w-[1500px]"
+			: 'main-grid'} flex flex-col lg:grid flex-grow grid-cols-6 lg:gap-4 gap-10 px-4 pt-6 lg:px-6 lg:pt-2 text-white fira-mono-regular relative w-full lg:min-w-[500px] xl:max-w-[1500px]"
 	>
 		{#if navigating.to}
 			<div class="flex flex-col items-center justify-center col-start-1 col-end-7 row-span-3">
@@ -148,7 +156,7 @@
 		{/if}
 	</main>
 	<footer
-		class="w-full h-min flex flex-col lg:flex-row justify-center items-center text-center gap-1 lg:gap-4 pt-4 pb-6 px-4.5 lg:py-6 text-white fira-mono-regular mt-4 lg:mt-8 self-end"
+		class="w-full min-h-[130px] lg:min-h-[100px] h-fit flex flex-col lg:flex-row justify-center items-center text-center gap-1 lg:gap-4 pt-4 pb-6 px-4.5 lg:py-6 text-white fira-mono-regular mt-4 lg:mt-8 self-end"
 	>
 		<p>Copyrights Arden R.H. 2025 All rights reserved.</p>
 		<a href="/login" class="btn-basic bg-teal-900 hover:bg-teal-600" tabindex="-1">Admin Login</a>
@@ -163,6 +171,7 @@
 	.alt-grid {
 		grid-template-rows: auto;
 		height: 100%;
+		min-height: fit-content;
 	}
 
 	@media (min-width: 1024px) {

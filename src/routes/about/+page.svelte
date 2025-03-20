@@ -2,10 +2,10 @@
 </script>
 
 <section
-	class="col-start-1 col-end-7 row-span-2 flex flex-col justify-center items-center h-fit"
+	class="col-start-1 col-end-7 row-span-2 flex flex-col justify-center items-center h-fit max-h-fit"
 >
 	<h1
-		class="text-[4rem] md:text-[8rem] md:leading-none xl:text-[10rem] italic rozha-one-regular text-center lg:mb-2 w-full"
+		class="text-[4rem] md:text-[8rem] md:leading-none xl:text-[10rem] italic rozha-one-regular text-center lg:my-4 xl:my-6 w-full"
 	>
 		About
 	</h1>
