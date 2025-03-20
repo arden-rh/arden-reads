@@ -8,7 +8,7 @@ import type { ListResult, RecordModel } from 'pocketbase';
 
 export const prerender = false;
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, parent }) => {
 	const monthMatch = months.find((month) => month.name === params.month);
 
 	function createFilterString(monthNumber: number, year: number) {
@@ -56,6 +56,12 @@ export const load: PageServerLoad = async ({ params }) => {
 
 	let monthBookList: ListResult<RecordModel> | undefined = undefined;
 	let favouriteBook: ListResult<RecordModel> | undefined = undefined;
+
+	const { auth } = await parent();
+
+	if (!auth) {
+		throw error(401, 'Unauthorized');
+	}
 
 	const getMonthBooks = async (filterString: string) => {
 		return await pb.collection('books').getList(1, 50, { filter: filterString, requestKey: null });

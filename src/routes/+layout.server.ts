@@ -42,6 +42,7 @@ export const load: LayoutServerLoad = async ( data ) => {
 	const latestBookRead = await pb.collection('books').getFirstListItem('', { sort: '-date_read' });
 
 	return {
+		auth,
 		bookInfo: {
 			listOfAllBooks,
 			listOfYearBooks,
