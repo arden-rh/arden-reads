@@ -82,10 +82,10 @@
 				>
 			</a>
 			<div class="flex gap-1 lg:gap-1.5 items-center">
-				<a href="https://github.com/arden-rh/arden-reads" target="_blank" class="pr-1">
+				<a href="https://github.com/arden-rh/arden-reads" target="_blank" class="pr-1" aria-label="Link to Github">
 					<Icon iconName="github" hover />
 				</a>
-				<button onclick={() => openMenu()} class="cursor-pointer focus-visible:p-0">
+				<button onclick={() => openMenu()} class="cursor-pointer focus-visible:p-0" aria-label="Open Calendar Menu">
 					<Icon iconName="calendar" hover />
 				</button>
 			</div>
@@ -151,7 +151,7 @@
 		class="w-full h-min flex flex-col lg:flex-row justify-center items-center text-center gap-1 lg:gap-4 pt-4 pb-6 px-4.5 lg:py-6 text-white fira-mono-regular mt-4 lg:mt-8 self-end"
 	>
 		<p>Copyrights Arden R.H. 2025 All rights reserved.</p>
-		<a href="/login" class="opacity-40" tabindex="-1">Admin Login</a>
+		<a href="/login" class="btn-basic bg-teal-900 hover:bg-teal-600" tabindex="-1">Admin Login</a>
 	</footer>
 </div>
 
