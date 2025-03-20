@@ -98,7 +98,7 @@
 	<div
 		class="w-full lg:max-w-[275px] xl:max-w-[400px] xl:min-w-[350px] bg-teal-900 rounded-lg pt-6 px-4 lg:px-2 xl:px-0 pb-0 lg:pb-2 xl:pb-4 grow"
 	>
-		<PagesChart listOfBooks={monthBooks} />
+		<PagesChart listOfBooks={monthBooks} {favouriteBookTitle} />
 	</div>
 	<FormatChart listOfBooks={monthBooks} />
 </section>
