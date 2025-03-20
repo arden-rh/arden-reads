@@ -148,7 +148,7 @@
 		{/if}
 	</main>
 	<footer
-		class="w-full flex flex-col lg:flex-row justify-center items-center text-center gap-1 lg:gap-4 pt-4 pb-6 px-4 lg:py-6 text-white fira-mono-regular mt-4 lg:mt-8 self-end"
+		class="w-full h-min flex flex-col lg:flex-row justify-center items-center text-center gap-1 lg:gap-4 pt-4 pb-6 px-4.5 lg:py-6 text-white fira-mono-regular mt-4 lg:mt-8 self-end"
 	>
 		<p>Copyrights Arden R.H. 2025 All rights reserved.</p>
 		<a href="/login" class="opacity-40" tabindex="-1">Admin Login</a>
