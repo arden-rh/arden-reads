@@ -110,7 +110,7 @@
 			</div>
 		{/each}
 		<button
-			class="h-fit p-1 px-2 mt-2 rounded-lg w-fit text-center text-sm fira-mono-medium text-teal-950 shadow-xl cursor-pointer 
+			class="h-fit p-1 px-2 mt-2 rounded-lg w-fit text-center text-sm fira-mono-mediumshadow-xl cursor-pointer
 			focus-visible:ring-teal-50 focus-visible:ring-3 hover:bg-teal-500 focus-visible:bg-teal-500
 			{showPecentage ? 'bg-teal-600' : 'bg-teal-700'}"
 			onclick={() => (showPecentage = !showPecentage)}
