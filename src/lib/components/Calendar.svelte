@@ -12,10 +12,6 @@
 
 	const years = [2024, 2025];
 
-	if (!currentParams.month) {
-		currentParams.month = months[monthNumber - 1].name;
-	}
-
 	function handleYearClick(year: number) {
 		menu.activeYear = year;
 	}
@@ -26,6 +22,8 @@
 		menu.open = false;
 		enableScroll();
 	}
+
+	$inspect({ currentParams, menu });
 </script>
 
 <div class="fira-mono-regular w-full">
