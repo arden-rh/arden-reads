@@ -6,6 +6,13 @@ import pb from '$lib/pocketbase';
 
 export const prerender = false;
 
+/** TODO
+ * 1. Update the login auth superuser instead
+ * 2. Add a redirect to the logout action
+ * 3. Add a redirect to the login action
+ * 4. Check Lucia for guidelines on how to handle cookies https://lucia-auth.com/sessions/cookies/sveltekit
+ */
+
 export const actions: Actions = {
 	login: async ({ cookies, request }) => {
 		const data = await request.formData();
