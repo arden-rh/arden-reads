@@ -6,10 +6,12 @@
 	// Components
 	import AuthorChart from '$lib/components/AuthorChart.svelte';
 	import BookChart from '$lib/components/BookChart.svelte';
+	import Button from '$lib/components/Button.svelte';
 	import FormatChart from '$lib/components/FormatChart.svelte';
 	import GenreChart from '$lib/components/GenreChart.svelte';
 	import ListBox from '$lib/components/ListBox.svelte';
 	import StatNumberBlock from '$lib/components/StatNumberBlock.svelte';
+
 	import { currentParams } from '../../states.svelte';
 
 	let { data }: { data: PageData } = $props();
@@ -104,14 +106,14 @@
 		<div class="flex flex-col w-full lg:w-4/5 xl:w-5/6">
 			<div class="w-full xl:w-4/5 flex flex-col lg:flex-row gap-5">
 				{#each buttonTitles as title, i}
-					<button
-						id="button-{i}"
-						class="h-fit p-6 rounded-lg w-full lg:w-1/5 text-center text-xl fira-mono-medium text-teal-950 shadow-xl focus-visible:ring-teal-50 focus-visible:ring-3 hover:bg-teal-500 focus-visible:bg-teal-500 cursor-pointer
-							{activeButton === i ? 'bg-teal-500' : 'bg-teal-300'}"
-						onclick={() => handleButtonClick(i, title)}
-					>
+					<Button
+						id={i.toString()}
 						{title}
-					</button>
+						theme="primary"
+						onClick={() => handleButtonClick(i, title)}
+						active={activeButton === i}
+						className="h-fit w-full lg:w-1/5 p-4 lg:p-6 lg:text-xl fira-mono-medium shadow-xl focus-visible:ring-3 cursor-pointer"
+					/>
 					{#if activeButton === i}
 						<div class="w-full xl:w-4/5 flex justify-center lg:hidden">
 							{#key activeButton}

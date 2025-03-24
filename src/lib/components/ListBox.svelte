@@ -34,14 +34,14 @@
 				<li
 					class="text-sm flex items-center gap-2 mb-3 lg:mr-2 xl:mr-4"
 				>
-					<span class="bg-teal-950 p-2 rounded-md shrink-0 min-w-[2rem] text-center">{i + 1}</span>
+					<span class="bg-teal-700 p-2 rounded-md shrink-0 min-w-[2rem] text-center">{i + 1}</span>
 					<span class="break-words">{author}</span>
 				</li>
 			{/each}
 		{:else if header === 'Books'}
 			{#each books as book, i}
 				<li class="text-sm/tight flex items-center gap-2 mb-3 lg:mr-2">
-					<span class="bg-teal-950 p-2 rounded-md shrink-0 min-w-[2rem] text-center">{i + 1}</span>
+					<span class="bg-teal-700 p-2 rounded-md shrink-0 min-w-[2rem] text-center">{i + 1}</span>
 					<span class="break-words">{book.title}<span class="fira-mono-medium px-1.5 text-teal-300">—</span>{book.author}</span>
 				</li>
 			{/each}

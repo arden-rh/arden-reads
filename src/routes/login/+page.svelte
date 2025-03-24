@@ -6,6 +6,8 @@
 	// Types
 	import type { ActionResult } from '@sveltejs/kit';
 
+	import Button from '$lib/components/Button.svelte';
+
 	let { form } = $props();
 
 	async function handleSubmit(
@@ -29,6 +31,7 @@
 
 		await applyAction(result);
 	}
+
 </script>
 
 <section class="col-start-1 col-end-7 row-start-1 row-end-6 flex flex-col gap-4 items-center">
@@ -66,11 +69,7 @@
 					name="password"
 					required
 				/>
-				<button
-					class="bg-teal-950 fira-mono-regular text-teal-200 rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md"
-				>
-					Login
-				</button>
+				<Button title="Login" theme="primary" />
 			</form>
 		{/if}
 		{#if activeState.loggedIn}
@@ -90,11 +89,7 @@
 					};
 				}}
 			>
-				<button
-					class="bg-teal-950 fira-mono-regular text-teal-200 rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md"
-				>
-					Logout
-				</button>
+				<Button title="Logout" theme="primary" />
 			</form>
 		{/if}
 	</div>

@@ -7,6 +7,7 @@
 	import PagesChart from './PagesChart.svelte';
 	import FormatChart from './FormatChart.svelte';
 	import ListBox from './ListBox.svelte';
+	import Button from './Button.svelte';
 
 	interface Props {
 		favouriteBookTitle?: string;
@@ -107,20 +108,20 @@
 		? 'row-start-7 row-end-9'
 		: 'row-start-5 row-end-6'} "
 >
-	<h2 class="flex fira-mono-medium text-2xl lg:w-1/5 xl:w-fit items-start lg:ml-2 lg:mt-5">
+	<h2 class="flex fira-mono-medium text-xl lg:text-2xl lg:w-1/5 xl:w-fit items-start lg:ml-2 lg:mt-5">
 		List of all:
 	</h2>
 	<div class="flex flex-col w-full lg:w-4/5 xl:w-5/6">
 		<div class="w-full xl:w-4/5 flex flex-col lg:flex-row gap-5">
 			{#each buttonTitles as title, i}
-				<button
-					id="button-{i}"
-					class="h-fit p-6 rounded-lg w-full lg:w-1/5 text-center text-xl fira-mono-medium text-teal-950 shadow-xl focus-visible:ring-teal-50 focus-visible:ring-3 hover:bg-teal-500 focus-visible:bg-teal-500 cursor-pointer 
-					{activeButton === i ? 'bg-teal-500' : 'bg-teal-300'}"
-					onclick={() => handleButtonClick(i, title)}
-				>
-					{title}
-				</button>
+				<Button
+					id={i.toString()}
+					title={title}
+					theme="primary"
+					onClick={() => handleButtonClick(i, title)}
+					active={activeButton === i}
+					className="h-fit w-full lg:w-1/5 p-4 lg:p-6 lg:text-xl fira-mono-medium shadow-xl focus-visible:ring-3 cursor-pointer"
+				/>
 				{#if activeButton === i}
 					<div class="w-full xl:w-4/5 flex justify-center lg:hidden">
 						{#key activeButton}

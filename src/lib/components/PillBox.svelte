@@ -14,7 +14,7 @@
 	<h3 class="fira-mono-medium text-2xl mb-4">{header}</h3>
 	<div class="flex gap-2 flex-wrap justify-center">
 		{#each arrayOfPills as pillTitle}
-			<div class="bg-teal-950 p-2 rounded-md">{pillTitle}</div>
+			<div class="bg-teal-700 p-2 rounded-md">{pillTitle}</div>
 		{/each}
 	</div>
 </div>

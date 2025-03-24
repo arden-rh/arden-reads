@@ -6,6 +6,8 @@
 	import BookForm from '$lib/components/BookForm.svelte';
 
 	import { applyAction, deserialize } from '$app/forms';
+	import Button from '$lib/components/Button.svelte';
+	import ButtonLink from '$lib/components/ButtonLink.svelte';
 
 	let { form } = $props();
 
@@ -53,18 +55,8 @@
 			<div class="flex flex-col gap-2 items-center">
 				<span>Return to the start page?</span>
 				<span class="flex gap-4 items-center justify-center">
-					<button
-						class="bg-teal-950 fira-mono-regular rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md w-20"
-						onclick={() => (hideDialogue = true)}
-					>
-						No
-					</button>
-					<a
-						class="bg-teal-950 fira-mono-regular rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md w-20"
-						href="/"
-					>
-						Yes
-					</a>
+					<Button title="No" theme="primary" onClick={() => (hideDialogue = true)} className="w-20" />
+					<ButtonLink title="Yes" linkName="/" theme="primary" typeOfLink="internal" className="w-20" />
 				</span>
 			</div>
 		</div>

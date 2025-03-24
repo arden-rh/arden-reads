@@ -183,13 +183,13 @@
 		<span class="flex gap-4 w-full">
 			<button
 				type="submit"
-				class="bg-teal-950 fira-mono-regular rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md mt-4 flex-grow"
+				class="bg-teal-950 hover:bg-teal-700 cursor-pointer fira-mono-regular rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md mt-4 flex-grow"
 			>
 				Submit
 			</button>
 			<button
 				type="reset"
-				class="bg-teal-950 fira-mono-regular rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md mt-4 flex-grow"
+				class="bg-teal-950 hover:bg-teal-700 cursor-pointer fira-mono-regular rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md mt-4 flex-grow"
 			>
 				Reset
 			</button>

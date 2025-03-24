@@ -3,9 +3,10 @@
 	import '../app.css';
 
 	// Components
+	import ButtonLink from '$lib/components/ButtonLink.svelte';
+	import Calendar from '$lib/components/Calendar.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import LogotypeIcon from '$lib/components/LogotypeIcon.svelte';
-	import Calendar from '$lib/components/Calendar.svelte';
 	import { Diamonds } from 'svelte-loading-spinners';
 
 	import { currentParams, menu, activeState } from '../states.svelte';
@@ -65,7 +66,7 @@
 </svelte:head>
 
 <div class="flex flex-col justify-between items-center h-dvh min-h-dvh">
-	<nav class="text-white p-4 mt-2 flex flex-col gap-4 relative w-full">
+	<nav class="text-white p-4 lg:mt-2 flex flex-col gap-4 relative w-full">
 		<div class="flex justify-between items-center xl:mx-4">
 			<a
 				href="/"
@@ -85,6 +86,7 @@
 				<a
 					href="https://github.com/arden-rh/arden-reads"
 					target="_blank"
+					rel="noreferrer"
 					class="pr-1"
 					aria-label="Link to Github"
 				>
@@ -157,10 +159,16 @@
 		{/if}
 	</main>
 	<footer
-		class="w-full min-h-[130px] lg:min-h-[100px] h-fit flex flex-col lg:flex-row justify-center items-center text-center gap-1 lg:gap-4 pt-4 pb-6 px-4.5 lg:py-6 text-white fira-mono-regular mt-4 lg:mt-8 self-end"
+		class="w-full min-h-[130px] lg:min-h-[100px] h-fit flex flex-col lg:flex-row justify-center items-center text-center gap-2 lg:gap-4 pt-4 pb-6 px-4.5 lg:py-6 text-white fira-mono-regular mt-4 lg:mt-8 self-end"
 	>
-		<p>Copyrights Arden R.H. 2025 All rights reserved.</p>
-		<a href="/login" class="btn-basic bg-teal-900 hover:bg-teal-600" tabindex="-1">Admin Login</a>
+		<p><span class="block lg:inline">Copyrights Arden R.H. 2025</span> All rights reserved.</p>
+		<ButtonLink
+			title="Admin Login"
+			linkName="/login"
+			theme="secondary"
+			typeOfLink="admin"
+			className="py-1.5"
+			/>
 	</footer>
 </div>
 
