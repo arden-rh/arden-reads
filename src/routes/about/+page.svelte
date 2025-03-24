@@ -48,6 +48,19 @@
 		{:else}
 			<div class="flex flex-col gap-2">
 				<h2 class="fira-mono-medium text-2xl text-center">What is this project?</h2>
+				<p class="text-[0.95rem] lg:text-base">
+					This site is a personal pet project of Arden, with the main purpose of updating and adding
+					to his knowledge of the different technologies used.
+					<span class="block mt-3">
+						It is built in Svelte 5 with SvelteKit and Tailwind 4. The database used for keeping
+						track of the books is in PocketBase, which is deployed via Railway from <a
+							href="https://github.com/arden-rh/arden-reads"
+							rel="noreferrer"
+							target="_blank"
+							class="underline underline-offset-3">Github</a>. 
+							The frontend is deployed from Vercel.
+					</span>
+				</p>
 			</div>
 		{/if}
 		<div
@@ -73,7 +86,7 @@
 				</li>
 			</ul>
 			<p class="text-[0.95rem] lg:text-base">
-				Or contact him directly at 
+				Or contact him directly at
 				<a
 					href="mailto:arden.haldorson@gmail.com"
 					target="_blank"

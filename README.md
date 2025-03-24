@@ -3,7 +3,7 @@ This is a site that shows statistics about how many books I've read each month/y
 
 ## Technologies
 Built in Svelte 5 with SvelteKit and Tailwind 4. <br> 
-Database in Pocketbase. <br>
+Database in PocketBase. <br>
 Deployed via Railway and Vercel.
 
 ### Google Fonts
