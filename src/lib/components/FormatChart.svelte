@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Book } from '$lib/types/book.types';
+	import Button from './Button.svelte';
 
 	interface Props {
 		listOfBooks: Book[];
@@ -11,6 +12,8 @@
 		format: string;
 		count: number;
 		percentage: number;
+		strokeLength: number;
+		previousTotal: number;
 		color: string;
 		legendColor: string;
 	}[] = $state([]);
@@ -34,6 +37,7 @@
 	];
 
 	let showPecentage = $state(false);
+	const circumference = 2 * Math.PI * 15;
 
 	function countFormats(books: Book[]): Record<string, number> {
 		const formatCounts: Record<string, number> = {};
@@ -53,11 +57,20 @@
 
 	function transformFormatCounts(formatCounts: Record<string, number>) {
 		const total = Object.values(formatCounts).reduce((sum, count) => sum + count, 0);
+		let accumulatedOffset = 0;
+
 		return Object.entries(formatCounts).map(([format, count], index) => {
+			const percentage = (count / total) * 100;
+			const strokeLength = (percentage / 100) * circumference;
+			const previousTotal = accumulatedOffset;
+			accumulatedOffset += strokeLength;
+
 			return {
 				format: transformTitle(format),
 				count,
-				percentage: (count / total) * 100,
+				percentage,
+				strokeLength,
+				previousTotal,
 				legendColor: `${legendColors[index % legendColors.length]}`,
 				color: `${chartColors[index % chartColors.length]}`
 			};
@@ -66,6 +79,7 @@
 
 	const formats = countFormats(listOfBooks);
 	formatData = transformFormatCounts(formats);
+
 </script>
 
 <div
@@ -73,12 +87,11 @@
 >
 	<figure class="flex flex-col items-center h-5/6 min-w-2/3">
 		<figcaption class="fira-mono-medium text-xl mb-2 lg:mb-4">Formats</figcaption>
-
 		<svg
 			viewBox="0 0 36 36"
 			class="w-[200px] lg:w-[150px] xl:w-[300px] max-w-[200px] lg:max-w-[150px] xl:max-w-[300px] h-full"
 		>
-			{#each formatData as { color, percentage }, index}
+			{#each formatData as { color, strokeLength, previousTotal }}
 				<circle
 					r="15"
 					cx="18"
@@ -86,8 +99,8 @@
 					fill="transparent"
 					stroke={color}
 					stroke-width="5"
-					stroke-dasharray="{percentage} 100"
-					stroke-dashoffset={formatData.slice(0, index).reduce((sum, d) => sum - d.percentage, 0)}
+					stroke-dasharray="{strokeLength} {circumference}"
+					stroke-dashoffset="-{previousTotal}"
 					transform="rotate(-90 18 18)"
 				>
 				</circle>
@@ -109,13 +122,11 @@
 				<span class="text-[0.7rem] lg:text-sm text-left">{format}</span>
 			</div>
 		{/each}
-		<button
-			class="h-fit p-1 px-2 mt-2 rounded-lg w-fit text-center text-sm fira-mono-medium shadow-xl cursor-pointer
-			focus-visible:ring-teal-50 focus-visible:ring-3 hover:bg-teal-500 focus-visible:bg-teal-500
-			{showPecentage ? 'bg-teal-600' : 'bg-teal-700'}"
-			onclick={() => (showPecentage = !showPecentage)}
-		>
-			{showPecentage ? 'Hide %' : 'Show %'}
-		</button>
+		<Button
+			title={showPecentage ? 'Hide %' : 'Show %'}
+			theme="teritary"
+			onClick={() => (showPecentage = !showPecentage)}
+			className="p-1 px-2 mt-2 w-fit text-sm cursor-pointer focus-visible:ring-3"
+		/>
 	</div>
 </div>
