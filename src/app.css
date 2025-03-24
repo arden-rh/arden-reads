@@ -89,6 +89,6 @@
 	}
 
 	.btn-basic {
-		@apply text-white shadow-md rounded-lg p-2 flex justify-center items-center tracking-wide;
+		@apply text-white text-center shadow-md rounded-lg p-2 flex justify-center items-center tracking-wide;
 	}
 }
