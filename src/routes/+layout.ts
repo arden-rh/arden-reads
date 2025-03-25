@@ -9,8 +9,6 @@ import { getAllAuthors, getAllFormats, getAllGenres } from '$lib/functions/getBo
 import type { LayoutLoad } from './$types';
 import { currentParams } from '../states.svelte';
 
-export const prerender = true;
-
 export const load: LayoutLoad = async ({ data }) => {
 	if (!data) error(404, { message: 'No data found' });
 

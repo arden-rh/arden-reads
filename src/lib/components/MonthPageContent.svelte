@@ -55,7 +55,7 @@
 		<div class="flex flex-col-reverse lg:flex-row items-end justify-center w-full gap-8 lg:gap-6">
 			<MonthStatistics amountOfBooks={monthBooks.length} {amountOfUniqueAuthors} />
 			<div
-				class="flex items-end justify-start gap-2 lg:gap-4 w-full px-2 xl:w-fit xl:pt-6
+				class="flex items-end justify-center gap-2 lg:gap-4 w-full px-2 xl:w-fit xl:pt-6
 					{monthBooks.length > 10 ? 'lg:w-4/6' : 'lg:w-fit'}"
 			>
 				{#each monthBooks as book}
@@ -78,7 +78,7 @@
 		<div class="flex flex-col-reverse lg:flex-row items-end justify-center w-full gap-8">
 			<MonthStatistics amountOfBooks={monthBooks.length} {amountOfUniqueAuthors} />
 			<div
-				class="flex items-end justify-start gap-2 lg:gap-4 w-full px-2 xl:w-fit xl:pt-6
+				class="flex items-end justify-center gap-2 lg:gap-4 w-full px-2 xl:w-fit xl:pt-6
 					{monthBooks.length > 10 ? 'lg:w-4/6' : 'lg:w-fit'}"
 			>
 				{#each monthBooks as book}
