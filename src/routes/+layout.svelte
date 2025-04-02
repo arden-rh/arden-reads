@@ -21,6 +21,8 @@
 
 	let { children, data }: LayoutProps = $props();
 
+	let amountOfBooksCurrentMonth = $state(data.amountOfBooksCurrentMonth);
+
 	function openMenu() {
 		disableScrollFunction();
 
@@ -118,7 +120,7 @@
 			}}
 		>
 			<h2 id="menu-heading" class="sr-only">Main Manu: Calendar</h2>
-			<Calendar monthNumber={data.currentMonthNum} year={data.currentYear} />
+			<Calendar monthNumber={data.currentMonthNum} year={data.currentYear} amountOfBooksCurrentMonth={amountOfBooksCurrentMonth} />
 			{#if activeState.loggedIn}
 				<a
 					href="/create-book"

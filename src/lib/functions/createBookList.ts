@@ -3,7 +3,7 @@ import type { ListResult, RecordModel } from 'pocketbase';
 
 export const createBookList = (listOfBooks: RecordModel[]) => {
 	
-	const allBooks: Book[] = listOfBooks.map((book) => {
+	const bookList: Book[] = listOfBooks.map((book) => {
 		const {
 			title,
 			author,
@@ -30,10 +30,10 @@ export const createBookList = (listOfBooks: RecordModel[]) => {
 		};
 	});
 
-	return allBooks;
+	return bookList;
 };
 
-export const createYearBookList = (listOfBooks: ListResult<RecordModel>) => {
+export const createBookListFromListResult = (listOfBooks: ListResult<RecordModel>) => {
 
 	const bookList: Book[] = listOfBooks.items.map((book) => {
 		const {

@@ -1,13 +1,18 @@
 import { error } from '@sveltejs/kit';
 
 // Functions
-import { createBookList, createYearBookList } from '$lib/functions/createBookList';
+import { createBookList, createBookListFromListResult } from '$lib/functions/createBookList';
 import { createBookFromRecord } from '$lib/functions/createBook';
 import { getSumOfNumericProperty } from '$lib/functions/getSumOfNumericProperty';
 import { getAllAuthors, getAllFormats, getAllGenres } from '$lib/functions/getBookInfo';
 
 import type { LayoutLoad } from './$types';
 import { currentParams } from '../states.svelte';
+
+/** TODO
+ * - Create array of all months with the amount of books read in each month
+ * - Create functionality to check if 0 books were read in a month to be able to disable month in Calendar
+ */
 
 export const load: LayoutLoad = async ({ data }) => {
 	if (!data) error(404, { message: 'No data found' });
@@ -19,8 +24,9 @@ export const load: LayoutLoad = async ({ data }) => {
 	const { listOfAllBooks, listOfYearBooks, currentMonthBooks, previousMonthBooks, latestBookRead } = bookInfo;
 
 	const allBooks = createBookList(listOfAllBooks);
-	const yearBooks = createYearBookList(listOfYearBooks);
+	const yearBooks = createBookListFromListResult(listOfYearBooks);
 	const latestBook = createBookFromRecord(latestBookRead);
+	const amountOfBooksCurrentMonth = currentMonthBooks.items.length;
 
 	const { authors, amountOfUniqueAuthors } = getAllAuthors(allBooks);
 	const { genres, amountOfGenres } = getAllGenres(allBooks);
@@ -70,6 +76,7 @@ export const load: LayoutLoad = async ({ data }) => {
 			totalPagesRead
 		},
 		currentMonthBooks,
+		amountOfBooksCurrentMonth,
 		previousMonthBooks,
 		latestBook
 	};

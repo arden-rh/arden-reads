@@ -9,9 +9,10 @@
 	interface Props {
 		monthNumber: number;
 		year: number;
+		amountOfBooksCurrentMonth: number;
 	}
 
-	let { monthNumber, year }: Props = $props();
+	let { monthNumber, year, amountOfBooksCurrentMonth }: Props = $props();
 
 	const years = [2024, 2025];
 
@@ -56,7 +57,6 @@
 					className="p-1 px-2"
 					onClick={() => handleYearClick(year)}
 				/>
-
 			{/each}
 		</div>
 	</div>
@@ -69,7 +69,7 @@
 			className="tracking-widest"
 			onClick={closeMenuAndEnableScroll}
 			typeOfLink="internal"
-			/>
+		/>
 		<div class="grid grid-cols-3 gap-2">
 			{#each months as month}
 				{#if menu.activeYear && menu.activeYear < year}
@@ -80,16 +80,17 @@
 						active={currentParams.month === month.name && currentParams.year === menu.activeYear}
 						onClick={closeMenuAndEnableScroll}
 						typeOfLink="internal"
-						/>
+					/>
 				{:else if month.number <= monthNumber && menu.activeYear === year}
 					<ButtonLink
 						title={month.abr}
 						linkName="/{menu.activeYear}/{month.name}"
 						theme="primary"
 						active={currentParams.month === month.name && currentParams.year === menu.activeYear}
+						disabled={amountOfBooksCurrentMonth === 0 && monthNumber === month.number}
 						onClick={closeMenuAndEnableScroll}
 						typeOfLink="internal"
-						/>
+					/>
 				{:else}
 					<div class="btn-basic bg-teal-900 text-gray-300 shadow-none">
 						{month.abr}
