@@ -1,6 +1,5 @@
 <script lang="ts">
-
-	import { activeState } from "../../states.svelte";
+	import { activeState } from '../../states.svelte';
 	interface Props {
 		day: number;
 		currentMonth: string;
@@ -40,7 +39,7 @@
 
 		if (numberOfBooksPreviousMonth === 1) {
 			bookText = 'book read in';
-		};
+		}
 	} else if (numberOfBooksCurrentMonth === 1 && day > 15) {
 		month = currentMonth;
 		monthNumber = currentMonthNumber;
@@ -62,7 +61,11 @@
 	class="text-[1.2rem] px-2 xl:p-6 flex flex-col xl:flex-row justify-center items-center text-white"
 >
 	<span class="text-9xl xl:text-[12rem] xl:leading-[9rem] xl:mr-4 text-teal-200 fugaz-one-regular">
-		{numberOfBooksMonth}
+		{#if numberOfBooksMonth === 0}
+			No
+		{:else}
+			{numberOfBooksMonth}
+		{/if}
 	</span>
 	<span class="italic flex flex-col xl:flex-row items-start xl:items-baseline">
 		{bookText}
