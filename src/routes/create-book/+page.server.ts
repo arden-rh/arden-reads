@@ -15,7 +15,7 @@ export const load: PageServerLoad = async ({ parent }) => {
 	const admin = false;
 
 	if (!auth || !admin) {
-		throw redirect(307, '/');
+		redirect(307, '/');
 	}
 
 	return { auth };
