@@ -3,7 +3,6 @@
 	import type { PageData } from './$types';
 
 	// Components
-	import ButtonLink from '$lib/components/ButtonLink.svelte';
 	import MonthPageContent from '$lib/components/MonthPageContent.svelte';
 	import MonthPageHeader from '$lib/components/MonthPageHeader.svelte';
 

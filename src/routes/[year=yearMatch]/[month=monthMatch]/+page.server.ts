@@ -60,7 +60,7 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 	const { auth } = await parent();
 
 	if (!auth) {
-		throw error(401, 'Unauthorized');
+		error(401, 'Unauthorized');
 	}
 
 	const getMonthBooks = async (filterString: string) => {
@@ -83,7 +83,7 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 	const monthIndex = compareMonth(params.month);
 
 	if (monthIndex === undefined) {
-		throw error(404, 'No month index found');
+		error(404, 'No month index found');
 	}
 
 	const futureDate = monthIndex > currentMonthIndex && Number(params.year) === currentYear;
