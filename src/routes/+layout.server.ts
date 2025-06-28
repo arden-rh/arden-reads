@@ -5,8 +5,9 @@ import { getCurrentDate } from '$lib/functions/getCurrentDate';
 import type { LayoutServerLoad } from './$types';
 
 import pb from '$lib/pocketbase';
+import { list } from 'postcss';
 
-export const load: LayoutServerLoad = async ( data ) => {
+export const load: LayoutServerLoad = async (data) => {
 	const adminEmail = import.meta.env.VITE_POCKETBASE_ADMIN_EMAIL;
 	const adminPW = import.meta.env.VITE_POCKETBASE_ADMIN_PW;
 	const auth = await adminLogin(adminEmail, adminPW);
@@ -42,11 +43,17 @@ export const load: LayoutServerLoad = async ( data ) => {
 	const latestBookRead = await pb.collection('books').getFirstListItem('', { sort: '-date_read' });
 
 	const bookInfo = {
-		listOfAllBooks: structuredClone(listOfAllBooks),
-		listOfYearBooks: structuredClone(listOfYearBooks),
-		currentMonthBooks: structuredClone(currentMonthBooks),
-		previousMonthBooks: structuredClone(previousMonthBooks),
-		latestBookRead: structuredClone(latestBookRead)
+		// listOfAllBooks: listOfAllBooks.map((book) => structuredClone(book)),
+		listOfAllBooks: JSON.parse(JSON.stringify(listOfAllBooks)),
+		// listOfYearBooks: structuredClone(listOfYearBooks),
+		listOfYearBooks: JSON.parse(JSON.stringify(listOfYearBooks)),
+		// currentMonthBooks: structuredClone(currentMonthBooks),
+		currentMonthBooks: JSON.parse(JSON.stringify(currentMonthBooks)),
+		// previousMonthBooks: structuredClone(previousMonthBooks),
+		previousMonthBooks: JSON.parse(JSON.stringify(previousMonthBooks)),
+		// latestBookRead: structuredClone(latestBookRead),
+		latestBookRead: JSON.parse(JSON.stringify(latestBookRead))
+
 	};
 
 	// console.log('Book info loaded:', bookInfo);
