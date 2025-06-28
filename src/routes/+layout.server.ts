@@ -1,11 +1,11 @@
 import { adminLogin } from '$lib/pocketbase';
 import { error, fail } from '@sveltejs/kit';
 import { getCurrentDate } from '$lib/functions/getCurrentDate';
+import { sanitizeListResult } from '$lib/functions/sanitizeListResult';
 
 import type { LayoutServerLoad } from './$types';
 
 import pb from '$lib/pocketbase';
-import { list } from 'postcss';
 
 export const load: LayoutServerLoad = async (data) => {
 	const adminEmail = import.meta.env.VITE_POCKETBASE_ADMIN_EMAIL;
@@ -42,18 +42,20 @@ export const load: LayoutServerLoad = async (data) => {
 
 	const latestBookRead = await pb.collection('books').getFirstListItem('', { sort: '-date_read' });
 
+	const newListOfYearBooks = sanitizeListResult(listOfYearBooks);
+
 	const bookInfo = {
 		// listOfAllBooks: listOfAllBooks.map((book) => structuredClone(book)),
-		listOfAllBooks: JSON.parse(JSON.stringify(listOfAllBooks)),
-		// listOfYearBooks: structuredClone(listOfYearBooks),
-		listOfYearBooks: JSON.parse(JSON.stringify(listOfYearBooks)),
+		// listOfAllBooks: JSON.parse(JSON.stringify(listOfAllBooks)),
+		listOfAllBooks,
+		listOfYearBooks: newListOfYearBooks,
+		// listOfYearBooks: JSON.parse(JSON.stringify(listOfYearBooks)),
 		// currentMonthBooks: structuredClone(currentMonthBooks),
-		currentMonthBooks: JSON.parse(JSON.stringify(currentMonthBooks)),
+		currentMonthBooks: sanitizeListResult(currentMonthBooks),
 		// previousMonthBooks: structuredClone(previousMonthBooks),
-		previousMonthBooks: JSON.parse(JSON.stringify(previousMonthBooks)),
+		previousMonthBooks: sanitizeListResult(previousMonthBooks),
 		// latestBookRead: structuredClone(latestBookRead),
-		latestBookRead: JSON.parse(JSON.stringify(latestBookRead))
-
+		latestBookRead
 	};
 
 	// console.log('Book info loaded:', bookInfo);
