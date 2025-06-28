@@ -43,16 +43,10 @@ export const load: LayoutServerLoad = async (data) => {
 	const latestBookRead = await pb.collection('books').getFirstListItem('', { sort: '-date_read' });
 
 	const bookInfo = {
-		// listOfAllBooks: listOfAllBooks.map((book) => structuredClone(book)),
-		// listOfAllBooks: JSON.parse(JSON.stringify(listOfAllBooks)),
-		listOfAllBooks: listOfAllBooks.map((book) => structuredClone(book)),
+		listOfAllBooks: structuredClone(listOfAllBooks),
 		listOfYearBooks: sanitizeListResult(listOfYearBooks),
-		// listOfYearBooks: JSON.parse(JSON.stringify(listOfYearBooks)),
-		// currentMonthBooks: structuredClone(currentMonthBooks),
 		currentMonthBooks: sanitizeListResult(currentMonthBooks),
-		// previousMonthBooks: structuredClone(previousMonthBooks),
 		previousMonthBooks: sanitizeListResult(previousMonthBooks),
-		// latestBookRead: structuredClone(latestBookRead),
 		latestBookRead: structuredClone(latestBookRead)
 	};
 
@@ -60,13 +54,6 @@ export const load: LayoutServerLoad = async (data) => {
 
 	return {
 		auth,
-		// bookInfo: {
-		// 	listOfAllBooks,
-		// 	listOfYearBooks,
-		// 	currentMonthBooks,
-		// 	previousMonthBooks,
-		// 	latestBookRead
-		// },
 		bookInfo,
 		dateInfo: {
 			currentYear,
