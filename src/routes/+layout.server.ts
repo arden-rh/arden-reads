@@ -61,7 +61,7 @@ export const load: LayoutServerLoad = async (data) => {
 	return {
 		auth,
 		bookInfo,
-		dateInfo: structuredClone({
+		dateInfo: {
 			currentYear,
 			currentMonthNum,
 			currentMonthString,
@@ -71,6 +71,6 @@ export const load: LayoutServerLoad = async (data) => {
 			previousMonthNum,
 			previousMonthString,
 			year
-		})
+		},
 	};
 };
