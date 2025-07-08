@@ -91,30 +91,30 @@ export const load: LayoutLoad = async ({ data }) => {
 
 		},
 		dateInfo,
-		// yearStats: {
-		// 	yearBooks,
-		// 	yearAmountOfFormats,
-		// 	yearAmountOfGenres,
-		// 	yearAmountOfUniqueAuthors,
-		// 	yearAuthors,
-		// 	yearFormats,
-		// 	yearGenres,
-		// 	minutesListenedYear,
-		// 	totalPagesReadYear
-		// },
-		// allTimeStats: {
-		// 	allBooks,
-		// 	amountOfFormats,
-		// 	amountOfGenres,
-		// 	amountOfUniqueAuthors,
-		// 	authors,
-		// 	formats,
-		// 	genres,
-		// 	minutesListened,
-		// 	totalPagesRead
-		// },
-		// currentMonthBooksCount,
-		// previousMonthBooksCount,
-		// latestBook
+		yearStats: {
+			yearBooks,
+			yearAmountOfFormats,
+			yearAmountOfGenres,
+			yearAmountOfUniqueAuthors,
+			yearAuthors,
+			yearFormats,
+			yearGenres,
+			minutesListenedYear,
+			totalPagesReadYear
+		},
+		allTimeStats: {
+			allBooks,
+			amountOfFormats,
+			amountOfGenres,
+			amountOfUniqueAuthors,
+			authors,
+			formats,
+			genres,
+			minutesListened,
+			totalPagesRead
+		},
+		currentMonthBooksCount,
+		previousMonthBooksCount,
+		latestBook
 	};
 };
