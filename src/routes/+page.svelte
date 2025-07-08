@@ -30,8 +30,8 @@
 	let amountOfBooks = $state(allBooks.length | 0);
 	let amountOfUniqueAuthors: number | undefined = $state(allTimeAuthors | 0);
 	let numberOfBooksYear: number = $state(yearBooks.length);
-	let numberOfBooksCurrentMonth: number | undefined = $state(data.currentMonthBooks.items.length);
-	let numberOfBooksPreviousMonth: number | undefined = $state(data.previousMonthBooks.items.length);
+	let numberOfBooksCurrentMonth: number | undefined = $state(data.currentMonthBooksCount);
+	let numberOfBooksPreviousMonth: number | undefined = $state(data.previousMonthBooksCount);
 	let minutesListened = $state(allTimeMinutes);
 	let totalPagesRead = $state(allTimePages);
 	let formats = $state(allTimeFormats);
@@ -46,7 +46,7 @@
 	let previousMonthNumber = previousMonthNum;
 	let currentMonth = currentMonthString;
 	let currentMonthNumber = currentMonthNum;
-	
+
 </script>
 
 <section
