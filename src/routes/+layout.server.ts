@@ -27,7 +27,11 @@ export const load: LayoutServerLoad = async (data) => {
 	});
 
 	// const currentMonthBooks = await pb.collection('books').getList(1, 50, { filter: filterString });
-	const currentMonthBooks = await pb.collection('books').getList(1, 50, { filter: `date_read >= "${2025}-07-01 00:00:00" && date_read <= "${2025}-07-30 23:59:59"` });
+	const currentMonthBooks = await pb
+		.collection('books')
+		.getList(1, 50, {
+			filter: `date_read >= "${2025}-07-01 00:00:00" && date_read <= "${2025}-07-30 23:59:59"`
+		});
 
 	const previousMonthBooks = await pb
 		.collection('books')
@@ -51,7 +55,21 @@ export const load: LayoutServerLoad = async (data) => {
 
 	return {
 		auth,
-		bookInfo,
+		// auth: { user: null }, // safely fake
+		bookInfo: {
+			listOfAllBooks: [],
+			listOfYearBooks: {
+				page: 1,
+				perPage: 1,
+				totalItems: 0,
+				totalPages: 1,
+				items: []
+			},
+			currentMonthBooksCount: 0,
+			previousMonthBooksCount: 0,
+			latestBookRead: null
+		},
+		// bookInfo,
 		dateInfo: {
 			currentYear: 2025,
 			currentMonthNum: 7,

@@ -21,17 +21,36 @@ export const load: LayoutLoad = async ({ data }) => {
 
 	if (!bookInfo || !dateInfo) error(404, { message: 'Book and/or date data not found' });
 
-	const { listOfAllBooks, listOfYearBooks, currentMonthBooksCount, previousMonthBooksCount, latestBookRead } = bookInfo;
+	const {
+		listOfAllBooks,
+		listOfYearBooks,
+		currentMonthBooksCount,
+		previousMonthBooksCount,
+		// latestBookRead
+	} = bookInfo;
 
 	const allBooks = createBookList(listOfAllBooks);
 	const yearBooks = createBookListFromListResult(listOfYearBooks);
-	const latestBook = createBookFromRecord(latestBookRead);
+	// const latestBook = createBookFromRecord(latestBookRead);
+	const latestBook = {
+	id: '222',
+	author: 'hej',
+	date_read: '2023-10-01T00:00:00.000Z',
+	favourite_book_per_month: false,
+	formats: ['paperback'],
+	genres: ['fantasy'],
+	minutes: 0,
+	owned: true,
+	pages: 300,
+	title: 'Test Book'
+	}
 
 	const { authors, amountOfUniqueAuthors } = getAllAuthors(allBooks);
 	const { genres, amountOfGenres } = getAllGenres(allBooks);
 	const { formats, amountOfFormats } = getAllFormats(allBooks);
 
-	const { authors: yearAuthors, amountOfUniqueAuthors: yearAmountOfUniqueAuthors } = getAllAuthors(yearBooks);
+	const { authors: yearAuthors, amountOfUniqueAuthors: yearAmountOfUniqueAuthors } =
+		getAllAuthors(yearBooks);
 	const { genres: yearGenres, amountOfGenres: yearAmountOfGenres } = getAllGenres(yearBooks);
 	const { formats: yearFormats, amountOfFormats: yearAmountOfFormats } = getAllFormats(yearBooks);
 
@@ -86,9 +105,9 @@ export const load: LayoutLoad = async ({ data }) => {
 	return {
 		metaData: {
 			title: 'Arden Reads',
-			description: 'A place to keep track of all the books that Arden reads and listens to, showing stats for separate months and years.',
-			url: 'https://www.arden-reads.com',
-
+			description:
+				'A place to keep track of all the books that Arden reads and listens to, showing stats for separate months and years.',
+			url: 'https://www.arden-reads.com'
 		},
 		dateInfo,
 		yearStats: {
