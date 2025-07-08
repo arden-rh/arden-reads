@@ -25,14 +25,14 @@
 
 {#if data.futureDate}
 	<AltMonthPageContent
-		currentYear={data.currentYear.toString()}
+		currentYear={data.dateInfo.currentYear.toString()}
 		title="Trying to predict the future?"
 		isThisTheFuture
 	/>
 {:else}
 	<MonthPageHeader month={currentParams.month} />
 	{#if monthBooks.length === 0}
-		<AltMonthPageContent currentYear={data.currentYear.toString()} title="Hmm..." isThisTheFuture={false} />
+		<AltMonthPageContent currentYear={data.dateInfo.currentYear.toString()} title="Hmm..." isThisTheFuture={false} />
 	{:else}
 		<MonthPageContent {authors} {monthBooks} {favouriteBookTitle} {amountOfUniqueAuthors} />
 	{/if}

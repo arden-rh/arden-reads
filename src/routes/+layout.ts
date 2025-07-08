@@ -11,7 +11,6 @@ import { currentParams } from '../states.svelte';
 
 /** TODO
  * - Create array of all months with the amount of books read in each month
- * - Create functionality to check if 0 books were read in a month to be able to disable month in Calendar
  */
 
 export const load: LayoutLoad = async ({ data }) => {
@@ -52,7 +51,7 @@ export const load: LayoutLoad = async ({ data }) => {
 			url: 'https://www.arden-reads.com',
 
 		},
-		...dateInfo,
+		dateInfo,
 		yearStats: {
 			yearBooks,
 			yearAmountOfFormats,
