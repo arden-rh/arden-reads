@@ -53,29 +53,15 @@ export const load: LayoutServerLoad = async (data) => {
 	const bookInfo = {
 		listOfAllBooks: structuredClone(listOfAllBooks),
 		listOfYearBooks: sanitizeListResult(listOfYearBooks),
-		// currentMonthBooks: sanitizeListResult(currentMonthBooks),
-		// previousMonthBooks: sanitizeListResult(previousMonthBooks),
 		currentMonthBooksCount,
 		previousMonthBooksCount,
 		latestBookRead: structuredClone(latestBookRead)
 	};
 
-	console.log('dateInfo', {
-		currentYear,
-		currentMonthNum,
-		currentMonthString,
-		day,
-		paramMonth,
-		paramYear,
-		previousMonthNum,
-		previousMonthString,
-		year
-	});
-
 	return {
 		auth,
 		bookInfo,
-		dateInfo: {
+		dateInfo: structuredClone({
 			currentYear,
 			currentMonthNum,
 			currentMonthString,
@@ -85,6 +71,6 @@ export const load: LayoutServerLoad = async (data) => {
 			previousMonthNum,
 			previousMonthString,
 			year
-		}
+		})
 	};
 };
