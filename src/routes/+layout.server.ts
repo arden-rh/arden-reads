@@ -62,11 +62,6 @@ export const load: LayoutServerLoad = async (data) => {
 			previousMonthNum: 6,
 			previousMonthString: 'June',
 			year: 2025
-		},
-		metaData: {
-			title: 'Debug',
-			description: 'Debugging layout server',
-			url: 'https://debug.local'
 		}
 	};
 };
