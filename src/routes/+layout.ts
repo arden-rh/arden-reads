@@ -1,4 +1,5 @@
 import { error } from '@sveltejs/kit';
+// import * as devalue from 'devalue';
 
 // Functions
 import { createBookList, createBookListFromListResult } from '$lib/functions/createBookList';
@@ -40,17 +41,14 @@ export const load: LayoutLoad = async ({ data }) => {
 	const totalPagesReadYear = getSumOfNumericProperty(yearBooks, 'pages');
 	const minutesListenedYear = getSumOfNumericProperty(yearBooks, 'minutes');
 
-	console.log('dateInfo', dateInfo);
-
 	currentParams.month = dateInfo.paramMonth;
 	currentParams.year = dateInfo.paramYear;
 
-	return {
+	const returnDataObject = {
 		metaData: {
-			title: 'Arden Reads',
-			description: 'A place to keep track of all the books that Arden reads and listens to, showing stats for separate months and years.',
-			url: 'https://www.arden-reads.com',
-
+			title: `Arden Reads | Books read in ${dateInfo.currentMonthString} / ${dateInfo.year}`,
+			description: `Books read by Arden in ${dateInfo.currentMonthString}, ${dateInfo.year}.`,
+			url: `https://www.arden-reads.com/${dateInfo.year}/${dateInfo.currentMonthNum}`
 		},
 		dateInfo,
 		yearStats: {
@@ -79,4 +77,44 @@ export const load: LayoutLoad = async ({ data }) => {
 		previousMonthBooksCount,
 		latestBook
 	};
+	// Serialize the data to ensure it can be safely sent to the client
+	const serializedData = JSON.stringify(returnDataObject);
+	const returnData = JSON.parse(serializedData);
+
+	return returnData;
+
+	// return {
+	// 	metaData: {
+	// 		title: 'Arden Reads',
+	// 		description: 'A place to keep track of all the books that Arden reads and listens to, showing stats for separate months and years.',
+	// 		url: 'https://www.arden-reads.com',
+
+	// 	},
+	// 	dateInfo,
+	// 	yearStats: {
+	// 		yearBooks,
+	// 		yearAmountOfFormats,
+	// 		yearAmountOfGenres,
+	// 		yearAmountOfUniqueAuthors,
+	// 		yearAuthors,
+	// 		yearFormats,
+	// 		yearGenres,
+	// 		minutesListenedYear,
+	// 		totalPagesReadYear
+	// 	},
+	// 	allTimeStats: {
+	// 		allBooks,
+	// 		amountOfFormats,
+	// 		amountOfGenres,
+	// 		amountOfUniqueAuthors,
+	// 		authors,
+	// 		formats,
+	// 		genres,
+	// 		minutesListened,
+	// 		totalPagesRead
+	// 	},
+	// 	currentMonthBooksCount,
+	// 	previousMonthBooksCount,
+	// 	latestBook
+	// };
 };
