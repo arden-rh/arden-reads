@@ -40,8 +40,10 @@ export const load: LayoutLoad = async ({ data }) => {
 	const totalPagesReadYear = getSumOfNumericProperty(yearBooks, 'pages');
 	const minutesListenedYear = getSumOfNumericProperty(yearBooks, 'minutes');
 
-	currentParams.month = dateInfo.paramMonth;
-	currentParams.year = dateInfo.paramYear;
+	// currentParams.month = dateInfo.paramMonth;
+	// currentParams.year = dateInfo.paramYear;
+
+	console.log('dateInfo 2', dateInfo);
 
 	return {
 		metaData: {

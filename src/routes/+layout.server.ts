@@ -60,6 +60,18 @@ export const load: LayoutServerLoad = async (data) => {
 		latestBookRead: structuredClone(latestBookRead)
 	};
 
+	console.log('dateInfo', {
+		currentYear,
+		currentMonthNum,
+		currentMonthString,
+		day,
+		paramMonth,
+		paramYear,
+		previousMonthNum,
+		previousMonthString,
+		year
+	});
+
 	return {
 		auth,
 		bookInfo,
