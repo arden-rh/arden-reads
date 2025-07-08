@@ -23,18 +23,20 @@
 
 	let amountOfBooksCurrentMonth = $state(data.amountOfBooksCurrentMonth);
 
+	let { paramMonth, paramYear, year, currentMonthNum, currentYear } = data.dateInfo;
+
 	function openMenu() {
 		disableScrollFunction();
 
-		if (data.paramMonth) {
-			currentParams.month = data.paramMonth;
+		if (paramMonth || !paramMonth) {
+			paramMonth = currentParams.month;
 		}
 
-		if (data.paramYear) {
-			menu.activeYear = data.paramYear;
-			currentParams.year = data.paramYear;
+		if (paramYear) {
+			paramYear = currentParams.year;
+			menu.activeYear = paramYear;
 		} else {
-			menu.activeYear = data.year;
+			menu.activeYear = year;
 		}
 
 		if (menu.open) {
@@ -50,7 +52,6 @@
 		menu.open = false;
 		enableScroll();
 	}
-
 </script>
 
 <svelte:head>
@@ -120,7 +121,7 @@
 			}}
 		>
 			<h2 id="menu-heading" class="sr-only">Main Manu: Calendar</h2>
-			<Calendar monthNumber={data.currentMonthNum} year={data.currentYear} amountOfBooksCurrentMonth={amountOfBooksCurrentMonth} />
+			<Calendar monthNumber={currentMonthNum} year={currentYear} {amountOfBooksCurrentMonth} />
 			{#if activeState.loggedIn}
 				<a
 					href="/create-book"
@@ -153,7 +154,9 @@
 			: 'main-grid'} flex flex-col lg:grid flex-grow grid-cols-6 lg:gap-4 gap-10 px-4 pt-6 lg:px-6 lg:pt-2 text-white fira-mono-regular relative w-full lg:min-w-[500px] xl:max-w-[1500px]"
 	>
 		{#if navigating.to}
-			<div class="flex flex-col items-center justify-center col-start-1 col-end-7 row-span-3 h-full">
+			<div
+				class="flex flex-col items-center justify-center col-start-1 col-end-7 row-span-3 h-full"
+			>
 				<Diamonds color="white" unit="px" size="150" />
 			</div>
 		{:else}
@@ -170,7 +173,7 @@
 			theme="secondary"
 			typeOfLink="admin"
 			className="py-1.5"
-			/>
+		/>
 	</footer>
 </div>
 

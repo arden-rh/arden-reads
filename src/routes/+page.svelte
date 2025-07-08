@@ -36,16 +36,17 @@
 	let totalPagesRead = $state(allTimePages);
 	let formats = $state(allTimeFormats);
 	let genres = $state(allTimeGenres);
-	
+
 	const latestBook = data.latestBook;
 
-	let day = data.day;
-	let previousMonth = data.previousMonthString;
-	let previousMonthNumber = data.previousMonthNum;
-	let currentMonth = data.currentMonthString;
-	let currentMonthNumber = data.currentMonthNum;
-	let year = data.year;
+	let { day, previousMonthString, previousMonthNum, currentMonthString, currentMonthNum, year } =
+		data.dateInfo;
 
+	let previousMonth = previousMonthString;
+	let previousMonthNumber = previousMonthNum;
+	let currentMonth = currentMonthString;
+	let currentMonthNumber = currentMonthNum;
+	
 </script>
 
 <section
@@ -61,7 +62,15 @@
 <div
 	class="col-start-1 col-end-4 row-start-3 row-end-5 flex flex-col justify-center items-center gap-6 xl:gap-0"
 >
-	<MonthlyBooks {currentMonth} {currentMonthNumber} {numberOfBooksCurrentMonth} {previousMonth} {previousMonthNumber} {numberOfBooksPreviousMonth} {day} />
+	<MonthlyBooks
+		{currentMonth}
+		{currentMonthNumber}
+		{numberOfBooksCurrentMonth}
+		{previousMonth}
+		{previousMonthNumber}
+		{numberOfBooksPreviousMonth}
+		{day}
+	/>
 	<YearlyBooks {year} {numberOfBooksYear} />
 </div>
 <div
@@ -70,10 +79,14 @@
 	<BookIllustration />
 	<div class="flex flex-col items-center justify-center lg:ml-[-2rem] mb-4 lg:mb-0">
 		<h2 class="flex flex-col items-center justify-center text-center">
-			<span class="rozha-one-regular text-[2.4rem] lg:text-2xl lg:leading-7 xl:text-4xl xl:leading-11 tracking-wide text-teal-200">
+			<span
+				class="rozha-one-regular text-[2.4rem] lg:text-2xl lg:leading-7 xl:text-4xl xl:leading-11 tracking-wide text-teal-200"
+			>
 				Latest book read
 			</span>
-			<span class="fira-mono-regular text-[1.15rem] lg:text-[0.85rem] xl:text-[1.15rem]">{latestBook.title}</span>
+			<span class="fira-mono-regular text-[1.15rem] lg:text-[0.85rem] xl:text-[1.15rem]"
+				>{latestBook.title}</span
+			>
 		</h2>
 	</div>
 </div>
