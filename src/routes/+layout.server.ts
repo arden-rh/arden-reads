@@ -37,13 +37,13 @@ export const load: LayoutServerLoad = async (data) => {
 	const listOfAllBooks = await pb.collection('books').getFullList();
 
 	const listOfYearBooks = await pb.collection('books').getList(1, 100, {
-		filter: `date_read >= "${year}-01-01 00:00:00" && date_read <= "${year}-12-31 23:59:59"`
+		filter: `date_read >= "${year}-01-01 00:00:00" && date_read <= "${year}-12-31 23:59:59"`, offset: 0,
 	});
 
-	const currentMonthBooks = await pb.collection('books').getList(1, 50, { filter: filterString });
+	const currentMonthBooks = await pb.collection('books').getList(1, 50, { filter: filterString, offset: 0 });
 	const previousMonthBooks = await pb
 		.collection('books')
-		.getList(1, 50, { filter: filterStringForPreviousMonth });
+		.getList(1, 50, { filter: filterStringForPreviousMonth, offset: 0 });
 
 	const latestBookRead = await pb.collection('books').getFirstListItem('', { sort: '-date_read' });
 
