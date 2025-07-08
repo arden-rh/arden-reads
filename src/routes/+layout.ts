@@ -20,12 +20,11 @@ export const load: LayoutLoad = async ({ data }) => {
 
 	if (!bookInfo || !dateInfo) error(404, { message: 'Book and/or date data not found' });
 
-	const { listOfAllBooks, listOfYearBooks, currentMonthBooks, previousMonthBooks, latestBookRead } = bookInfo;
+	const { listOfAllBooks, listOfYearBooks, currentMonthBooksCount, previousMonthBooksCount, latestBookRead } = bookInfo;
 
 	const allBooks = createBookList(listOfAllBooks);
 	const yearBooks = createBookListFromListResult(listOfYearBooks);
 	const latestBook = createBookFromRecord(latestBookRead);
-	const amountOfBooksCurrentMonth = currentMonthBooks.items.length;
 
 	const { authors, amountOfUniqueAuthors } = getAllAuthors(allBooks);
 	const { genres, amountOfGenres } = getAllGenres(allBooks);
@@ -74,9 +73,8 @@ export const load: LayoutLoad = async ({ data }) => {
 			minutesListened,
 			totalPagesRead
 		},
-		currentMonthBooks,
-		amountOfBooksCurrentMonth,
-		previousMonthBooks,
+		currentMonthBooksCount,
+		previousMonthBooksCount,
 		latestBook
 	};
 };

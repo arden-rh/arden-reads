@@ -5,6 +5,7 @@ import { error } from '@sveltejs/kit';
 
 import type { PageServerLoad } from './$types';
 import type { ListResult, RecordModel } from 'pocketbase';
+import { sanitizeListResult } from '$lib/functions/sanitizeListResult';
 
 export const prerender = false;
 
@@ -64,10 +65,12 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 	}
 
 	const getMonthBooks = async (filterString: string) => {
-		return await pb.collection('books').getList(1, 50, { filter: filterString, requestKey: null, offset: 0 });
+		return await pb.collection('books').getList(1, 50, { filter: filterString, requestKey: null});
 	};
 
 	monthBookList = await getMonthBooks(filterString);
+
+	const cleanedMonthBookList = sanitizeListResult(monthBookList);
 
 	if (!monthBookList) error(404, 'Month book list not found');
 
@@ -75,7 +78,6 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 		filter: `${filterString} && favourite_book_per_month = true`,
 		skipTotal: true,
 		requestKey: null,
-		offset: 0
 	});
 
 	const todaysDate = new Date();
@@ -90,7 +92,7 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 	const futureDate = monthIndex > currentMonthIndex && Number(params.year) === currentYear;
 
 	return {
-		monthBookList,
+		monthBookList: cleanedMonthBookList,
 		favouriteBook,
 		futureDate
 	};

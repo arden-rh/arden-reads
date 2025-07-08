@@ -21,7 +21,7 @@
 
 	let { children, data }: LayoutProps = $props();
 
-	let amountOfBooksCurrentMonth = $state(data.amountOfBooksCurrentMonth);
+	let amountOfBooksCurrentMonth = $state(data.currentMonthBooksCount);
 
 	let { paramMonth, paramYear, year, currentMonthNum, currentYear } = data.dateInfo;
 

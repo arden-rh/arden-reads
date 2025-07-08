@@ -16,7 +16,7 @@ export const load: LayoutServerLoad = async (data) => {
 
 	if (data.params.year) {
 		paramYear = Number(data.params.year);
-	};
+	}
 
 	const paramMonth = data.params.month;
 
@@ -37,21 +37,26 @@ export const load: LayoutServerLoad = async (data) => {
 	const listOfAllBooks = await pb.collection('books').getFullList();
 
 	const listOfYearBooks = await pb.collection('books').getList(1, 100, {
-		filter: `date_read >= "${year}-01-01 00:00:00" && date_read <= "${year}-12-31 23:59:59"`, offset: 0,
+		filter: `date_read >= "${year}-01-01 00:00:00" && date_read <= "${year}-12-31 23:59:59"`
 	});
 
-	const currentMonthBooks = await pb.collection('books').getList(1, 50, { filter: filterString, offset: 0 });
+	const currentMonthBooks = await pb.collection('books').getList(1, 50, { filter: filterString });
 	const previousMonthBooks = await pb
 		.collection('books')
-		.getList(1, 50, { filter: filterStringForPreviousMonth, offset: 0 });
+		.getList(1, 50, { filter: filterStringForPreviousMonth });
+
+	const currentMonthBooksCount = currentMonthBooks.items.length;
+	const previousMonthBooksCount = previousMonthBooks.items.length;
 
 	const latestBookRead = await pb.collection('books').getFirstListItem('', { sort: '-date_read' });
 
 	const bookInfo = {
 		listOfAllBooks: structuredClone(listOfAllBooks),
 		listOfYearBooks: sanitizeListResult(listOfYearBooks),
-		currentMonthBooks: sanitizeListResult(currentMonthBooks),
-		previousMonthBooks: sanitizeListResult(previousMonthBooks),
+		// currentMonthBooks: sanitizeListResult(currentMonthBooks),
+		// previousMonthBooks: sanitizeListResult(previousMonthBooks),
+		currentMonthBooksCount,
+		previousMonthBooksCount,
 		latestBookRead: structuredClone(latestBookRead)
 	};
 
