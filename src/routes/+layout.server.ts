@@ -12,7 +12,12 @@ export const load: LayoutServerLoad = async (data) => {
 	const adminPW = import.meta.env.VITE_POCKETBASE_ADMIN_PW;
 	const auth = await adminLogin(adminEmail, adminPW);
 
-	const paramYear = Number(data.params.year);
+	let paramYear: number | undefined = undefined;
+
+	if (data.params.year) {
+		paramYear = Number(data.params.year);
+	};
+
 	const paramMonth = data.params.month;
 
 	const {
@@ -49,8 +54,6 @@ export const load: LayoutServerLoad = async (data) => {
 		previousMonthBooks: sanitizeListResult(previousMonthBooks),
 		latestBookRead: structuredClone(latestBookRead)
 	};
-
-	// console.log('Book info loaded:', bookInfo);
 
 	return {
 		auth,
