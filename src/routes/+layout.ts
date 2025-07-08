@@ -78,43 +78,43 @@ export const load: LayoutLoad = async ({ data }) => {
 		latestBook
 	};
 	// Serialize the data to ensure it can be safely sent to the client
-	const serializedData = JSON.stringify(returnDataObject);
-	const returnData = JSON.parse(serializedData);
+	// const serializedData = JSON.stringify(returnDataObject);
+	// const returnData = JSON.parse(serializedData);
 
-	return returnData;
+	// return returnData;
 
-	// return {
-	// 	metaData: {
-	// 		title: 'Arden Reads',
-	// 		description: 'A place to keep track of all the books that Arden reads and listens to, showing stats for separate months and years.',
-	// 		url: 'https://www.arden-reads.com',
+	return {
+		metaData: {
+			title: 'Arden Reads',
+			description: 'A place to keep track of all the books that Arden reads and listens to, showing stats for separate months and years.',
+			url: 'https://www.arden-reads.com',
 
-	// 	},
-	// 	dateInfo,
-	// 	yearStats: {
-	// 		yearBooks,
-	// 		yearAmountOfFormats,
-	// 		yearAmountOfGenres,
-	// 		yearAmountOfUniqueAuthors,
-	// 		yearAuthors,
-	// 		yearFormats,
-	// 		yearGenres,
-	// 		minutesListenedYear,
-	// 		totalPagesReadYear
-	// 	},
-	// 	allTimeStats: {
-	// 		allBooks,
-	// 		amountOfFormats,
-	// 		amountOfGenres,
-	// 		amountOfUniqueAuthors,
-	// 		authors,
-	// 		formats,
-	// 		genres,
-	// 		minutesListened,
-	// 		totalPagesRead
-	// 	},
-	// 	currentMonthBooksCount,
-	// 	previousMonthBooksCount,
-	// 	latestBook
-	// };
+		},
+		dateInfo,
+		// yearStats: {
+		// 	yearBooks,
+		// 	yearAmountOfFormats,
+		// 	yearAmountOfGenres,
+		// 	yearAmountOfUniqueAuthors,
+		// 	yearAuthors,
+		// 	yearFormats,
+		// 	yearGenres,
+		// 	minutesListenedYear,
+		// 	totalPagesReadYear
+		// },
+		// allTimeStats: {
+		// 	allBooks,
+		// 	amountOfFormats,
+		// 	amountOfGenres,
+		// 	amountOfUniqueAuthors,
+		// 	authors,
+		// 	formats,
+		// 	genres,
+		// 	minutesListened,
+		// 	totalPagesRead
+		// },
+		// currentMonthBooksCount,
+		// previousMonthBooksCount,
+		// latestBook
+	};
 };
