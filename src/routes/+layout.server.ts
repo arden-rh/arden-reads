@@ -1,7 +1,6 @@
 import { adminLogin } from '$lib/pocketbase';
 import { error, fail } from '@sveltejs/kit';
 import { getCurrentDate } from '$lib/functions/getCurrentDate';
-import { sanitizeListResult } from '$lib/functions/sanitizeListResult';
 
 import type { LayoutServerLoad } from './$types';
 
@@ -49,14 +48,6 @@ export const load: LayoutServerLoad = async (data) => {
 	const previousMonthBooksCount = previousMonthBooks.items.length;
 
 	const latestBookRead = await pb.collection('books').getFirstListItem('', { sort: '-date_read' });
-
-	// const bookInfo = {
-	// 	listOfAllBooks: structuredClone(listOfAllBooks),
-	// 	listOfYearBooks: sanitizeListResult(listOfYearBooks),
-	// 	currentMonthBooksCount,
-	// 	previousMonthBooksCount,
-	// 	latestBookRead: structuredClone(latestBookRead)
-	// };
 
 	const bookInfo = {
 		listOfAllBooks,
