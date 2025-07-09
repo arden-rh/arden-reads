@@ -23,20 +23,17 @@
 
 	let amountOfBooksCurrentMonth = $state(data.currentMonthBooksCount);
 
-	let { paramMonth, paramYear, year, currentMonthNum, currentYear } = data.dateInfo;
+	let { year, currentMonthNum, currentYear } = data.dateInfo;
 
 	function openMenu() {
 		disableScrollFunction();
 
-		if (paramMonth || !paramMonth) {
-			paramMonth = currentParams.month;
-		}
-
-		if (paramYear) {
-			paramYear = currentParams.year;
-			menu.activeYear = paramYear;
+		if (currentParams.year) {
+			menu.activeYear = currentParams.year;
+			year = currentParams.year;
 		} else {
-			menu.activeYear = year;
+			menu.activeYear = currentYear;
+			year = currentYear;
 		}
 
 		if (menu.open) {
@@ -121,7 +118,12 @@
 			}}
 		>
 			<h2 id="menu-heading" class="sr-only">Main Manu: Calendar</h2>
-			<Calendar monthNumber={currentMonthNum} year={currentYear} {amountOfBooksCurrentMonth} />
+			<Calendar
+				monthNumber={currentMonthNum}
+				year={currentYear}
+				{amountOfBooksCurrentMonth}
+				{currentYear}
+			/>
 			{#if activeState.loggedIn}
 				<a
 					href="/create-book"
