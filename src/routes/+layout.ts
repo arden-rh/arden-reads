@@ -1,5 +1,4 @@
 import { error } from '@sveltejs/kit';
-// import * as devalue from 'devalue';
 
 // Functions
 import { createBookList, createBookListFromListResult } from '$lib/functions/createBookList';
@@ -26,24 +25,12 @@ export const load: LayoutLoad = async ({ data }) => {
 		listOfYearBooks,
 		currentMonthBooksCount,
 		previousMonthBooksCount,
-		// latestBookRead
+		latestBookRead
 	} = bookInfo;
 
 	const allBooks = createBookList(listOfAllBooks);
 	const yearBooks = createBookListFromListResult(listOfYearBooks);
-	// const latestBook = createBookFromRecord(latestBookRead);
-	const latestBook = {
-	id: '222',
-	author: 'hej',
-	date_read: '2023-10-01T00:00:00.000Z',
-	favourite_book_per_month: false,
-	formats: ['paperback'],
-	genres: ['fantasy'],
-	minutes: 0,
-	owned: true,
-	pages: 300,
-	title: 'Test Book'
-	}
+	const latestBook = createBookFromRecord(latestBookRead);
 
 	const { authors, amountOfUniqueAuthors } = getAllAuthors(allBooks);
 	const { genres, amountOfGenres } = getAllGenres(allBooks);
@@ -62,45 +49,6 @@ export const load: LayoutLoad = async ({ data }) => {
 
 	currentParams.month = dateInfo.paramMonth;
 	currentParams.year = dateInfo.paramYear;
-
-	const returnDataObject = {
-		metaData: {
-			title: `Arden Reads | Books read in ${dateInfo.currentMonthString} / ${dateInfo.year}`,
-			description: `Books read by Arden in ${dateInfo.currentMonthString}, ${dateInfo.year}.`,
-			url: `https://www.arden-reads.com/${dateInfo.year}/${dateInfo.currentMonthNum}`
-		},
-		dateInfo,
-		yearStats: {
-			yearBooks,
-			yearAmountOfFormats,
-			yearAmountOfGenres,
-			yearAmountOfUniqueAuthors,
-			yearAuthors,
-			yearFormats,
-			yearGenres,
-			minutesListenedYear,
-			totalPagesReadYear
-		},
-		allTimeStats: {
-			allBooks,
-			amountOfFormats,
-			amountOfGenres,
-			amountOfUniqueAuthors,
-			authors,
-			formats,
-			genres,
-			minutesListened,
-			totalPagesRead
-		},
-		currentMonthBooksCount,
-		previousMonthBooksCount,
-		latestBook
-	};
-	// Serialize the data to ensure it can be safely sent to the client
-	// const serializedData = JSON.stringify(returnDataObject);
-	// const returnData = JSON.parse(serializedData);
-
-	// return returnData;
 
 	return {
 		metaData: {

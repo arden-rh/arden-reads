@@ -10,7 +10,7 @@
 	>
 		<h1 class="text-5xl text-center fugaz-one-regular tracking-wider">{page.status}</h1>
 
-		{#if page.error?.message === 'Month book list not found' || true}
+		{#if page.error?.message === 'Month book list not found' || true}
 			<div class="flex flex-col gap-2">
 				<p class="flex flex-col gap-2 text-center mb-2">
 					<span>Oh no, it seems like the data was a bit slow to load.</span>
