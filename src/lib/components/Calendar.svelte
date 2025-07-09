@@ -10,9 +10,10 @@
 		monthNumber: number;
 		year: number;
 		amountOfBooksCurrentMonth: number;
+		currentYear: number;
 	}
 
-	let { monthNumber, year, amountOfBooksCurrentMonth }: Props = $props();
+	let { monthNumber, year, amountOfBooksCurrentMonth, currentYear }: Props = $props();
 
 	const years = [2024, 2025];
 
@@ -21,6 +22,8 @@
 	}
 
 	function resetParams() {
+		menu.activeYear = currentYear; // Reset to the current year
+		year = currentYear; // Reset to the current year
 		currentParams.month = undefined;
 		currentParams.year = undefined;
 		menu.open = false;
