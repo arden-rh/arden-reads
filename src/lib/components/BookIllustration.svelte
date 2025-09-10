@@ -1,8 +1,14 @@
 <div class="wrapper flex items-baseline justify-center lg:justify-normal px-2 lg:px-0">
 	<div class="bg-teal-900 w-1/6 lg:w-1/5 h-16 lg:h-24 left-stand"></div>
-	<div class="w-1/5 h-46 lg:h-72 animated-background bg-linear-to-r from-teal-600 to-teal-700"></div>
-	<div class="w-1/5 h-64 lg:h-96 animated-background bg-linear-to-r from-teal-400 to-teal-500"></div>
-	<div class="w-1/5 h-38 lg:h-64 animated-background bg-linear-to-r from-teal-700 to-teal-800"></div>
+	<div
+		class="w-1/5 h-46 lg:h-72 animated-background bg-linear-to-r from-teal-600 to-teal-700"
+	></div>
+	<div
+		class="w-1/5 h-64 lg:h-96 animated-background bg-linear-to-r from-teal-400 to-teal-500"
+	></div>
+	<div
+		class="w-1/5 h-38 lg:h-64 animated-background bg-linear-to-r from-teal-700 to-teal-800"
+	></div>
 	<div class="bg-teal-900 w-1/6 lg:w-1/5 h-16 lg:h-24 right-stand"></div>
 </div>
 

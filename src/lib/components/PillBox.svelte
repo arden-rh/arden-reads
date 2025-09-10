@@ -2,10 +2,9 @@
 	interface Props {
 		arrayOfPills: string[];
 		header: string;
-	};
+	}
 
 	let { arrayOfPills, header }: Props = $props();
-
 </script>
 
 <div

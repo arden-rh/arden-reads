@@ -46,7 +46,6 @@
 	let previousMonthNumber = previousMonthNum;
 	let currentMonth = currentMonthString;
 	let currentMonthNumber = currentMonthNum;
-
 </script>
 
 <section

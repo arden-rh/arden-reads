@@ -1,11 +1,10 @@
 <script lang="ts">
-
-	import { activeState } from "../../states.svelte";
+	import { activeState } from '../../states.svelte';
 
 	interface Props {
 		year: number;
 		numberOfBooksYear: number;
-	};
+	}
 
 	let { year, numberOfBooksYear }: Props = $props();
 
@@ -21,7 +20,6 @@
 	const restOfYearBooksToStack = restOfYearBooks - restOfYearBooksInOddStack;
 	const restOfYearSplitStacks = Math.floor(restOfYearBooksToStack / 5);
 	const restOfYearOddBooks = restOfYearBooksToStack % 5;
-	
 </script>
 
 <div class="text-[1.2rem] max-w-[600px] xl:max-w-full lg:p-8 flex flex-col items-center text-white">

@@ -55,7 +55,7 @@ export const load: LayoutServerLoad = async (data) => {
 		currentMonthBooksCount,
 		previousMonthBooksCount,
 		latestBookRead
-	}
+	};
 
 	return {
 		auth,
@@ -70,6 +70,6 @@ export const load: LayoutServerLoad = async (data) => {
 			previousMonthNum,
 			previousMonthString,
 			year
-		},
+		}
 	};
 };

@@ -26,5 +26,5 @@ export const arrayOfFormatOptions = [
 	{
 		value: 'paperback',
 		label: 'Paperback'
-	},
+	}
 ];

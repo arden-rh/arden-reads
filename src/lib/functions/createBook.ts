@@ -2,7 +2,6 @@ import type { Book } from '$lib/types/book.types';
 import type { ListResult, RecordModel } from 'pocketbase';
 
 export const createBookFromList = (bookInfo: ListResult<RecordModel>): Book => {
-
 	const bookList: Book[] = bookInfo.items.map((book) => {
 		const {
 			title,

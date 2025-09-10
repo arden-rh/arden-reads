@@ -12,7 +12,7 @@
 		subTitle?: string;
 		totalPagesRead: number;
 		year?: string | number;
-	};
+	}
 
 	let {
 		amountOfBooks,
@@ -25,7 +25,6 @@
 		title,
 		totalPagesRead
 	}: Props = $props();
-	
 </script>
 
 <div

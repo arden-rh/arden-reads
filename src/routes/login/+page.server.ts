@@ -20,7 +20,6 @@ export const actions: Actions = {
 		const userPW = data.get('password') as string;
 
 		try {
-
 			if (!userEmail || !userPW) {
 				return fail(400, {
 					missing: true
@@ -29,9 +28,7 @@ export const actions: Actions = {
 
 			pb.autoCancellation(false);
 
-			const authData = await pb.collection('users').authWithPassword(
-				userEmail, userPW
-			)
+			const authData = await pb.collection('users').authWithPassword(userEmail, userPW);
 
 			if (!authData) {
 				activeState.loggedIn = false;
@@ -52,7 +49,6 @@ export const actions: Actions = {
 		}
 	},
 	logout: async ({ cookies }) => {
-
 		cookies.delete('pb_token', { path: '/' });
 		pb.authStore.clear();
 

@@ -16,11 +16,7 @@
 					<span>Oh no, it seems like the data was a bit slow to load.</span>
 					<span>Let's try to refresh the page to see if it has catched up.</span>
 				</p>
-				<Button
-					title="Refresh"
-					theme="primary"
-					onClick={() => window.location.reload()}
-				/>
+				<Button title="Refresh" theme="primary" onClick={() => window.location.reload()} />
 			</div>
 			<div>
 				<p class="text-center mb-2">Or go back to the home page.</p>

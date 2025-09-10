@@ -1,4 +1,4 @@
-import { menu } from "../../states.svelte";
+import { menu } from '../../states.svelte';
 
 export function disableScrollFunction() {
 	window.scrollTo(0, 0);

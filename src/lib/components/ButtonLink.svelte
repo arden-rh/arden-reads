@@ -43,9 +43,7 @@
 </script>
 
 {#if disabled}
-	<div
-		class="btn-basic bg-teal-950 opacity-70"
-	>
+	<div class="btn-basic bg-teal-950 opacity-70">
 		{title}
 	</div>
 {:else if typeOfLink === 'internal'}

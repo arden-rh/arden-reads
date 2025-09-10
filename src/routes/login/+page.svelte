@@ -31,7 +31,6 @@
 
 		await applyAction(result);
 	}
-
 </script>
 
 <section class="col-start-1 col-end-7 row-start-1 row-end-6 flex flex-col gap-4 items-center">

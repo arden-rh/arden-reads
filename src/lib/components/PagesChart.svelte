@@ -5,7 +5,7 @@
 	interface Props {
 		listOfBooks: Book[];
 		bottomBorder?: boolean;
-		favouriteBookTitle?: string | undefined; 
+		favouriteBookTitle?: string | undefined;
 	}
 
 	let { listOfBooks, bottomBorder, favouriteBookTitle }: Props = $props();

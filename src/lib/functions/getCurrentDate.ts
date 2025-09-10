@@ -27,7 +27,7 @@ export const getCurrentDate = (paramYear?: number) => {
 	} else {
 		previousMonthDate = new Date(`${year}-${previousMonthNum}-01`);
 		firstDayOfPreviousMonth = `${year}-${previousMonthNum}-01`;
-	};
+	}
 
 	const currentMonthString = date.toLocaleString('default', { month: 'long' });
 	const previousMonthString = previousMonthDate.toLocaleString('default', { month: 'long' });
@@ -58,7 +58,6 @@ export const getCurrentDate = (paramYear?: number) => {
 			if (currentMonthNum === 3) {
 				lastDayOfPreviousMonth = `${year}-0${previousMonthNum}-28`;
 			}
-
 		} else {
 			lastDayOfMonth = `${year}-${currentMonthNum}-31`;
 			lastDayOfPreviousMonth = `${year}-${previousMonthNum}-30`;
@@ -73,7 +72,6 @@ export const getCurrentDate = (paramYear?: number) => {
 		} else {
 			lastDayOfMonth = `${year}-0${currentMonthNum}-30`;
 			lastDayOfPreviousMonth = `${year}-0${previousMonthNum}-31`;
-
 		}
 	}
 

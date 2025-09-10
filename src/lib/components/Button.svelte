@@ -32,7 +32,12 @@
 	};
 
 	const selectedTheme = themes[theme];
-
 </script>
 
-<button id="button-{id}" class="btn-basic {active ? `${selectedTheme.active} ${selectedTheme.responsiveActive}` : `${selectedTheme.base} ${selectedTheme.responsive}`} {className}" onclick={onClick}>{title}</button>
+<button
+	id="button-{id}"
+	class="btn-basic {active
+		? `${selectedTheme.active} ${selectedTheme.responsiveActive}`
+		: `${selectedTheme.base} ${selectedTheme.responsive}`} {className}"
+	onclick={onClick}>{title}</button
+>

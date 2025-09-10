@@ -1,4 +1,4 @@
-import type { Book } from "$lib/types/book.types";
+import type { Book } from '$lib/types/book.types';
 
 export function countBooksByMonth(books: Book[]): Record<string, number> {
 	const booksByMonth = books.reduce(
@@ -22,4 +22,4 @@ export function countBooksByMonth(books: Book[]): Record<string, number> {
 			return [key, value];
 		})
 	);
-};
+}
