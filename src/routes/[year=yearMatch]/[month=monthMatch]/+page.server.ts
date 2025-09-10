@@ -64,7 +64,7 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 	}
 
 	const getMonthBooks = async (filterString: string) => {
-		return await pb.collection('books').getList(1, 50, { filter: filterString, requestKey: null});
+		return await pb.collection('books').getList(1, 50, { filter: filterString, requestKey: null });
 	};
 
 	monthBookList = await getMonthBooks(filterString);
@@ -74,7 +74,7 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 	favouriteBook = await pb.collection('books').getList(1, 1, {
 		filter: `${filterString} && favourite_book_per_month = true`,
 		skipTotal: true,
-		requestKey: null,
+		requestKey: null
 	});
 
 	const todaysDate = new Date();

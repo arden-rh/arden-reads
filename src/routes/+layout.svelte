@@ -7,7 +7,7 @@
 	import Calendar from '$lib/components/Calendar.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import LogotypeIcon from '$lib/components/LogotypeIcon.svelte';
-	import { Diamonds } from 'svelte-loading-spinners';
+	import DiamondSpinner from '$lib/components/DiamondSpinner.svelte';
 
 	import { currentParams, menu, activeState } from '../states.svelte';
 
@@ -159,7 +159,7 @@
 			<div
 				class="flex flex-col items-center justify-center col-start-1 col-end-7 row-span-3 h-full"
 			>
-				<Diamonds color="white" unit="px" size="150" />
+				<DiamondSpinner color="white" size={150} unit="px" />
 			</div>
 		{:else}
 			{@render children?.()}
@@ -188,6 +188,15 @@
 		grid-template-rows: auto;
 		height: 100%;
 		min-height: fit-content;
+	}
+
+	@keyframes spin-diamonds {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
 	}
 
 	@media (min-width: 1024px) {

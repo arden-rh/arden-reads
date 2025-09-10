@@ -5,15 +5,17 @@
 	import { arrayOfGenreOptions } from '$lib/data/genres';
 
 	interface Props {
-		handleSubmit: (event: SubmitEvent & { currentTarget: EventTarget & HTMLFormElement; }) => Promise<void>;
-	};
+		handleSubmit: (
+			event: SubmitEvent & { currentTarget: EventTarget & HTMLFormElement }
+		) => Promise<void>;
+	}
 
 	let { handleSubmit }: Props = $props();
 
 	interface Option {
 		label: string;
 		value: string;
-	};
+	}
 
 	let chosenFormatOptions: Option[] = $state([]);
 	let chosenGenreOptions: Option[] = $state([]);
@@ -31,7 +33,7 @@
 		} else {
 			return;
 		}
-	};
+	}
 
 	function handleChooseGenres(event: Event) {
 		const option = event.target as HTMLOptionElement;
@@ -46,18 +48,17 @@
 		} else {
 			return;
 		}
-	};
+	}
 
 	function removeElementFromArray(option: Option, array: Option[]) {
 		const elementIndex = array.indexOf(option);
 		array.splice(elementIndex, 1);
-	};
+	}
 
 	function handleReset(event: Event) {
 		chosenFormatOptions = [];
 		chosenGenreOptions = [];
-	};
-
+	}
 </script>
 
 <div

@@ -38,6 +38,5 @@ export const arrayOfGenreOptions = [
 	{
 		value: 'thriller',
 		label: 'Thriller'
-	},
-
+	}
 ];

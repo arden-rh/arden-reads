@@ -6,15 +6,16 @@
 
 	interface Props {
 		listOfBooks: Book[];
-	};
+	}
 
 	let { listOfBooks }: Props = $props();
 
 	const booksByMonth = countBooksByMonth(listOfBooks);
-
 </script>
 
-<div class="chart min-h-[250px] w-full max-w-full flex flex-col items-center gap-2 lg:p-4 xl:p-8 border-b-4 lg:border-b-0 lg:border-r-4">
+<div
+	class="chart min-h-[250px] w-full max-w-full flex flex-col items-center gap-2 lg:p-4 xl:p-8 border-b-4 lg:border-b-0 lg:border-r-4"
+>
 	<h3 class="fira-mono-medium text-xl mb-8">Books read by month</h3>
 	<LinkedChart
 		data={booksByMonth}
@@ -40,5 +41,4 @@
 		width: 100%;
 		height: auto;
 	}
-
 </style>

@@ -108,7 +108,9 @@
 		? 'row-start-7 row-end-9'
 		: 'row-start-5 row-end-6'} "
 >
-	<h2 class="flex fira-mono-medium text-xl lg:text-2xl lg:w-1/5 xl:w-fit items-start lg:ml-2 lg:mt-5">
+	<h2
+		class="flex fira-mono-medium text-xl lg:text-2xl lg:w-1/5 xl:w-fit items-start lg:ml-2 lg:mt-5"
+	>
 		List of all:
 	</h2>
 	<div class="flex flex-col w-full lg:w-4/5 xl:w-5/6">
@@ -116,7 +118,7 @@
 			{#each buttonTitles as title, i}
 				<Button
 					id={i.toString()}
-					title={title}
+					{title}
 					theme="primary"
 					onClick={() => handleButtonClick(i, title)}
 					active={activeButton === i}

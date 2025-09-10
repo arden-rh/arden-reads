@@ -57,8 +57,8 @@
 							href="https://github.com/arden-rh/arden-reads"
 							rel="noreferrer"
 							target="_blank"
-							class="underline underline-offset-3">Github</a>. 
-							The frontend is deployed from Vercel.
+							class="underline underline-offset-3">Github</a
+						>. The frontend is deployed from Vercel.
 					</span>
 				</p>
 			</div>

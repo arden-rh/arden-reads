@@ -4,10 +4,9 @@ import type { Book } from '$lib/types/book.types';
 // Functions
 import { createBookList } from '$lib/functions/createBookList';
 import { createBookFromList } from '$lib/functions/createBook';
-import { getAllAuthors, getAllFormats, getAllGenres } from "$lib/functions/getBookInfo";
+import { getAllAuthors, getAllFormats, getAllGenres } from '$lib/functions/getBookInfo';
 
 export const load: PageLoad = async ({ data, params }) => {
-	
 	const { monthBookList, favouriteBook, futureDate } = data;
 	let favouriteBookInfo: Book | undefined;
 
@@ -29,7 +28,7 @@ export const load: PageLoad = async ({ data, params }) => {
 		metaData: {
 			title: 'Arden Reads | Books read in ' + monthName + ' / ' + year,
 			description: `Books read by Arden in ${monthName}, ${year}.`,
-			url: `https://www.arden-reads.com/${year}/${month}`,
+			url: `https://www.arden-reads.com/${year}/${month}`
 		},
 		monthBookInfo: {
 			books,

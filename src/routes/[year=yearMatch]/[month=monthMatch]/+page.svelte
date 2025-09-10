@@ -32,7 +32,11 @@
 {:else}
 	<MonthPageHeader month={currentParams.month} />
 	{#if monthBooks.length === 0}
-		<AltMonthPageContent currentYear={data.dateInfo.currentYear.toString()} title="Hmm..." isThisTheFuture={false} />
+		<AltMonthPageContent
+			currentYear={data.dateInfo.currentYear.toString()}
+			title="Hmm..."
+			isThisTheFuture={false}
+		/>
 	{:else}
 		<MonthPageContent {authors} {monthBooks} {favouriteBookTitle} {amountOfUniqueAuthors} />
 	{/if}

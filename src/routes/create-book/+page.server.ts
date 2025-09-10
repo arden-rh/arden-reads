@@ -19,12 +19,10 @@ export const load: PageServerLoad = async ({ parent }) => {
 	}
 
 	return { auth };
-}
-
+};
 
 export const actions: Actions = {
 	create: async ({ request }) => {
-		
 		const data = await request.formData();
 
 		try {

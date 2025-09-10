@@ -81,7 +81,6 @@
 
 	const genres = countGenres(listOfBooks);
 	genreData = transformGenreCounts(genres);
-
 </script>
 
 <div

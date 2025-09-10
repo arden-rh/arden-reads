@@ -79,7 +79,6 @@
 
 	const formats = countFormats(listOfBooks);
 	formatData = transformFormatCounts(formats);
-
 </script>
 
 <div
