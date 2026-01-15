@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { navigating, page } from '$app/state';
+	import { enhance } from '$app/forms';
 	import '../app.css';
 
 	// Components
 	import ButtonLink from '$lib/components/ButtonLink.svelte';
+	import Button from '$lib/components/Button.svelte';
 	import Calendar from '$lib/components/Calendar.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import LogotypeIcon from '$lib/components/LogotypeIcon.svelte';
@@ -21,9 +23,13 @@
 
 	let { children, data }: LayoutProps = $props();
 
-	let amountOfBooksCurrentMonth = $state(data.currentMonthBooksCount);
+	$effect(() => {
+		activeState.loggedIn = data.isUserLoggedIn;
+	});
 
-	let { year, currentMonthNum, currentYear } = data.dateInfo;
+	let amountOfBooksCurrentMonth = $derived(data.currentMonthBooksCount);
+
+	let { year, currentMonthNum, currentYear } = $derived(data.dateInfo);
 
 	function openMenu() {
 		disableScrollFunction();
@@ -105,7 +111,7 @@
 			<div
 				class="{menu.open
 					? 'flex'
-					: 'hidden'} flex-col bg-teal-900 p-4 rounded-lg w-[92%] lg:max-w-[325px] lg:self-end absolute top-[80px] m-auto shadow-xl z-10"
+					: 'hidden'} flex-col bg-teal-900 p-4 rounded-lg w-[92%] lg:max-w-81.25 lg:self-end absolute top-20 m-auto shadow-xl z-10"
 				role="dialog"
 				aria-roledescription="menu"
 				aria-modal="true"
@@ -155,7 +161,7 @@
 	<main
 		class="{page.status === 404
 			? 'alt-grid'
-			: 'main-grid'} flex flex-col lg:grid flex-grow grid-cols-6 lg:gap-4 gap-10 px-4 pt-6 lg:px-6 lg:pt-2 text-white fira-mono-regular relative w-full lg:min-w-[500px] xl:max-w-[1500px]"
+			: 'main-grid'} flex flex-col lg:grid grow grid-cols-6 lg:gap-4 gap-10 px-4 pt-6 lg:px-6 lg:pt-2 text-white fira-mono-regular relative w-full lg:min-w-125 xl:max-w-375 xl:mx-auto"
 	>
 		{#if navigating.to}
 			<div
@@ -168,16 +174,26 @@
 		{/if}
 	</main>
 	<footer
-		class="w-full min-h-[130px] lg:min-h-[100px] h-fit flex flex-col lg:flex-row justify-center items-center text-center gap-2 lg:gap-4 pt-4 pb-6 px-4.5 lg:py-6 text-white fira-mono-regular mt-4 lg:mt-8 self-end"
+		class="w-full min-h-32.5 lg:min-h-25 h-fit flex flex-col lg:flex-row justify-center items-center text-center gap-2 lg:gap-4 pt-4 pb-6 px-4.5 lg:py-6 text-white fira-mono-regular mt-4 lg:mt-8 self-end"
 	>
-		<p><span class="block lg:inline">Copyrights Arden R.H. 2025</span> All rights reserved.</p>
-		<ButtonLink
-			title="Admin Login"
-			linkName="/login"
-			theme="secondary"
-			typeOfLink="admin"
-			className="py-1.5"
-		/>
+		<p><span class="block lg:inline">Copyrights Arden R.H. 2026</span> All rights reserved.</p>
+		{#if activeState.loggedIn}
+			<form method="POST" action="/login?/logout" use:enhance>
+				<Button
+					title="Logout"
+					theme="secondary"
+					className="py-1.5"
+				/>
+			</form>
+		{:else}
+			<ButtonLink
+				title="Admin Login"
+				linkName="/login"
+				theme="secondary"
+				typeOfLink="admin"
+				className="py-1.5"
+			/>
+		{/if}
 	</footer>
 </div>
 

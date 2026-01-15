@@ -16,7 +16,7 @@ import { currentParams } from '../states.svelte';
 export const load: LayoutLoad = async ({ data }) => {
 	if (!data) error(404, { message: 'No data found' });
 
-	const { bookInfo, dateInfo } = data;
+	const { bookInfo, dateInfo, isUserLoggedIn } = data;
 
 	if (!bookInfo || !dateInfo) error(404, { message: 'Book and/or date data not found' });
 
@@ -51,6 +51,7 @@ export const load: LayoutLoad = async ({ data }) => {
 	currentParams.year = dateInfo.paramYear;
 
 	return {
+		isUserLoggedIn,
 		metaData: {
 			title: 'Arden Reads',
 			description:

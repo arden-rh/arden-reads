@@ -6,13 +6,10 @@ import type { Actions, PageServerLoad } from './$types';
 export const prerender = false;
 
 export const load: PageServerLoad = async ({ parent }) => {
+
 	const { auth } = await parent();
 
-	/** TODO
-	 * 1. Add a check for admin
-	 * 2. Add a check for auth
-	 */
-	const admin = false;
+	const admin = true; // Replace with actual admin check
 
 	if (!auth || !admin) {
 		redirect(307, '/');

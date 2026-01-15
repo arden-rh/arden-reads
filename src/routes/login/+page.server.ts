@@ -7,10 +7,7 @@ import pb from '$lib/pocketbase';
 export const prerender = false;
 
 /** TODO
- * 1. Update the login auth superuser instead
- * 2. Add a redirect to the logout action
- * 3. Add a redirect to the login action
- * 4. Check Lucia for guidelines on how to handle cookies https://lucia-auth.com/sessions/cookies/sveltekit
+ * 1. Check Lucia for guidelines on how to handle cookies https://lucia-auth.com/sessions/cookies/sveltekit
  */
 
 export const actions: Actions = {
@@ -41,7 +38,7 @@ export const actions: Actions = {
 
 			return { success: true };
 
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {
 			return fail(401, {
 				error: error.message
@@ -50,7 +47,7 @@ export const actions: Actions = {
 	},
 	logout: async ({ cookies }) => {
 		cookies.delete('pb_token', { path: '/' });
-		pb.authStore.clear();
+		activeState.loggedIn = false;
 
 		return redirect(303, '/');
 	}
