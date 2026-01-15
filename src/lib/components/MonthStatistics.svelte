@@ -10,7 +10,7 @@
 </script>
 
 <div
-	class="w-full lg:max-w-[300px] bg-teal-900 rounded-lg h-fit p-6 flex flex-col gap-4 text-center"
+	class="w-full lg:max-w-75 bg-teal-900 rounded-lg h-fit p-6 flex flex-col gap-4 text-center"
 >
 	<div class="flex justify-around border-4 p-4 xl:p-6 rounded-lg">
 		<div class="flex flex-col items-center">

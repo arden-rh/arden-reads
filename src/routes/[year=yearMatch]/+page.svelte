@@ -15,16 +15,6 @@
 	import { currentParams } from '../../states.svelte';
 
 	let { data }: { data: PageData } = $props();
-
-// <	const {
-// 		totalPagesReadYear: totalPagesRead,
-// 		minutesListenedYear: minutesListened,
-// 		yearAmountOfGenres: amountOfGenres,
-// 		yearAmountOfFormats: amountOfFormats,
-// 		yearAmountOfUniqueAuthors: amountOfUniqueAuthors,
-// 		yearBooks,
-// 		yearAuthors: authors
-// 	} = data.yearStats;>
 	
 	let {
 		totalPagesReadYear: totalPagesRead,
@@ -37,8 +27,8 @@
 	} = $derived(data.yearStats);
 
 	// fix error
-	const year = data.year;
-	const amountOfBooks = yearBooks.length;
+	const year = $derived(data.year);
+	const amountOfBooks = $derived(yearBooks.length);
 	const buttonTitles = ['Books', 'Authors'];
 
 	let activeButton: number | null = $state(null);

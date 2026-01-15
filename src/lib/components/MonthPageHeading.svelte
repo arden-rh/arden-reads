@@ -5,13 +5,12 @@
 
 	let { month }: Props = $props();
 
-	let formattedMonth: string = $state('');
+	let formattedMonth = $derived(
+		!month
+			? 'No month found'
+			: month.charAt(0).toUpperCase() + month.slice(1)
+	)
 
-	if (!month) {
-		formattedMonth = 'No month found';
-	} else {
-		formattedMonth = month.charAt(0).toUpperCase() + month.slice(1);
-	}
 </script>
 
 <section class="col-start-1 col-end-7 row-start-1 row-end-2 flex justify-center items-center">

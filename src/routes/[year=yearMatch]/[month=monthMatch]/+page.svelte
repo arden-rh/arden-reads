@@ -4,23 +4,19 @@
 
 	// Components
 	import MonthPageContent from '$lib/components/MonthPageContent.svelte';
-	import MonthPageheading from '$lib/components/MonthPageheading.svelte';
+	import MonthPageHeading from '$lib/components/MonthPageHeading.svelte';
 
 	import { currentParams } from '../../../states.svelte';
 	import AltMonthPageContent from '$lib/components/AltMonthPageContent.svelte';
 
 	let { data }: { data: PageData } = $props();
 
-	const { amountOfUniqueAuthors, authors } = data.monthBookInfo;
+	const { amountOfUniqueAuthors, authors } = $derived(data.monthBookInfo);
 
-	let monthBooks = $state(data.monthBookInfo.books);
-	let favouriteBookTitle: string | undefined = $state('');
-
-	if (data.monthBookInfo.favouriteBook) {
-		favouriteBookTitle = data.monthBookInfo.favouriteBook.title;
-	} else {
-		favouriteBookTitle = undefined;
-	}
+	let monthBooks = $derived(data.monthBookInfo.books);
+    let favouriteBookTitle: string | undefined = $derived(
+        data.monthBookInfo.favouriteBook?.title
+    );
 </script>
 
 {#if data.futureDate}
@@ -30,7 +26,7 @@
 		isThisTheFuture
 	/>
 {:else}
-	<MonthPageheading month={currentParams.month} />
+	<MonthPageHeading month={currentParams.month} />
 	{#if monthBooks.length === 0}
 		<AltMonthPageContent
 			currentYear={data.dateInfo.currentYear.toString()}
