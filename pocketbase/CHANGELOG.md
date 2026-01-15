@@ -115,7 +115,7 @@
 ## v0.22.7
 
 - Replaced the default `s3blob` driver with a trimmed vendored version to reduce the binary size with ~10MB.
-  _It can be further reduced with another ~10MB once we replace entirely the `aws-sdk-go-v2` dependency but I stumbled on some edge cases related to the headers signing and for now is on hold._
+  _It can be further reduced with another ~10MB once we replace entirely the `aws-sdk-go-v2` dependency but I stumbled on some edge cases related to the headings signing and for now is on hold._
 
 - Other minor improvements (updated GitLab OAuth2 provider logo [#4650](https://github.com/pocketbase/pocketbase/pull/4650), normalized error messages, updated npm dependencies, etc.)
 
@@ -214,7 +214,7 @@
 
 - Fixed auto backups cron not reloading properly after app settings change ([#4431](https://github.com/pocketbase/pocketbase/discussions/4431)).
 
-- Upgraded to `aws-sdk-go-v2` and added special handling for GCS to workaround the previous [GCS headers signature issue](https://github.com/pocketbase/pocketbase/issues/2231) that we had with v2.
+- Upgraded to `aws-sdk-go-v2` and added special handling for GCS to workaround the previous [GCS headings signature issue](https://github.com/pocketbase/pocketbase/issues/2231) that we had with v2.
   _This should also fix the SVG/JSON zero response when using Cloudflare R2 ([#4287](https://github.com/pocketbase/pocketbase/issues/4287#issuecomment-1925168142), [#2068](https://github.com/pocketbase/pocketbase/discussions/2068), [#2952](https://github.com/pocketbase/pocketbase/discussions/2952))._
   _⚠️ If you are using S3 for uploaded files or backups, please verify that you have a green check in the Admin UI for your S3 configuration (I've tested the new version with GCS, MinIO, Cloudflare R2 and Wasabi)._
 
@@ -338,7 +338,7 @@
 
 ## v0.20.0
 
-- Added `expand`, `filter`, `fields`, custom query and headers parameters support for the realtime subscriptions.
+- Added `expand`, `filter`, `fields`, custom query and headings parameters support for the realtime subscriptions.
   _Requires JS SDK v0.20.0+ or Dart SDK v0.17.0+._
 
   ```js
@@ -513,7 +513,7 @@
 
 - Several Admin UI improvements:
   - Count the total records separately to speed up the query execution for large datasets ([#3344](https://github.com/pocketbase/pocketbase/issues/3344)).
-  - Enclosed the listing scrolling area within the table so that the horizontal scrollbar and table header are always reachable ([#2505](https://github.com/pocketbase/pocketbase/issues/2505)).
+  - Enclosed the listing scrolling area within the table so that the horizontal scrollbar and table heading are always reachable ([#2505](https://github.com/pocketbase/pocketbase/issues/2505)).
   - Allowed opening the record preview/update form via direct URL ([#2682](https://github.com/pocketbase/pocketbase/discussions/2682)).
   - Reintroduced the local `date` field tooltip on hover.
   - Speed up the listing loading times for records with large `editor` field values by initially fetching only a partial of the records data (the complete record data is loaded on record preview/update).
@@ -524,7 +524,7 @@
   - Removed the legacy `.woff` and `.ttf` fonts and keep only `.woff2`.
 
 - Removed the explicit `Content-Type` charset from the realtime response due to compatibility issues with IIS ([#3461](https://github.com/pocketbase/pocketbase/issues/3461)).
-  _The `Connection:keep-alive` realtime response header was also removed as it is not really used with HTTP2 anyway._
+  _The `Connection:keep-alive` realtime response heading was also removed as it is not really used with HTTP2 anyway._
 
 - Added new JSVM bindings:
   - `new Cookie({ ... })` constructor for creating `*http.Cookie` equivalent value.
@@ -565,7 +565,7 @@
 
 ## v0.18.6
 
-- Return the response headers and cookies in the `$http.send()` result ([#3310](https://github.com/pocketbase/pocketbase/discussions/3310)).
+- Return the response headings and cookies in the `$http.send()` result ([#3310](https://github.com/pocketbase/pocketbase/discussions/3310)).
 
 - Added more descriptive internal error message for missing user/admin email on password reset requests.
 
@@ -1037,7 +1037,7 @@
 
 - Updated the schema fields Admin UI for "tidier" fields visualization.
 
-- Updated the logs "real" user IP to check for `Fly-Client-IP` header and changed the `X-Forward-For` header to use the first non-empty leftmost-ish IP as it the closest to the "real IP".
+- Updated the logs "real" user IP to check for `Fly-Client-IP` heading and changed the `X-Forward-For` heading to use the first non-empty leftmost-ish IP as it the closest to the "real IP".
 
 - Added new `tools/archive` helper subpackage for managing archives (_currently works only with zip_).
 

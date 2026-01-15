@@ -106,8 +106,8 @@
 	/>
 </section>
 <section class="col-start-1 col-end-4 row-span-1 flex flex-col items-center justify-start">
-	<PillBox arrayOfPills={genres} header="Genres Explored" />
+	<PillBox arrayOfPills={genres} heading="Genres Explored" />
 </section>
 <section class="col-start-4 col-end-7 row-span-1 flex flex-col items-center justify-start">
-	<PillBox arrayOfPills={formats} header="Different Formats" />
+	<PillBox arrayOfPills={formats} heading="Different Formats" />
 </section>

@@ -23,7 +23,7 @@
 	let activeButton: number | null = $state(null);
 	let desktopInfoBox = $state('hidden');
 	let arrayOfItems: Book[] | string[] = $state([]);
-	let header = $state('');
+	let heading = $state('');
 
 	const handleButtonClick = (i: number, title: string) => {
 		if (activeButton === i) {
@@ -35,14 +35,14 @@
 		activeButton = i;
 		desktopInfoBox = 'hidden lg:flex';
 
-		const mappings: Record<string, { array: Book[] | string[]; header: string }> = {
-			books: { array: monthBooks, header: 'Books' },
-			authors: { array: authors, header: 'Authors' }
+		const mappings: Record<string, { array: Book[] | string[]; heading: string }> = {
+			books: { array: monthBooks, heading: 'Books' },
+			authors: { array: authors, heading: 'Authors' }
 		};
 
-		const { array, header: newHeader } = mappings[title.toLowerCase()];
+		const { array, heading: newheading } = mappings[title.toLowerCase()];
 		arrayOfItems = array;
-		header = newHeader;
+		heading = newheading;
 	};
 </script>
 
@@ -127,7 +127,7 @@
 				{#if activeButton === i}
 					<div class="w-full xl:w-4/5 flex justify-center lg:hidden">
 						{#key activeButton}
-							<ListBox {arrayOfItems} {header} />
+							<ListBox {arrayOfItems} {heading} />
 						{/key}
 					</div>
 				{/if}
@@ -135,7 +135,7 @@
 		</div>
 		<div class="w-full flex justify-center {desktopInfoBox}">
 			{#key activeButton}
-				<ListBox {arrayOfItems} {header} />
+				<ListBox {arrayOfItems} {heading} />
 			{/key}
 		</div>
 	</div>
