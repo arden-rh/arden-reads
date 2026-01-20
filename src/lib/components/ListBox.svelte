@@ -11,6 +11,7 @@
 	let books: Book[] = $state([]);
 	let authors: string[] = $state([]);
 
+	// svelte-ignore state_referenced_locally
 	if (heading == 'Authors') {
 		shortTitles = true;
 		authors = arrayOfItems as string[];
