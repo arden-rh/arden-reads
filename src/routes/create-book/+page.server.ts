@@ -7,11 +7,10 @@ export const prerender = false;
 
 export const load: PageServerLoad = async ({ parent }) => {
 
-	const { auth } = await parent();
+	const { auth, isUserLoggedIn } = await parent();
 
-	const admin = true; // Replace with actual admin check
-
-	if (!auth || !admin) {
+	// Redirect if not authenticated
+	if (!auth || !isUserLoggedIn) {
 		redirect(307, '/');
 	}
 

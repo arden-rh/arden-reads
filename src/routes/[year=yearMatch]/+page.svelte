@@ -16,7 +16,8 @@
 
 	let { data }: { data: PageData } = $props();
 	
-	let {
+	// Get statistics from the loaded data
+	const {
 		totalPagesReadYear: totalPagesRead,
 		minutesListenedYear: minutesListened,
 		yearAmountOfGenres: amountOfGenres,
@@ -26,7 +27,6 @@
 		yearAuthors: authors
 	} = $derived(data.yearStats);
 
-	// fix error
 	const year = $derived(data.year);
 	const amountOfBooks = $derived(yearBooks.length);
 	const buttonTitles = ['Books', 'Authors'];
@@ -51,9 +51,9 @@
 			authors: { array: authors, heading: 'Authors' }
 		};
 
-		const { array, heading: newheading } = mappings[title.toLowerCase()];
+		const { array, heading: newHeading } = mappings[title.toLowerCase()];
 		arrayOfItems = array;
-		heading = newheading;
+		heading = newHeading;
 	};
 </script>
 
