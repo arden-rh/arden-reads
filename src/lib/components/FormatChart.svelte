@@ -77,18 +77,19 @@
 		});
 	}
 
+	// svelte-ignore state_referenced_locally
 	const formats = countFormats(listOfBooks);
 	formatData = transformFormatCounts(formats);
 </script>
 
 <div
-	class="flex h-full lg:h-fit w-full lg:max-w-[275px] xl:max-w-full gap-8 items-center justify-center my-2 lg:my-0 lg:pl-4"
+	class="flex h-full lg:h-fit w-full lg:max-w-68.75 xl:max-w-full gap-8 items-center justify-center my-2 lg:my-0 lg:pl-4"
 >
 	<figure class="flex flex-col items-center h-5/6 min-w-2/3">
 		<figcaption class="fira-mono-medium text-xl mb-2 lg:mb-4">Formats</figcaption>
 		<svg
 			viewBox="0 0 36 36"
-			class="w-[200px] lg:w-[150px] xl:w-[300px] max-w-[200px] lg:max-w-[150px] xl:max-w-[300px] h-full"
+			class="w-50 lg:w-37.5 xl:w-75 max-w-50 lg:max-w-37.5 xl:max-w-75 h-full"
 		>
 			{#each formatData as { color, strokeLength, previousTotal }}
 				<circle
@@ -107,11 +108,11 @@
 		</svg>
 	</figure>
 	<!-- Legend -->
-	<div class="flex flex-col gap-2 justify-center mr-4 mt-4 lg:mt-8 xl:mr-6 xl:min-w-[120px]">
+	<div class="flex flex-col gap-2 justify-center mr-4 mt-4 lg:mt-8 xl:mr-6 xl:min-w-30">
 		{#each formatData as { format, legendColor, percentage }}
 			<div class="flex items-center gap-2 focus-visible:p-1">
 				<span
-					class="w-4 h-4 rounded-full {legendColor} min-w-[1rem] {legendColor} {showPecentage
+					class="w-4 h-4 rounded-full {legendColor} min-w-4 {legendColor} {showPecentage
 						? 'hidden'
 						: 'inline'}"
 				></span>

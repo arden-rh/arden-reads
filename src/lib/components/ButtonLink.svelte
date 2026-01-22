@@ -39,6 +39,7 @@
 		}
 	};
 
+	// svelte-ignore state_referenced_locally
 	const selectedTheme = themes[theme];
 </script>
 

@@ -79,19 +79,20 @@
 		});
 	}
 
+	// svelte-ignore state_referenced_locally
 	const genres = countGenres(listOfBooks);
 	genreData = transformGenreCounts(genres);
 </script>
 
 <div
-	class="flex h-full lg:h-fit w-full lg:max-w-[275px] xl:max-w-full gap-8 items-center justify-center my-2 lg:my-0 grow"
+	class="flex h-full lg:h-fit w-full lg:max-w-68.75 xl:max-w-full gap-8 items-center justify-center my-2 lg:my-0 grow"
 >
 	<figure class="flex flex-col items-center h-5/6 w-2/3">
 		<figcaption class="fira-mono-medium text-xl mb-2 lg:mb-4">Genres</figcaption>
 
 		<svg
 			viewBox="0 0 36 36"
-			class="w-[200px] lg:w-[150px] xl:w-[300px] max-w-[200px] lg:max-w-[150px] xl:max-w-[300px] h-full"
+			class="w-50 lg:w-37.5 xl:w-75 max-w-50 lg:max-w-37.5 xl:max-w-75 h-full"
 		>
 			{#each genreData as { color, strokeLength, previousTotal }}
 				<circle
@@ -110,11 +111,11 @@
 		</svg>
 	</figure>
 	<!-- Legend -->
-	<div class="flex flex-col gap-2 justify-center mr-4 xl:mr-6 xl:min-w-[125px]">
+	<div class="flex flex-col gap-2 justify-center mr-4 xl:mr-6 xl:min-w-31.25">
 		{#each genreData as { genre, legendColor, percentage }}
 			<div class="flex items-center gap-2">
 				<span
-					class="w-4 min-w-4 h-4 rounded-full {legendColor} min-w-[1rem] {showPecentage
+					class="w-4 min-w-4 h-4 rounded-full {legendColor} min-w-4 {showPecentage
 						? 'hidden'
 						: 'inline'}"
 				></span>

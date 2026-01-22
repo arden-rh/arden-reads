@@ -40,9 +40,9 @@
 			authors: { array: authors, heading: 'Authors' }
 		};
 
-		const { array, heading: newheading } = mappings[title.toLowerCase()];
+		const { array, heading: newHeading } = mappings[title.toLowerCase()];
 		arrayOfItems = array;
-		heading = newheading;
+		heading = newHeading;
 	};
 </script>
 
@@ -60,7 +60,7 @@
 			>
 				{#each monthBooks as book}
 					<div
-						class="bg-teal-800 rounded-xs text-sm w-[30px] lg:w-[45px] min-w-[10px]"
+						class="bg-teal-800 rounded-xs text-sm w-7.5 lg:w-11.25 min-w-2.5"
 						style="height: calc({book.title.length}ch / 2);"
 					></div>
 				{/each}
@@ -83,7 +83,7 @@
 			>
 				{#each monthBooks as book}
 					<div
-						class="bg-teal-800 rounded-xs text-sm w-[30px] lg:w-[45px] min-w-[10px]"
+						class="bg-teal-800 rounded-xs text-sm w-7.5 lg:w-11.25 min-w-2.5"
 						style="height: calc({book.title.length}ch / 2);"
 					></div>
 				{/each}
@@ -97,7 +97,7 @@
 	<GenreChart listOfBooks={monthBooks} />
 
 	<div
-		class="w-full lg:max-w-[275px] xl:max-w-[400px] xl:min-w-[350px] bg-teal-900 rounded-lg pt-6 px-4 lg:px-2 xl:px-0 pb-0 lg:pb-2 xl:pb-4 grow"
+		class="w-full lg:max-w-68.75 xl:max-w-100 xl:min-w-87.5 bg-teal-900 rounded-lg pt-6 px-4 lg:px-2 xl:px-0 pb-0 lg:pb-2 xl:pb-4 grow"
 	>
 		<PagesChart listOfBooks={monthBooks} {favouriteBookTitle} />
 	</div>

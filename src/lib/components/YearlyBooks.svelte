@@ -15,6 +15,7 @@
 	const oddBooksMonth = numberOfBooksMonth % 5;
 
 	// Amount of books for the year minus the month
+	// svelte-ignore state_referenced_locally
 	const restOfYearBooks = numberOfBooksYear - numberOfBooksMonth;
 	const restOfYearBooksInOddStack = 5 - oddBooksMonth; // Amount of books that fills an eventual odd stack of month books
 	const restOfYearBooksToStack = restOfYearBooks - restOfYearBooksInOddStack;
@@ -22,7 +23,7 @@
 	const restOfYearOddBooks = restOfYearBooksToStack % 5;
 </script>
 
-<div class="text-[1.2rem] max-w-[600px] xl:max-w-full lg:p-8 flex flex-col items-center text-white">
+<div class="text-[1.2rem] max-w-150 xl:max-w-full lg:p-8 flex flex-col items-center text-white">
 	<figure class="flex gap-1 items-center mb-4 flex-wrap justify-center w-5/6">
 		{#each { length: splitBookStacksMonth } as _, i}
 			<div class="mr-2 flex gap-1 mt-1">

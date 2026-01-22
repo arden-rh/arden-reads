@@ -30,12 +30,12 @@
 <div
 	class="{page === 'year'
 		? 'lg:h-fit lg:w-fit lg:bg-teal-900 lg:rounded-lg lg:p-6 lg:pt-3'
-		: ''} max-w-[600px] xl:max-w-full flex flex-col gap-4 text-center"
+		: ''} max-w-150 xl:max-w-full flex flex-col gap-4 text-center"
 >
 	<h2
 		class="italic flex flex-col xl:flex-row items-center xl:items-baseline justify-center gap-1 xl:gap-2"
 	>
-		<span class="rozha-one-regular text-[2.5rem] leading-[2.5rem] xl:text-5xl'} text-teal-200"
+		<span class="rozha-one-regular text-[2.5rem] leading-10 xl:text-5xl'} text-teal-200"
 			>{title}</span
 		>
 		<span class="text-xl">{subTitle}</span>
