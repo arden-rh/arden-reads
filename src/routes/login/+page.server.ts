@@ -2,7 +2,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import { activeState } from '../../states.svelte';
 import type { Actions } from './$types';
 
-import pb from '$lib/pocketbase';
+import { userPb } from '$lib/pocketbase';
 
 export const prerender = false;
 
@@ -23,9 +23,9 @@ export const actions: Actions = {
 				});
 			}
 
-			pb.autoCancellation(false);
+		userPb.autoCancellation(false);
 
-			const authData = await pb.collection('users').authWithPassword(userEmail, userPW);
+		const authData = await userPb.collection('users').authWithPassword(userEmail, userPW);
 
 			if (!authData) {
 				activeState.loggedIn = false;
@@ -46,6 +46,8 @@ export const actions: Actions = {
 		}
 	},
 	logout: async ({ cookies }) => {
+		// Clear user authentication and cookies
+		userPb.authStore.clear();
 		cookies.delete('pb_token', { path: '/' });
 		activeState.loggedIn = false;
 
