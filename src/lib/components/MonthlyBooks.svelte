@@ -25,8 +25,11 @@
 	let numberOfBooksMonth: number = $state(0);
 	let bookText = $state('books read in');
 
+	// svelte-ignore state_referenced_locally
 	activeState.startPageMonthBooks = numberOfBooksCurrentMonth;
 
+	// Determine which month to display and the corresponding number of books read
+	// svelte-ignore state_referenced_locally
 	if (numberOfBooksCurrentMonth > numberOfBooksPreviousMonth) {
 		month = currentMonth;
 		monthNumber = currentMonthNumber;
@@ -60,7 +63,7 @@
 <div
 	class="text-[1.2rem] px-2 xl:p-6 flex flex-col xl:flex-row justify-center items-center text-white"
 >
-	<span class="text-9xl xl:text-[12rem] xl:leading-[9rem] xl:mr-4 text-teal-200 fugaz-one-regular">
+	<span class="text-9xl xl:text-[12rem] xl:leading-36 xl:mr-4 text-teal-200 fugaz-one-regular">
 		{#if numberOfBooksMonth === 0}
 			No
 		{:else}

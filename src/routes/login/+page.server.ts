@@ -2,15 +2,12 @@ import { fail, redirect } from '@sveltejs/kit';
 import { activeState } from '../../states.svelte';
 import type { Actions } from './$types';
 
-import pb from '$lib/pocketbase';
+import { userPb } from '$lib/pocketbase';
 
 export const prerender = false;
 
 /** TODO
- * 1. Update the login auth superuser instead
- * 2. Add a redirect to the logout action
- * 3. Add a redirect to the login action
- * 4. Check Lucia for guidelines on how to handle cookies https://lucia-auth.com/sessions/cookies/sveltekit
+ * 1. Check Lucia for guidelines on how to handle cookies https://lucia-auth.com/sessions/cookies/sveltekit
  */
 
 export const actions: Actions = {
@@ -26,9 +23,9 @@ export const actions: Actions = {
 				});
 			}
 
-			pb.autoCancellation(false);
+		userPb.autoCancellation(false);
 
-			const authData = await pb.collection('users').authWithPassword(userEmail, userPW);
+		const authData = await userPb.collection('users').authWithPassword(userEmail, userPW);
 
 			if (!authData) {
 				activeState.loggedIn = false;
@@ -41,7 +38,7 @@ export const actions: Actions = {
 
 			return { success: true };
 
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {
 			return fail(401, {
 				error: error.message
@@ -49,8 +46,10 @@ export const actions: Actions = {
 		}
 	},
 	logout: async ({ cookies }) => {
+		// Clear user authentication and cookies
+		userPb.authStore.clear();
 		cookies.delete('pb_token', { path: '/' });
-		pb.authStore.clear();
+		activeState.loggedIn = false;
 
 		return redirect(303, '/');
 	}

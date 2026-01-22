@@ -49,7 +49,7 @@
 		<p class="text-red-500">{form.error}</p>
 	{/if}
 	<div
-		class="w-full max-w-[350px] bg-teal-800 flex flex-col justify-center items-center rounded-lg p-4 shadow-md"
+		class="w-full max-w-87.5 bg-teal-800 flex flex-col justify-center items-center rounded-lg p-4 shadow-md"
 	>
 		{#if !activeState.loggedIn}
 			<form

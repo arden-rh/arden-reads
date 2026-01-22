@@ -29,7 +29,10 @@
 
 		applyAction(result);
 
-		hideDialogue = false;
+		if (result.type === 'success') {
+			event.currentTarget.reset();
+			hideDialogue = false;
+		}
 	}
 </script>
 

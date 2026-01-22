@@ -20,11 +20,12 @@
 		);
 	};
 
+	// svelte-ignore state_referenced_locally
 	const pagesPerBook = getPagesPerBook(listOfBooks);
 </script>
 
 <div
-	class="chart min-h-[250px] w-full max-w-full flex flex-col items-center justify-center gap-2 mt-4 lg:mt-0 lg:p-4 xl:p-6 {bottomBorder
+	class="chart min-h-62.5 w-full max-w-full flex flex-col items-center justify-center gap-2 mt-4 lg:mt-0 lg:p-4 xl:p-6 {bottomBorder
 		? 'border-b-4 lg:border-b-0 lg:border-r-4'
 		: ''}"
 >
@@ -47,7 +48,7 @@
 		description="A bar chart showing the number of pages in each book."
 	/>
 	<div
-		class="w-full xl:max-w-[300px] flex flex-col text-sm grow lg:min-h-[80px] xl:min-h-[60px] xl:max-h-[60px] overflow-y-visible"
+		class="w-full xl:max-w-75 flex flex-col text-sm grow lg:min-h-20 xl:min-h-15 xl:max-h-15 overflow-y-visible"
 	>
 		<span>Title: <LinkedLabel linked="pages-chart-link" /></span>
 		<span>Pages: <LinkedValue uid="pages-per-book" /></span>

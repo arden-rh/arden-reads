@@ -23,7 +23,7 @@
 	let activeButton: number | null = $state(null);
 	let desktopInfoBox = $state('hidden');
 	let arrayOfItems: Book[] | string[] = $state([]);
-	let header = $state('');
+	let heading = $state('');
 
 	const handleButtonClick = (i: number, title: string) => {
 		if (activeButton === i) {
@@ -35,14 +35,14 @@
 		activeButton = i;
 		desktopInfoBox = 'hidden lg:flex';
 
-		const mappings: Record<string, { array: Book[] | string[]; header: string }> = {
-			books: { array: monthBooks, header: 'Books' },
-			authors: { array: authors, header: 'Authors' }
+		const mappings: Record<string, { array: Book[] | string[]; heading: string }> = {
+			books: { array: monthBooks, heading: 'Books' },
+			authors: { array: authors, heading: 'Authors' }
 		};
 
-		const { array, header: newHeader } = mappings[title.toLowerCase()];
+		const { array, heading: newHeading } = mappings[title.toLowerCase()];
 		arrayOfItems = array;
-		header = newHeader;
+		heading = newHeading;
 	};
 </script>
 
@@ -60,7 +60,7 @@
 			>
 				{#each monthBooks as book}
 					<div
-						class="bg-teal-800 rounded-xs text-sm w-[30px] lg:w-[45px] min-w-[10px]"
+						class="bg-teal-800 rounded-xs text-sm w-7.5 lg:w-11.25 min-w-2.5"
 						style="height: calc({book.title.length}ch / 2);"
 					></div>
 				{/each}
@@ -83,7 +83,7 @@
 			>
 				{#each monthBooks as book}
 					<div
-						class="bg-teal-800 rounded-xs text-sm w-[30px] lg:w-[45px] min-w-[10px]"
+						class="bg-teal-800 rounded-xs text-sm w-7.5 lg:w-11.25 min-w-2.5"
 						style="height: calc({book.title.length}ch / 2);"
 					></div>
 				{/each}
@@ -97,7 +97,7 @@
 	<GenreChart listOfBooks={monthBooks} />
 
 	<div
-		class="w-full lg:max-w-[275px] xl:max-w-[400px] xl:min-w-[350px] bg-teal-900 rounded-lg pt-6 px-4 lg:px-2 xl:px-0 pb-0 lg:pb-2 xl:pb-4 grow"
+		class="w-full lg:max-w-68.75 xl:max-w-100 xl:min-w-87.5 bg-teal-900 rounded-lg pt-6 px-4 lg:px-2 xl:px-0 pb-0 lg:pb-2 xl:pb-4 grow"
 	>
 		<PagesChart listOfBooks={monthBooks} {favouriteBookTitle} />
 	</div>
@@ -127,7 +127,7 @@
 				{#if activeButton === i}
 					<div class="w-full xl:w-4/5 flex justify-center lg:hidden">
 						{#key activeButton}
-							<ListBox {arrayOfItems} {header} />
+							<ListBox {arrayOfItems} {heading} />
 						{/key}
 					</div>
 				{/if}
@@ -135,7 +135,7 @@
 		</div>
 		<div class="w-full flex justify-center {desktopInfoBox}">
 			{#key activeButton}
-				<ListBox {arrayOfItems} {header} />
+				<ListBox {arrayOfItems} {heading} />
 			{/key}
 		</div>
 	</div>

@@ -15,7 +15,11 @@
 
 	let { monthNumber, year, amountOfBooksCurrentMonth, currentYear }: Props = $props();
 
-	const years = [2024, 2025];
+	const yearButtons = [
+		{ year: 2024, value: '24' },
+		{ year: 2025, value: '25' },
+		{ year: 2026, value: '26' }
+	];
 
 	function handleYearClick(year: number) {
 		menu.activeYear = year;
@@ -52,13 +56,13 @@
 			/>
 		</div>
 		<div class="flex gap-2 justify-end fira-mono-medium">
-			{#each years as year}
+			{#each yearButtons as yearButton}
 				<Button
-					title={year.toString()}
+					title={yearButton.value}
 					theme="teritary"
-					active={year === menu.activeYear}
+					active={yearButton.year === menu.activeYear}
 					className="p-1 px-2"
-					onClick={() => handleYearClick(year)}
+					onClick={() => handleYearClick(yearButton.year)}
 				/>
 			{/each}
 		</div>

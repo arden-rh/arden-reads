@@ -1,6 +1,6 @@
 {
 	"name": "arden-reads",
-	"version": "0.0.1",
+	"version": "0.9.0",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -40,6 +40,7 @@
 	"type": "module",
 	"dependencies": {
 		"autoprefixer": "^10.4.21",
+		"glob": "^13.0.0",
 		"pocketbase": "^0.26.2",
 		"svelte-tiny-linked-charts": "^2.2.0"
 	}

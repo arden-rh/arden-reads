@@ -37,8 +37,6 @@
 		}
 	];
 
-	let iconPath = getIconPath(iconName);
-
 	function getIconPath(iconName: string) {
 		const icon = iconArray.find((iconObj) => iconObj.icon === iconName);
 
@@ -71,7 +69,7 @@
 		fill="#fff"
 		class="hover:fill-teal-300 transition-colors duration-300"
 	>
-		<path d={iconPath} />
+		<path d={getIconPath(iconName)} />
 	</svg>
 {:else}
 	<svg
@@ -81,6 +79,6 @@
 		viewBox="0 -960 960 960"
 		fill="#fff"
 	>
-		<path d={iconPath} />
+		<path d={getIconPath(iconName)} />
 	</svg>
 {/if}

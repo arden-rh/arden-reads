@@ -21,11 +21,12 @@
 		return booksByAuthor;
 	}
 
+	// svelte-ignore state_referenced_locally
 	const booksByAuthor = countBooksByAuthor(listOfBooks);
 </script>
 
 <div
-	class="chart min-h-[250px] w-full max-w-full flex flex-col items-center gap-2 mt-4 lg:mt-0 lg:p-4 xl:p-8"
+	class="chart min-h-62.5 w-full max-w-full flex flex-col items-center gap-2 mt-4 lg:mt-0 lg:p-4 xl:p-8"
 >
 	<h3 class="fira-mono-medium text-xl mb-8">Books by author</h3>
 	<LinkedChart
@@ -41,7 +42,7 @@
 		title="Chart with number of books per author"
 		description="A bar chart showing the number of books read by each author this year."
 	/>
-	<div class="w-full flex flex-col text-sm lg:min-h-[80px] xl:min-h-[60px]">
+	<div class="w-full flex flex-col text-sm lg:min-h-20 xl:min-h-15">
 		<span>Author: <LinkedLabel linked="chart-link-3" /></span>
 		<span>Books: <LinkedValue uid="books-by-author" /></span>
 	</div>

@@ -14,7 +14,7 @@
 		About
 	</h1>
 	<div
-		class="flex flex-col items-center gap-4 justify-center w-[95%] lg:bg-teal-900 rounded-xl p-4 lg:p-6 max-w-[600px]"
+		class="flex flex-col items-center gap-4 justify-center w-[95%] lg:bg-teal-900 rounded-xl p-4 lg:p-6 max-w-150"
 	>
 		<div class="flex gap-2 w-full lg:w-2/3 justify-center">
 			<Button

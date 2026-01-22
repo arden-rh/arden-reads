@@ -11,6 +11,10 @@ export const load: LayoutServerLoad = async (data) => {
 	const adminPW = import.meta.env.VITE_POCKETBASE_ADMIN_PW;
 	const auth = await adminLogin(adminEmail, adminPW);
 
+    // Check for user session token
+    const userToken = data.cookies.get('pb_token');
+    const isUserLoggedIn = !!userToken;
+
 	let paramYear: number | undefined = undefined;
 
 	if (data.params.year) {
@@ -60,6 +64,7 @@ export const load: LayoutServerLoad = async (data) => {
 	return {
 		auth,
 		bookInfo,
+		isUserLoggedIn,
 		dateInfo: {
 			currentYear,
 			currentMonthNum,

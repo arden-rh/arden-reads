@@ -15,7 +15,8 @@
 	import { currentParams } from '../../states.svelte';
 
 	let { data }: { data: PageData } = $props();
-
+	
+	// Get statistics from the loaded data
 	const {
 		totalPagesReadYear: totalPagesRead,
 		minutesListenedYear: minutesListened,
@@ -24,16 +25,16 @@
 		yearAmountOfUniqueAuthors: amountOfUniqueAuthors,
 		yearBooks,
 		yearAuthors: authors
-	} = data.yearStats;
+	} = $derived(data.yearStats);
 
-	const year = data.year;
-	const amountOfBooks = yearBooks.length;
+	const year = $derived(data.year);
+	const amountOfBooks = $derived(yearBooks.length);
 	const buttonTitles = ['Books', 'Authors'];
 
 	let activeButton: number | null = $state(null);
 	let desktopInfoBox = $state('hidden');
 	let arrayOfItems: Book[] | string[] = $state([]);
-	let header = $state('');
+	let heading = $state('');
 
 	const handleButtonClick = (i: number, title: string) => {
 		if (activeButton === i) {
@@ -45,14 +46,14 @@
 		activeButton = i;
 		desktopInfoBox = 'hidden lg:flex';
 
-		const mappings: Record<string, { array: Book[] | string[]; header: string }> = {
-			books: { array: yearBooks, header: 'Books' },
-			authors: { array: authors, header: 'Authors' }
+		const mappings: Record<string, { array: Book[] | string[]; heading: string }> = {
+			books: { array: yearBooks, heading: 'Books' },
+			authors: { array: authors, heading: 'Authors' }
 		};
 
-		const { array, header: newHeader } = mappings[title.toLowerCase()];
+		const { array, heading: newHeading } = mappings[title.toLowerCase()];
 		arrayOfItems = array;
-		header = newHeader;
+		heading = newHeading;
 	};
 </script>
 
@@ -67,7 +68,7 @@
 				{year}
 			</h1>
 		</div>
-		<div class="flex flex-col items-center justify-center lg:max-w-[400px] xl:min-w-[460px]">
+		<div class="flex flex-col items-center justify-center lg:max-w-100 xl:min-w-115">
 			<StatNumberBlock
 				{amountOfBooks}
 				{totalPagesRead}
@@ -117,7 +118,7 @@
 					{#if activeButton === i}
 						<div class="w-full xl:w-4/5 flex justify-center lg:hidden">
 							{#key activeButton}
-								<ListBox {arrayOfItems} {header} />
+								<ListBox {arrayOfItems} {heading} />
 							{/key}
 						</div>
 					{/if}
@@ -125,7 +126,7 @@
 			</div>
 			<div class="w-full flex justify-center {desktopInfoBox}">
 				{#key activeButton}
-					<ListBox {arrayOfItems} {header} />
+					<ListBox {arrayOfItems} {heading} />
 				{/key}
 			</div>
 		</div>
