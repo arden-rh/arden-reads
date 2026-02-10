@@ -17,7 +17,7 @@
 	// Amount of books for the year minus the month
 	// svelte-ignore state_referenced_locally
 	const restOfYearBooks = numberOfBooksYear - numberOfBooksMonth;
-	const restOfYearBooksInOddStack = 5 - oddBooksMonth; // Amount of books that fills an eventual odd stack of month books
+	const restOfYearBooksInOddStack = oddBooksMonth > 0 ? Math.min(5 - oddBooksMonth, restOfYearBooks) : 0; // Amount of books that fills an eventual odd stack of month books
 	const restOfYearBooksToStack = restOfYearBooks - restOfYearBooksInOddStack;
 	const restOfYearSplitStacks = Math.floor(restOfYearBooksToStack / 5);
 	const restOfYearOddBooks = restOfYearBooksToStack % 5;
