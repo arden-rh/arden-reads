@@ -6,10 +6,6 @@ import { userPb } from '$lib/pocketbase';
 
 export const prerender = false;
 
-/** TODO
- * 1. Check Lucia for guidelines on how to handle cookies https://lucia-auth.com/sessions/cookies/sveltekit
- */
-
 export const actions: Actions = {
 	login: async ({ cookies, request }) => {
 		const data = await request.formData();
