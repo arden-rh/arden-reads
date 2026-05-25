@@ -6,7 +6,7 @@
 	import MonthPageContent from '$lib/components/MonthPageContent.svelte';
 	import MonthPageHeading from '$lib/components/MonthPageHeading.svelte';
 
-	import { currentParams } from '../../../states.svelte';
+	import { page } from '$app/state';
 	import AltMonthPageContent from '$lib/components/AltMonthPageContent.svelte';
 
 	let { data }: { data: PageData } = $props();
@@ -26,7 +26,7 @@
 		isThisTheFuture
 	/>
 {:else}
-	<MonthPageHeading month={currentParams.month} />
+	<MonthPageHeading month={page.params.month} />
 	{#if monthBooks.length === 0}
 		<AltMonthPageContent
 			currentYear={data.dateInfo.currentYear.toString()}

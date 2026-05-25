@@ -1,5 +1,4 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { activeState } from '../../states.svelte';
 import type { Actions } from './$types';
 
 import { userPb } from '$lib/pocketbase';
@@ -24,7 +23,6 @@ export const actions: Actions = {
 		const authData = await userPb.collection('users').authWithPassword(userEmail, userPW);
 
 			if (!authData) {
-				activeState.loggedIn = false;
 				return fail(401, { incorrect: true });
 			}
 
@@ -45,7 +43,6 @@ export const actions: Actions = {
 		// Clear user authentication and cookies
 		userPb.authStore.clear();
 		cookies.delete('pb_token', { path: '/' });
-		activeState.loggedIn = false;
 
 		return redirect(303, '/');
 	}

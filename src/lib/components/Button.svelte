@@ -40,5 +40,5 @@
 	class="btn-basic {active
 		? `${selectedTheme.active} ${selectedTheme.responsiveActive}`
 		: `${selectedTheme.base} ${selectedTheme.responsive}`} {className}"
-	onclick={onClick}>{title}</button
->
+	onclick={onClick}>{title}
+</button>

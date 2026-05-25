@@ -7,7 +7,7 @@ import { getSumOfNumericProperty } from '$lib/functions/getSumOfNumericProperty'
 import { getAllAuthors, getAllFormats, getAllGenres } from '$lib/functions/getBookInfo';
 
 import type { LayoutLoad } from './$types';
-import { currentParams } from '../states.svelte';
+
 
 /** TODO
  * - Create array of all months with the amount of books read in each month
@@ -46,9 +46,6 @@ export const load: LayoutLoad = async ({ data }) => {
 
 	const totalPagesReadYear = getSumOfNumericProperty(yearBooks, 'pages');
 	const minutesListenedYear = getSumOfNumericProperty(yearBooks, 'minutes');
-
-	currentParams.month = dateInfo.paramMonth;
-	currentParams.year = dateInfo.paramYear;
 
 	return {
 		isUserLoggedIn,

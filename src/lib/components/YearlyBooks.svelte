@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { activeState } from '../../states.svelte';
+	import { getAppContext } from '$lib/appContext.svelte';
+
+	const { activeState } = getAppContext();
 
 	interface Props {
 		year: number;
@@ -25,35 +27,35 @@
 
 <div class="text-[1.2rem] max-w-150 xl:max-w-full lg:p-8 flex flex-col items-center text-white">
 	<figure class="flex gap-1 items-center mb-4 flex-wrap justify-center w-5/6">
-		{#each { length: splitBookStacksMonth } as _, i}
+		{#each { length: splitBookStacksMonth }, i (i)}
 			<div class="mr-2 flex gap-1 mt-1">
-				{#each { length: 5 } as _, i}
+				{#each { length: 5 }, j (j)}
 					<div class="w-1.5 h-8 bg-teal-400"></div>
 				{/each}
 			</div>
 		{/each}
 		{#if oddBooksMonth}
 			<div class="mr-2 flex gap-1 mt-1">
-				{#each { length: oddBooksMonth } as _, i}
+				{#each { length: oddBooksMonth }, i (i)}
 					<div class="w-1.5 h-8 bg-teal-400"></div>
 				{/each}
 				{#if numberOfBooksMonth !== numberOfBooksYear && restOfYearBooksInOddStack}
-					{#each { length: restOfYearBooksInOddStack } as _, i}
+					{#each { length: restOfYearBooksInOddStack }, i (i)}
 						<div class="w-1.5 h-8 bg-teal-700"></div>
 					{/each}
 				{/if}
 			</div>
 		{/if}
-		{#each { length: restOfYearSplitStacks } as _, i}
+		{#each { length: restOfYearSplitStacks }, i (i)}
 			<div class="mr-2 flex gap-1 mt-1">
-				{#each { length: 5 } as _, i}
+				{#each { length: 5 }, j (j)}
 					<div class="w-1.5 h-8 bg-teal-700"></div>
 				{/each}
 			</div>
 		{/each}
 		{#if numberOfBooksMonth !== numberOfBooksYear && restOfYearOddBooks}
 			<div class="mr-2 flex gap-1 mt-1">
-				{#each { length: restOfYearOddBooks } as _, i}
+				{#each { length: restOfYearOddBooks }, i (i)}
 					<div class="w-1.5 h-8 bg-teal-700"></div>
 				{/each}
 			</div>

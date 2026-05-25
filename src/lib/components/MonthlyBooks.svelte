@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { activeState } from '../../states.svelte';
+	import { getAppContext } from '$lib/appContext.svelte';
+
+	const { activeState } = getAppContext();
 	interface Props {
 		day: number;
 		currentMonth: string;
@@ -16,12 +18,10 @@
 		currentMonthNumber,
 		numberOfBooksCurrentMonth,
 		previousMonth,
-		previousMonthNumber,
 		numberOfBooksPreviousMonth
 	}: Props = $props();
 
 	let month: string = $state('');
-	let monthNumber: number = $state(0);
 	let numberOfBooksMonth: number = $state(0);
 	let bookText = $state('books read in');
 
@@ -32,30 +32,30 @@
 	// svelte-ignore state_referenced_locally
 	if (numberOfBooksCurrentMonth > numberOfBooksPreviousMonth) {
 		month = currentMonth;
-		monthNumber = currentMonthNumber;
 		numberOfBooksMonth = numberOfBooksCurrentMonth;
 	} else if (numberOfBooksCurrentMonth <= 1 && day <= 15 && numberOfBooksPreviousMonth >= 1) {
 		month = previousMonth;
-		monthNumber = previousMonthNumber;
 		numberOfBooksMonth = numberOfBooksPreviousMonth;
-		activeState.startPageMonthBooks = numberOfBooksPreviousMonth;
+		// Only carry the previous month's count into the year bar when it belongs to the same year.
+		// In January, previousMonth is December of the prior year, so leave startPageMonthBooks
+		// as numberOfBooksCurrentMonth (January's contribution to the current year).
+		if (currentMonthNumber !== 1) {
+			activeState.startPageMonthBooks = numberOfBooksPreviousMonth;
+		}
 
 		if (numberOfBooksPreviousMonth === 1) {
 			bookText = 'book read in';
 		}
 	} else if (numberOfBooksCurrentMonth === 1 && day > 15) {
 		month = currentMonth;
-		monthNumber = currentMonthNumber;
 		numberOfBooksMonth = numberOfBooksCurrentMonth;
 		bookText = 'book read so far in';
 	} else if (numberOfBooksCurrentMonth > 1 && day <= 15) {
 		month = currentMonth;
-		monthNumber = currentMonthNumber;
 		numberOfBooksMonth = numberOfBooksCurrentMonth;
 		bookText = 'books read so far in';
 	} else {
 		month = currentMonth;
-		monthNumber = currentMonthNumber;
 		numberOfBooksMonth = numberOfBooksCurrentMonth;
 	}
 </script>

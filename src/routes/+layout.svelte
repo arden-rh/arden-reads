@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { navigating, page } from '$app/state';
+	import { resolve } from '$app/paths';
 	import { enhance } from '$app/forms';
 	import '../app.css';
 
@@ -11,10 +12,9 @@
 	import LogotypeIcon from '$lib/components/LogotypeIcon.svelte';
 	import DiamondSpinner from '$lib/components/DiamondSpinner.svelte';
 
-	import { currentParams, menu, activeState } from '../states.svelte';
+	import { setAppContext } from '$lib/appContext.svelte';
 
 	import {
-		closeMenuAndEnableScroll,
 		enableScroll,
 		disableScrollFunction
 	} from '$lib/functions/scrollFunctions';
@@ -23,23 +23,23 @@
 
 	let { children, data }: LayoutProps = $props();
 
+	const { menu, activeState } = setAppContext();
+
 	$effect(() => {
 		activeState.loggedIn = data.isUserLoggedIn;
 	});
 
 	let amountOfBooksCurrentMonth = $derived(data.currentMonthBooksCount);
 
-	let { year, currentMonthNum, currentYear } = $derived(data.dateInfo);
+	let { currentMonthNum, currentYear } = $derived(data.dateInfo);
 
 	function openMenu() {
 		disableScrollFunction();
 
-		if (currentParams.year) {
-			menu.activeYear = currentParams.year;
-			year = currentParams.year;
+		if (page.params.year) {
+			menu.activeYear = Number(page.params.year);
 		} else {
 			menu.activeYear = currentYear;
-			year = currentYear;
 		}
 
 		if (menu.open) {
@@ -50,8 +50,6 @@
 	}
 
 	function handleLogoClick() {
-		currentParams.month = undefined;
-		currentParams.year = undefined;
 		menu.open = false;
 		enableScroll();
 	}
@@ -76,7 +74,7 @@
 		<nav class="text-white p-4 lg:mt-2 flex flex-col gap-4 relative">
 			<div class="flex justify-between items-center xl:mx-4">
 				<a
-					href="/"
+					href={resolve('/')}
 					onclick={() => handleLogoClick()}
 					class="flex items-end gap-2 lg:gap-3 hover:text-teal-300 transition-colors duration-300 group"
 				>
@@ -133,8 +131,8 @@
 				/>
 				{#if activeState.loggedIn}
 					<a
-						href="/create-book"
-						onclick={() => closeMenuAndEnableScroll()}
+						href={resolve('/create-book')}
+						onclick={() => { menu.open = false; enableScroll(); }}
 						class="bg-teal-950 fira-mono-regular rounded-lg p-2 flex justify-center items-center tracking-wide shadow-md mt-4"
 					>
 						ADD BOOK
@@ -146,7 +144,7 @@
 	{#if menu.open}
 		<div
 			class="flex flex-col items-center justify-center col-start-1 col-end-7 row-span-6 bg-teal-950 opacity-55 lg:opacity-25 w-full h-dvh max-w-dvw absolute top-0 left-0 z-5"
-			onclick={() => closeMenuAndEnableScroll()}
+			onclick={() => { menu.open = false; enableScroll(); }}
 			aria-roledescription="overlay"
 			role="button"
 			tabindex="0"

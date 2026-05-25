@@ -12,7 +12,7 @@
 	import ListBox from '$lib/components/ListBox.svelte';
 	import StatNumberBlock from '$lib/components/StatNumberBlock.svelte';
 
-	import { currentParams } from '../../states.svelte';
+	import { page } from '$app/state';
 
 	let { data }: { data: PageData } = $props();
 	
@@ -57,7 +57,7 @@
 	};
 </script>
 
-{#key currentParams.year}
+{#key page.params.year}
 	<section
 		class="col-start-1 col-end-7 row-start-1 row-end-3 flex flex-col lg:flex-row-reverse justify-center lg:justify-between gap-2 lg:gap-6 xl:gap-4 items-center"
 	>
@@ -106,7 +106,7 @@
 		</h2>
 		<div class="flex flex-col w-full lg:w-4/5 xl:w-5/6">
 			<div class="w-full xl:w-4/5 flex flex-col lg:flex-row gap-5">
-				{#each buttonTitles as title, i}
+				{#each buttonTitles as title, i (i)}
 					<Button
 						id={i.toString()}
 						{title}

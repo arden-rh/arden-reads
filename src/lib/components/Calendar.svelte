@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { months } from '$lib/data/months';
-	import { closeMenuAndEnableScroll, enableScroll } from '$lib/functions/scrollFunctions';
-	import { currentParams, menu } from '../../states.svelte';
+	import { enableScroll } from '$lib/functions/scrollFunctions';
+	import { getAppContext } from '$lib/appContext.svelte';
+	import { page } from '$app/state';
 
 	import Button from './Button.svelte';
 	import ButtonLink from './ButtonLink.svelte';
@@ -15,6 +16,8 @@
 
 	let { monthNumber, year, amountOfBooksCurrentMonth, currentYear }: Props = $props();
 
+	const { menu } = getAppContext();
+
 	const yearButtons = [
 		{ year: 2024, value: '24' },
 		{ year: 2025, value: '25' },
@@ -25,11 +28,14 @@
 		menu.activeYear = year;
 	}
 
+	function closeMenuAndEnableScroll() {
+		menu.open = false;
+		enableScroll();
+	}
+
 	function resetParams() {
-		menu.activeYear = currentYear; // Reset to the current year
-		year = currentYear; // Reset to the current year
-		currentParams.month = undefined;
-		currentParams.year = undefined;
+		menu.activeYear = currentYear;
+		year = currentYear;
 		menu.open = false;
 		enableScroll();
 	}
@@ -56,7 +62,7 @@
 			/>
 		</div>
 		<div class="flex gap-2 justify-end fira-mono-medium">
-			{#each yearButtons as yearButton}
+			{#each yearButtons as yearButton (yearButton.value)}
 				<Button
 					title={yearButton.value}
 					theme="teritary"
@@ -72,19 +78,19 @@
 			title="SUMMARY"
 			linkName="/{menu.activeYear}"
 			theme="primary"
-			active={currentParams.year === menu.activeYear && currentParams.month === undefined}
+			active={Number(page.params.year) === menu.activeYear && !page.params.month}
 			className="tracking-widest"
 			onClick={closeMenuAndEnableScroll}
 			typeOfLink="internal"
 		/>
 		<div class="grid grid-cols-3 gap-2">
-			{#each months as month}
+			{#each months as month (month.name)}
 				{#if menu.activeYear && menu.activeYear < year}
 					<ButtonLink
 						title={month.abr}
 						linkName="/{menu.activeYear}/{month.name}"
 						theme="primary"
-						active={currentParams.month === month.name && currentParams.year === menu.activeYear}
+						active={page.params.month === month.name && Number(page.params.year) === menu.activeYear}
 						onClick={closeMenuAndEnableScroll}
 						typeOfLink="internal"
 					/>
@@ -93,7 +99,7 @@
 						title={month.abr}
 						linkName="/{menu.activeYear}/{month.name}"
 						theme="primary"
-						active={currentParams.month === month.name && currentParams.year === menu.activeYear}
+						active={page.params.month === month.name && Number(page.params.year) === menu.activeYear}
 						disabled={amountOfBooksCurrentMonth === 0 && monthNumber === month.number}
 						onClick={closeMenuAndEnableScroll}
 						typeOfLink="internal"

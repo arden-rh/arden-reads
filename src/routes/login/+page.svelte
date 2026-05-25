@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { applyAction, deserialize, enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
-	import { activeState } from '../../states.svelte';
+	import { resolve } from '$app/paths';
+	import { getAppContext } from '$lib/appContext.svelte';
+
+	const { activeState } = getAppContext();
 
 	// Types
 	import type { ActionResult } from '@sveltejs/kit';
@@ -26,7 +29,7 @@
 
 		if (result.type === 'success') {
 			activeState.loggedIn = true;
-			goto('/');
+			goto(resolve('/'));
 		}
 
 		await applyAction(result);
@@ -76,12 +79,12 @@
 				method="POST"
 				action="?/logout"
 				class="flex flex-col gap-2 w-full mt-4"
-				use:enhance={({}) => {
+				use:enhance={() => {
 					return async ({ result }) => {
 						activeState.loggedIn = false;
 
 						if (result.type === 'redirect') {
-							goto(result.location);
+							goto(resolve("/"));
 						} else {
 							await applyAction(result);
 						}
