@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Types
-	import type { ActionResult } from '@sveltejs/kit';
+	import type { ActionResult } from '$app/forms';
 
 	// Components
 	import BookForm from '$lib/components/BookForm.svelte';

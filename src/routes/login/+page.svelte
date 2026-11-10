@@ -4,7 +4,7 @@
 	import { activeState } from '../../states.svelte';
 
 	// Types
-	import type { ActionResult } from '@sveltejs/kit';
+	import type { ActionResult } from '$app/forms';
 
 	import Button from '$lib/components/Button.svelte';
 
