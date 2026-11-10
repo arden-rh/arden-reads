@@ -1,32 +1,16 @@
-import type { ParamMatcher } from '@sveltejs/kit';
+const months = [
+	'january',
+	'february',
+	'march',
+	'april',
+	'may',
+	'june',
+	'july',
+	'august',
+	'september',
+	'october',
+	'november',
+	'december'
+] as const;
 
-export const match: ParamMatcher = (
-	param: string
-): param is
-	| 'january'
-	| 'february'
-	| 'march'
-	| 'april'
-	| 'may'
-	| 'june'
-	| 'july'
-	| 'august'
-	| 'september'
-	| 'october'
-	| 'november'
-	| 'december' => {
-	return (
-		param === 'january' ||
-		param === 'february' ||
-		param === 'march' ||
-		param === 'april' ||
-		param === 'may' ||
-		param === 'june' ||
-		param === 'july' ||
-		param === 'august' ||
-		param === 'september' ||
-		param === 'october' ||
-		param === 'november' ||
-		param === 'december'
-	);
-};
+export const match = (param: string) => months.find((month) => month === param);

@@ -1,5 +1,3 @@
-import type { ParamMatcher } from '@sveltejs/kit';
+const years = ['2024', '2025', '2026'] as const;
 
-export const match: ParamMatcher = (param: string): param is '2024' | '2025' | '2026' => {
-	return param === '2024' || param === '2025' || param === '2026';
-};
+export const match = (param: string) => years.find((year) => year === param);
